@@ -23,7 +23,7 @@ import json
 import math
 import os
 import random
-from BERT import modeling, optimization, tokenization
+from code import modeling, optimization, tokenization
 import six
 import tensorflow as tf
 

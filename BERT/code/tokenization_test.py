@@ -18,7 +18,7 @@ from __future__ import print_function
 
 import os
 import tempfile
-from BERT import tokenization
+from code import tokenization
 import six
 import tensorflow as tf
 

@@ -9,7 +9,7 @@ echo echo################
 
 
 python  C:\\Users\\Wifo\\PycharmProjects\\Masterthesis\\BERT\\run_classifier.py \
-  --task_name=InsufficientSupport \
+  --task_name=MRPC \
   --do_train=true \
   --do_eval=true \
   --data_dir=$GLUE_DIR/MRPC \
