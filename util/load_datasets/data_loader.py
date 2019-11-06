@@ -1,12 +1,14 @@
-import pandas as pd
 import glob
-import xml.etree.ElementTree as et
-import xmltodict
 import os
 import re
-import codecs
-from nltk.tokenize import word_tokenize
+import xml.etree.ElementTree as et
+from collections import Counter
 from enum import Enum
+
+import pandas as pd
+import xmltodict
+from nltk.tokenize import word_tokenize
+
 
 def get_InsuffientSupport_datset():
     print("Loading Inufficient Supported Argument Dataset by Habernal 2017")
@@ -112,29 +114,10 @@ def _load_ArgRecognition_XML(load_GM):
 
 
 def get_ArgZoning_dataset():
+    """
+    Adapted from A. Lauscher
 
-    tree = et.parse(r'C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning\9405001.az-scixml')
-    xml_data = tree.getroot()
-
-    xmlstr = et.tostring(xml_data, encoding='utf8', method='xml')
-
-    data_dict = dict(xmltodict.parse(xmlstr))
-
-    df = pd.DataFrame.from_dict(data_dict)
-
-    print(df.head())
-
-
-
-
-    pass
-
-def get_ACI_Habernal2():
-    import os
-    #from lxml import etree as et
-    import re
-    import codecs
-
+    """
     path = r'./data/Argument_Zoning'
     documents = []
     for subdir, dirs, files in os.walk(path):
@@ -143,22 +126,29 @@ def get_ACI_Habernal2():
             if '.az-scixml' in file:
                 tree = et.parse(os.path.join(subdir, file))
                 for elem in tree.iter():
-                    if elem.tag in ['S']:
+                    if elem.tag in ['S'] and elem.get("AZ") is not None:
                         elem_string = et.tostring(elem, encoding="unicode")
                         clean_string = re.sub(r'<\/?S[^>]*>', '', elem_string)
                         clean_string = re.sub(r'<\/?REFAUTHOR[^>]*>', '', clean_string)
                         clean_string = re.sub(r'<\/?REF[^>]*>', '', clean_string)
                         clean_string = re.sub(r'<\/?CREF[^>]*>', '</NUM>', clean_string)
-                        sentence = Sentence(text=clean_string.strip(), category=elem.get("AZ"), file=file, tokens=[
-                            CoNLL_Token(token=token, sentence_label=elem.get("AZ"), is_end_of_sentence=(
-                                True if i == len(word_tokenize(clean_string)) - 1 else False), start=-1, end=-1) for
-                            i, token in enumerate(word_tokenize(clean_string))])
+                        sentence = Sentence(text=clean_string.strip(), category=elem.get("AZ"),
+                                            file=file, sentence_id=elem.get("ID"))
                         sentences.append(sentence)
                 documents.append(sentences)
         print("Number of documents loaded: ", len(documents))
-
+        #occurrences = Counter([sentence for sentences in documents for sentence in sentences])
         #print("Stats: ", occurrences)
-        return NONE
+
+        df = pd.DataFrame([sentence.__dict__ for sentences in documents for sentence in sentences ])
+
+        print(df.head())
+        #variables = arr[0].keys()
+        #df = pd.DataFrame([[getattr(i, j) for j in variables] for i in arr], columns=variables)
+
+        #df = pd.DataFrame.from_records(documents)
+
+        return df
 
 
 
@@ -222,28 +212,28 @@ class ArgRecognitionEle():
 
 
 class Sentence:
-    def __init__(self, text, category, file, tokens=[]):
+    def __init__(self, text, category, file, sentence_id):
         self.text = text
-        self.category = category
+        self.AZ_category = category
         self.file = file
-        self.start = 0
-        self.end = 0
-        self.tokens = tokens
+        self.sentenceID = sentence_id
 
-'''Simple class for representing the desired output'''
-class CoNLL_Token:
-    def __init__(self, token, start, end, token_label=None, sentence_label=None, is_end_of_sentence=False, file=None):
-        self.token = token
-        self.start = start
-        self.end = end
-        if token_label is not None:
-            self.token_label = token_label
-        else:
-            self.token_label = Token_Label.OUTSIDE
-        self.sentence_label = sentence_label
-        self.matched = False
-        self.is_end_of_sentence = is_end_of_sentence
-        self.file = file
+
+
+# '''Simple class for representing the desired output'''
+# class CoNLL_Token:
+#     def __init__(self, token, start, end, token_label=None, sentence_label=None, is_end_of_sentence=False, file=None):
+#         self.token = token
+#         self.start = start
+#         self.end = end
+#         if token_label is not None:
+#             self.token_label = token_label
+#         else:
+#             self.token_label = Token_Label.OUTSIDE
+#         self.sentence_label = sentence_label
+#         self.matched = False
+#         self.is_end_of_sentence = is_end_of_sentence
+#         self.file = file
 
 '''Enum for representing our argument labels'''
 class Token_Label(Enum):
