@@ -2,9 +2,7 @@
 export BERT_BASE_DIR='C:\Users\Wifo\PycharmProjects\Masterthesis\data\BERT_checkpoint\uncased_L-12_H-768_A-12'
 export GLUE_DIR='C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data'
 export output_dir='C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data_output'
-echo echo###########
-cho $BERT_BASE_DIR
-echo $output_dir
+
 echo echo################
 
 

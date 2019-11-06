@@ -1,5 +1,5 @@
 set BERT_BASE_DIR=r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\BERT_checkpoint\uncased_L-12_H-768_A-12"
-set GLUE_DIR=/path/to/glue
+set GLUE_DIR=r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
 
 python run_classifier.py \
   --task_name=MRPC \

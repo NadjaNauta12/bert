@@ -19,7 +19,7 @@ from __future__ import division
 from __future__ import print_function
 
 import os
-from code import modeling, optimization
+from BERT import modeling, optimization
 import tensorflow as tf
 
 flags = tf.flags

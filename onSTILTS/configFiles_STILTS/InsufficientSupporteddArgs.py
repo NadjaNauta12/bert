@@ -1,8 +1,8 @@
 import pandas as pd
 import tensorflow as tf
 
-from code import run_classifier
-from code import tokenization
+from BERT import run_classifier
+from BERT import tokenization
 
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)

@@ -21,12 +21,14 @@ from __future__ import print_function
 import collections
 import csv
 import os
-from code import modeling, tokenization, optimization
+import modeling
+import optimization
+import tokenization
 import tensorflow as tf
 import pandas as pd
 import numpy as np
 
-from util.load_datasets import data_loader
+
 
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
