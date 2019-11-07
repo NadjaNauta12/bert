@@ -119,7 +119,8 @@ def analyze_annotations_Habernal(annotations):
     print("\t\tNumber of attacks: " + str(len(attacks)))
 
 
-def parse_annotations_Habernal(path):
+def parse_annotations_Habernal():
+    path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final"
     stance_occur = 0
     file_counter = 0
     annotations = []
@@ -159,8 +160,8 @@ def parse_annotations_Habernal(path):
     return annotations
 
 
-annotations_Habernal = parse_annotations_Habernal(
-    r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final")
-analyze_annotations_Habernal(annotations_Habernal)
-ACI_Annotation_Habernal = pd.DataFrame([annotation.as_dict() for annotation in annotations_Habernal])
-print(ACI_Annotation_Habernal.head())
+#annotations_Habernal = parse_annotations_Habernal(
+#    r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final")
+#analyze_annotations_Habernal(annotations_Habernal)
+#ACI_Annotation_Habernal = pd.DataFrame([annotation.as_dict() for annotation in annotations_Habernal])
+#print(ACI_Annotation_Habernal.head())
