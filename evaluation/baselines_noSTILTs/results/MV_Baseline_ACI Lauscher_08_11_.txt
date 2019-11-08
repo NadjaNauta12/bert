@@ -1,0 +1,13 @@
+ACI Lauscher >> 08_11_                                     precision    recall  f1-score   support
+
+                Token_Label.OUTSIDE      0.509     1.000     0.675     37422
+ Token_Label.BEGIN_BACKGROUND_CLAIM      0.000     0.000     0.000       956
+Token_Label.INSIDE_BACKGROUND_CLAIM      0.000     0.000     0.000      9782
+             Token_Label.BEGIN_DATA      0.000     0.000     0.000      1263
+            Token_Label.INSIDE_DATA      0.000     0.000     0.000      4646
+        Token_Label.BEGIN_OWN_CLAIM      0.000     0.000     0.000      1513
+       Token_Label.INSIDE_OWN_CLAIM      0.000     0.000     0.000     17876
+
+                           accuracy                          0.509     73458
+                          macro avg      0.073     0.143     0.096     73458
+                       weighted avg      0.260     0.509     0.344     73458

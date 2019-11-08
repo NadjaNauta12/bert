@@ -88,7 +88,7 @@ def transform_to_model_input_multiple(sentences):
     return np.array(x), np.array(y_arg), np.array(y_rhet), np.array(y_aspect), np.array(y_summary), np.array(y_citation)
 
 
-def load_data(path=r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted"):
+def load_data(path):
     sentences = parse_conll_files(path)
     flat_sentences = [item for sublist in sentences for item in sublist]
     x, y_arg, y_rhet = transform_to_model_input(flat_sentences)
@@ -106,8 +106,11 @@ def load_data_multiple(path=""):
 
 def main():
     print("Process started")
+    #sentences = parse_conll_files(
+    #    r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted")
     sentences = parse_conll_files(
-        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted")
+        #"http://dws-09.informatik.uni-mannheim.de/work/anlausch/ArgumentMining/annotations_conll")
+        r"(./data/test_remote")
     flat_sentences = [item for sublist in sentences for item in sublist]
     x, y_arg, y_rhet = transform_to_model_input(flat_sentences)
     print("Process ended")
