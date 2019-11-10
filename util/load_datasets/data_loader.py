@@ -38,19 +38,27 @@ def get_QualityPrediction_dataset():
         read_files_single.append(df)
 
     quality_corpus = pd.concat(read_files_single, axis=0, ignore_index=True)
+    #quality_corpus= pd.DataFrame(quality_corpus)
+
+    print(quality_corpus.label)
+    fn =  lambda row: 1 if row.label == "a1" else 0
+    quality_corpus['target_label'] = quality_corpus.apply(fn, axis=1)
     return quality_corpus
 
 
 def get_ArgRecognition_UGIP_dataset():
-    return _load_ArgRecognition_XML(load_GM=True)
+    return _load_ArgRecognition_XML(load_GM=False, additional_tasks=False)
+
 
 def get_ArgRecognition_GM_datasetz():
-    return _load_ArgRecognition_XML(load_GM=True)
+    return _load_ArgRecognition_XML(load_GM=True, additional_tasks=False)
 
-def get_ArgRecognition_dataset():
-    return [_load_ArgRecognition_XML(True), _load_ArgRecognition_XML(False)]
 
-def _load_ArgRecognition_XML(load_GM):
+def get_ArgRecognition_dataset(additional_tasks=False):
+    return [_load_ArgRecognition_XML(True, additional_tasks), _load_ArgRecognition_XML(False, additional_tasks)]
+
+
+def _load_ArgRecognition_XML(load_GM, additional_tasks):
     """EXAMPLE
        <unit id="1arg2">
          <comment>
@@ -80,7 +88,7 @@ def _load_ArgRecognition_XML(load_GM):
         res = [None] * 6
         res[0] = (node.attrib.get(df_cols[0]))
         for child in node:
-            #print(child.tag)
+            # print(child.tag)
             # if child.tag == "unit":
             #     res[0] = child.attrib.get("id")
             #     continue
@@ -103,12 +111,19 @@ def _load_ArgRecognition_XML(load_GM):
             if child.tag == "label":
                 res[5] = child.text
                 continue
-        #rows.append(ArgRecognitionEle(res[0], res[1], res[2], res[3], res[4], res[5]))
+        # rows.append(ArgRecognitionEle(res[0], res[1], res[2], res[3], res[4], res[5]))
         rows.append(res)
     print("Content size of xml file", len(rows))
-    cols = [    "arg_id", "comment_text", "comment_stance", "argument_text", "argument_stance", "label"]
+    cols = ["arg_id", "comment_text", "comment_stance", "argument_text", "argument_stance", "label"]
     df = pd.DataFrame.from_records(rows, columns=cols)
+    """Label Mapping:  A is 1 , S is 5 """
+    # print(df.label.value_counts())
 
+    """Check Baseline for two additional Tasks"""
+    fn = lambda row: int(1) if row.label == "1" or row.label == "2" else (int(3) if row.label == "5" or row.label == "4" else int(2))
+    if additional_tasks:
+        # do same but attach it to the dataframe
+        df['task_3labels'] = df.apply(fn, axis=1)
 
     return df
 
@@ -137,27 +152,25 @@ def get_ArgZoning_dataset():
                         sentences.append(sentence)
                 documents.append(sentences)
         print("Number of documents loaded: ", len(documents))
-        #occurrences = Counter([sentence for sentences in documents for sentence in sentences])
-        #print("Stats: ", occurrences)
+        # occurrences = Counter([sentence for sentences in documents for sentence in sentences])
+        # print("Stats: ", occurrences)
 
-        df = pd.DataFrame([sentence.__dict__ for sentences in documents for sentence in sentences ])
+        df = pd.DataFrame([sentence.__dict__ for sentences in documents for sentence in sentences])
 
         print(df.head())
-        #variables = arr[0].keys()
-        #df = pd.DataFrame([[getattr(i, j) for j in variables] for i in arr], columns=variables)
+        # variables = arr[0].keys()
+        # df = pd.DataFrame([[getattr(i, j) for j in variables] for i in arr], columns=variables)
 
-        #df = pd.DataFrame.from_records(documents)
+        # df = pd.DataFrame.from_records(documents)
 
         return df
-
-
 
 
 def get_ACI_dataset_Habernal():
     path = './data/Argument_Component_Identification_Habernal/brat-project-final'
     all_files = glob.glob(path + "/*.ann")
     col_names = ["Tag", "Identifiers", "Explanation"]
-    #print(len(all_files))
+    # print(len(all_files))
 
     read_ANNfiles_single = []
     for filename in all_files:
@@ -190,14 +203,11 @@ def get_ACI_dataset_Habernal():
     prompts = pd.DataFrame(lines, columns=col_names)
     print(prompts.head())
     print("#prompts:\n", len(prompts))
-
     print("Statistics\n", prompts.describe())
-
+    return ACI_ANN_Habernal_corpus, ACI_DOC_Habernal_corpus, prompts
 
 def get_ACI_dataset_Lauscher():
     pass
-
-
 
 
 class ArgRecognitionEle():
@@ -219,7 +229,6 @@ class Sentence:
         self.sentenceID = sentence_id
 
 
-
 # '''Simple class for representing the desired output'''
 # class CoNLL_Token:
 #     def __init__(self, token, start, end, token_label=None, sentence_label=None, is_end_of_sentence=False, file=None):
@@ -236,6 +245,8 @@ class Sentence:
 #         self.file = file
 
 '''Enum for representing our argument labels'''
+
+
 class Token_Label(Enum):
     BEGIN_BACKGROUND_CLAIM = 1
     INSIDE_BACKGROUND_CLAIM = 2

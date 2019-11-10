@@ -2,7 +2,7 @@ import os
 import codecs
 from enum import Enum
 import pandas as pd
-
+from sklearn.preprocessing import LabelEncoder
 
 class Type(Enum):
     ENTITY = 1
@@ -157,7 +157,13 @@ def parse_annotations_Habernal():
     print("Annotation documents #:", file_counter)
     print("Annotations #:", len(annotations))
     # print("Found labels + counts:", dict_label)
-    return annotations
+    df = pd.DataFrame([annotation.as_dict() for annotation in annotations])
+    #df = pd.get_dummies(df["Label"])
+    df.Label = df["Label"].astype(str)
+    #total_rows['ColumnID'].astype(str)
+    LE = LabelEncoder()
+    df['target_label'] = LE.fit_transform(df['Label'])
+    return df  # annotations
 
 
 #annotations_Habernal = parse_annotations_Habernal(

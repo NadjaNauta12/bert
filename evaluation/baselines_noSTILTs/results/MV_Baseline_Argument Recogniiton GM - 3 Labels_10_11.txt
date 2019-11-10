@@ -1,0 +1,10 @@
+Argument Recogniiton GM - 3 Labels >> 10_11
+              precision    recall  f1-score   support
+
+           1      0.000     0.000     0.000       162
+           2      0.661     1.000     0.796       849
+           3      0.000     0.000     0.000       274
+
+    accuracy                          0.661      1285
+   macro avg      0.220     0.333     0.265      1285
+weighted avg      0.437     0.661     0.526      1285
