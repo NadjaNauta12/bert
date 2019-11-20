@@ -28,7 +28,7 @@ import tensorflow as tf
 import pandas as pd
 import numpy as np
 
-
+#from load_datasets.data_loader import get_InsuffientSupport_datset
 
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
@@ -174,7 +174,7 @@ class InputFeatures(object):
         self.input_mask = input_mask
         self.segment_ids = segment_ids
         self.label_id = label_id
-        self.is_real_example = is_real_example
+        self.is_real_example = is_real_example  # TODO remove this attr.?
 
 
 class DataProcessor(object):
@@ -205,8 +205,6 @@ class DataProcessor(object):
             for line in reader:
                 lines.append(line)
             return lines
-
-
 
 
 class XnliProcessor(DataProcessor):
@@ -379,10 +377,33 @@ class ColaProcessor(DataProcessor):
         return examples
 
 
+def convert_To_InputExamples(df_Insuff):
+    counter = 1
+    examples = []
+    for idx, row in df_Insuff.iterrows():
+        if idx == 0:
+            continue
+        guid = "%s-%s" % ("train", counter)
+        text = row['TEXT']
+        label = row['ANNOTATION']
+        examples.append(InputExample(guid=None, text_a=text, text_b=None, label=label))
+        counter += 1
+    return examples
+
+
 class InsufficientSupportProcessor(DataProcessor):
 
     def __init__(self, _data_split=None):
         self._data_split = _data_split
+
+    def __get_examples(self, filter_list):
+        insufficient_corpus = data_loader.get_InsuffientSupport_datset()
+        filtered = insufficient_corpus.loc[insufficient_corpus["ESSAY_ID"].isin(filter_list)]
+        print(filtered[:1])
+        print(len(filtered))
+        dev_InputExamples = convert_To_InputExamples(filtered)
+        print("Convert Data to InputExample")
+        return dev_InputExamples
 
     def _read_tsv_escape(cls, input_file, quotechar=None, errors='ignore'):
         """Reads a tab separated value file."""
@@ -406,6 +427,7 @@ class InsufficientSupportProcessor(DataProcessor):
         #     for line in reader:
         #         lines.append(line)
         #     return lines
+
     def get_labels(self):
         """Gets the list of labels for this data set."""
         return ["sufficient", "insufficient"]
@@ -413,7 +435,7 @@ class InsufficientSupportProcessor(DataProcessor):
     def read_data_splitting(self, idx):
         if self._data_split is None:
             complete_split = DataProcessor._read_tsv(
-                r'C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\Datasets\Insufficient_Arg_Support\data-splitting.tsv')
+                "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-splitting.tsv")
             # print(type(complete_split))
             # print(len(complete_split))
             # print(complete_split[1])
@@ -452,23 +474,19 @@ class InsufficientSupportProcessor(DataProcessor):
         """Gets a collection of `InputExample`s for the train set."""
         """Ids based on the splits"""
         dev_id, train_id, test_id = self.read_data_splitting(1)
-        #print(len(dev_id)) #86
-        #print(len(train_id)) #740
-        #print(len(test_id)) #206
+        return self.__get_examples(filter_list=train_id)
 
-        insufficient_corpus = data_loader.get_InsuffientSupport_datset()
-        #print(type(train_id))
-        #print(insufficient_corpus.tail())
-        #print(len(insufficient_corpus))
-        train_examples = insufficient_corpus.loc[insufficient_corpus["ESSAY_ID"].isin(train_id)]
-        print(train_examples[:1])
-        print(len(train_examples))
+    def get_dev_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the dev set."""
 
-        examples = convert_examples_to_features(train_InputExamples, label_list_insufficient, MAX_SEQ_LENGTH,
-                                                    tokenizer=tokenizerSN)
+        dev_id, train_id, test_id = self.read_data_splitting(1)
+        return self.__get_examples(filter_list=dev_id)
 
-        return examples
-
+    def get_test_examples(self, data_dir):
+        """See base class."""
+        """Ids based on the splits"""
+        dev_id, train_id, test_id = self.read_data_splitting(1)
+        return self.__get_examples(filter_list=test_id)
 
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
@@ -879,13 +897,18 @@ def convert_examples_to_features(examples, label_list, max_seq_length,
 
 def main(_):
     tf.logging.set_verbosity(tf.logging.INFO)
-
+    # tf.logging.set_verbosity(tf.logging.ERROR)
     processors = {
         "cola": ColaProcessor,
         "mnli": MnliProcessor,
         "mrpc": MrpcProcessor,
         "xnli": XnliProcessor,
-        "insufficientsupport": InsufficientSupportProcessor
+        "insufficientargsupport": InsufficientSupportProcessor,
+        "aci_habernal": InsufficientSupportProcessor,
+        "aci_lauscher": InsufficientSupportProcessor,
+        "argrecognition": InsufficientSupportProcessor,
+        "argquality": InsufficientSupportProcessor,
+        "argzoningi": InsufficientSupportProcessor
     }
 
     tokenization.validate_case_matches_checkpoint(FLAGS.do_lower_case,
@@ -1076,4 +1099,39 @@ if __name__ == "__main__":
     flags.mark_flag_as_required("vocab_file")
     flags.mark_flag_as_required("bert_config_file")
     flags.mark_flag_as_required("output_dir")
+    GLUE = False
+    if GLUE:
+        BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
+        GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
+        output_dir = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data_output'
+        FLAGS.task_name = "MRPC"
+        FLAGS.do_train = True
+        FLAGS.do_eval = True
+        FLAGS.data_dir = GLUE_DIR + "/MRPC"
+        FLAGS.vocab_file = BERT_BASE_DIR + "//vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "//bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size = 16
+        FLAGS.learning_rate = 2e-5
+        FLAGS.num_train_epochs = 3.0
+        FLAGS.output_dir = ".//tmp//mrpc_output//"
+
+    else:
+        BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
+        GLUE_DIR = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data'
+        output_dir = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data_output'
+        FLAGS.task_name = "InsufficientSupport"
+        FLAGS.do_train = True
+        FLAGS.do_eval = True
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support"
+        FLAGS.vocab_file = BERT_BASE_DIR + "//vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "//bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size = 16
+        FLAGS.learning_rate = 2e-5
+        FLAGS.num_train_epochs = 3.0
+        FLAGS.output_dir = r"C:\Users\Wifo\PycharmProjects\Masterthesis\onSTILTs\models\insufficientArgs"
+
     tf.app.run()

@@ -1,0 +1,13 @@
+ACI Habernal >> 11_11
+              precision    recall  f1-score   support
+
+           1      0.000     0.000     0.000       224
+           0      0.000     0.000     0.000       867
+           2      0.356     1.000     0.525      1222
+           3      0.000     0.000     0.000      1116
+
+    accuracy                          0.356      3429
+   macro avg      0.089     0.250     0.131      3429
+weighted avg      0.127     0.356     0.187      3429
+Receiver Operating Characteristic Curve (ROC AUC):
+ROC: 	~Not defined for multilabel~

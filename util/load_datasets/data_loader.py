@@ -12,7 +12,7 @@ from nltk.tokenize import word_tokenize
 
 def get_InsuffientSupport_datset():
     print("Loading Inufficient Supported Argument Dataset by Habernal 2017")
-    path = "./data/Insufficient_Arg_Support/data-tokenized.tsv"
+    path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
     insufficientSupper_corpora = pd.read_csv(path, delimiter='\t', index_col=None, header=0, encoding='unicode_escape')
     insufficientSupper_corpora["ANNOTATION"].fillna("sufficient", inplace=True)
     insufficientSupper_corpora["ESSAY_ID"] = [str(entry).zfill(3) for entry in insufficientSupper_corpora["ESSAY"]]
@@ -27,9 +27,18 @@ def get_InsuffientSupport_datset():
 
 
 def get_QualityPrediction_dataset():
-    print("Loading Argument Quality Prediction Dataset by YYYY")
-    path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality\IBM-ArgQ-9.1kPairs"
-    all_files = glob.glob(path + "/*.csv")
+    print("Loading Argument Quality Prediction Dataset")
+    return [_load_QualityPrediction_datset(test_set=False), _load_QualityPrediction_datset(test_set=True)]
+
+def _load_QualityPrediction_datset(test_set):
+    #print("Loading Argument Quality Prediction Dataset")
+    if test_set:
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality\9.1_test"
+        all_files = glob.glob(path + "/*.csv")
+    else:
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality\9.1_train_dev"
+        all_files = glob.glob(path + "/*.csv")
+
     # print(len(all_files))
     read_files_single = []
     for filename in all_files:
@@ -38,19 +47,19 @@ def get_QualityPrediction_dataset():
         read_files_single.append(df)
 
     quality_corpus = pd.concat(read_files_single, axis=0, ignore_index=True)
-    #quality_corpus= pd.DataFrame(quality_corpus)
-
-    print(quality_corpus.label)
-    fn =  lambda row: 1 if row.label == "a1" else 0
+    # quality_corpus= pd.DataFrame(quality_corpus)
+    # print(quality_corpus.label.unique())
+    # print(quality_corpus.annotatorid.unique())
+    print(quality_corpus['label'].value_counts())
+    fn = lambda row: 1 if row.label == "a1" else 0
     quality_corpus['target_label'] = quality_corpus.apply(fn, axis=1)
     return quality_corpus
-
 
 def get_ArgRecognition_UGIP_dataset():
     return _load_ArgRecognition_XML(load_GM=False, additional_tasks=False)
 
 
-def get_ArgRecognition_GM_datasetz():
+def get_ArgRecognition_GM_dataset():
     return _load_ArgRecognition_XML(load_GM=True, additional_tasks=False)
 
 
@@ -72,8 +81,8 @@ def _load_ArgRecognition_XML(load_GM, additional_tasks):
          <label>3</label>
       </unit>"""
     df_cols = ["id", "comment", "argument", "label"]
-    path = "./data/Argument_Recognition/comarg.v1/comarg"
-
+    # path = "./data/Argument_Recognition/comarg.v1/comarg"
+    path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Recognition\comarg.v1\comarg"
     if load_GM:
         path = path + "/GM.xml"
     else:
@@ -120,7 +129,8 @@ def _load_ArgRecognition_XML(load_GM, additional_tasks):
     # print(df.label.value_counts())
 
     """Check Baseline for two additional Tasks"""
-    fn = lambda row: int(1) if row.label == "1" or row.label == "2" else (int(3) if row.label == "5" or row.label == "4" else int(2))
+    fn = lambda row: int(1) if row.label == "1" or row.label == "2" else (
+        int(3) if row.label == "5" or row.label == "4" else int(2))
     if additional_tasks:
         # do same but attach it to the dataframe
         df['task_3labels'] = df.apply(fn, axis=1)
@@ -205,6 +215,7 @@ def get_ACI_dataset_Habernal():
     print("#prompts:\n", len(prompts))
     print("Statistics\n", prompts.describe())
     return ACI_ANN_Habernal_corpus, ACI_DOC_Habernal_corpus, prompts
+
 
 def get_ACI_dataset_Lauscher():
     pass

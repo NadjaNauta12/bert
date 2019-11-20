@@ -1,0 +1,11 @@
+Argument Quality Prediction >> 15_11
+              precision    recall  f1-score   support
+
+           0      0.493     1.000     0.660      1018
+           1      0.000     0.000     0.000      1049
+
+    accuracy                          0.493      2067
+   macro avg      0.246     0.500     0.330      2067
+weighted avg      0.243     0.493     0.325      2067
+Receiver Operating Characteristic Curve (ROC AUC):
+ROC: 	0.5

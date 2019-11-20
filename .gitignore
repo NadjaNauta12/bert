@@ -121,3 +121,5 @@ dmypy.json
 /data/Argument_Zoning2/
 /data/BERT_checkpoint/
 .idea
+/BERT/tmp/
+/onSTILTs/models/

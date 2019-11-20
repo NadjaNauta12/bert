@@ -33,26 +33,29 @@ def majority_vote(train, test, column, task, multilabel=None):
     result = Result(label_list=train[column].unique(), predictions=predictions, truth=test[column].tolist(),
                     descr="BL Majority Vote " + task)
     # pickle.dump(result, open("./results/Baseline_MV_InsufficientSupport.txt", 'wb'))
-    print("Type: ", type(multilabel[1]))
+
     if multilabel is None:
         # label =[1,2,3,4,5]
         eva = classification_report(result.truth, result.predictions, labels=result.label_list, digits=3)
+        """ ROC AUC"""
+        roc_auc = roc_auc_score(y_true=result.truth, y_score=result.predictions, average="macro", sample_weight=None,
+                            max_fpr=None)
+        print("ROC: ", roc_auc)
     else:
+        print("Type: ", type(multilabel[1]))
         eva = classification_report(result.truth, result.predictions, labels=multilabel, digits=3)
+        roc_auc = "~Not defined for multilabel~"
 
     print("Evaluation result MV:")
     print(eva)
-    """ ROC AUC"""
-    roc_auc = roc_auc_score(y_true=result.truth, y_score=result.predictions, average="macro", sample_weight=None,
-                            max_fpr=None)
-    print("ROC: ", roc_auc)
+
     ##### save results
     now = datetime.now()  # current date and time
     date_time = now.strftime("%d_%m")
     filename = "./evaluation/baselines_noSTILTS/results/MV_Baseline_" + task + "_" + date_time + ".txt"
     file_exists = os.path.isfile(filename)
     if not file_exists:
-        write_evaluationTXT(filename, eva, roc_auc)
+        write_evaluationTXT(filename, task,  eva, roc_auc)
     else:
         # ensures that previous results are not overwritten
         raise EvaluationFileAlreadyExists
@@ -79,14 +82,14 @@ def majority_vote_dict(array, label_counts_dict, task):
     """ ROC AUC"""
     roc_auc = roc_auc_score(y_true=result.truth, y_score=result.predictions, average="macro", sample_weight=None,
                             max_fpr=None)
-    print("ROC: ", roc_auc)
+    print("ROC: " , roc_auc)
     ##### save results
     now = datetime.now()  # current date and time
     date_time = now.strftime("%d_%m")
     filename = "./evaluation/baselines_noSTILTS/results/MV_Baseline_" + task + "_" + date_time + ".txt"
     file_exists = os.path.isfile(filename)
     if not file_exists:
-        write_evaluationTXT(filename, eva, roc_auc)
+        write_evaluationTXT(filename, task,  eva, roc_auc)
     else:
         # ensures that previous results are not overwritten
         raise EvaluationFileAlreadyExists
@@ -102,14 +105,17 @@ class Result:
         self.description = descr
 
 
-def write_evaluationTXT(filename, eva, roc):
+def write_evaluationTXT(filename, task,  eva, roc):
+    now = datetime.now()  # current date and time
+    date_time = now.strftime("%d_%m")
     eva_file = open(filename, "a")
     eva_file.write(task + " >> " + date_time)
     eva_file.write("\n")
     eva_file.write(eva)
     eva_file.write("Receiver Operating Characteristic Curve (ROC AUC):")
     eva_file.write("\n")
-    eva_file.write("ROC: \t", roc)
+    eva_file.write("ROC: \t")
+    eva_file.write(str(roc))
     eva_file.close()
 
 
@@ -121,7 +127,7 @@ def main():
 
     # corpora = get_QualityPrediction_dataset()
     # train, test = train_test_split(corpora, test_size=0.3, random_state=6)
-    # majority_vote(train=train, test=test, column="target_label", task="Argument Quality Prediction")
+    # majority_vote(train=corpora[0], test=corpora[1], column="target_label", task="Argument Quality Prediction")
 
     # corpora = get_ArgRecognition_dataset(additional_tasks=True)
     # multilabel_ArgRec = [1, 2, 3, 4, 5]
@@ -143,17 +149,16 @@ def main():
     # majority_vote(train=train, test=test, column="AZ_category", task="Argument Zoning I", multilabel=multilabel_AZI)
 
     ACI_Annotation_Habernal = brat_annotations.parse_annotations_Habernal()
-
-    # ACI_Annotation_Habernal = ACI_Annotation_Habernal["Label"].apply(pd.DataFrame.to_string)
-    print(ACI_Annotation_Habernal.head())
-    multilabel_ACI_Habernal = ACI_Annotation_Habernal.target_label.unique()
-    train, test = train_test_split(ACI_Annotation_Habernal, test_size=0.3, random_state=6)
-    majority_vote(train=train, test=test, column="target_label", task="ACI Habernal",
-                  multilabel=multilabel_ACI_Habernal)
+    # #ACI_Annotation_Habernal = ACI_Annotation_Habernal["Label"].apply(pd.DataFrame.to_string)
+    # #print(ACI_Annotation_Habernal.head())
+    # multilabel_ACI_Habernal = ACI_Annotation_Habernal.target_label.unique()
+    # train, test = train_test_split(ACI_Annotation_Habernal, test_size=0.3, random_state=6)
+    # majority_vote(train=train, test=test, column="target_label", task="ACI Habernal",
+    #               multilabel=multilabel_ACI_Habernal)
 
     # x, y_arg, y_rhet = load_conll.load_data(
     #     path=r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher"
-    #          r"\annotations_conll_all_splitted\train_dev")
+    #          r"\annotations_conll_all_splitted\train_dev_Thesis")
     # x_test, y_arg_test, y_rhet_test = load_conll.load_data(
     #     path=r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher"
     #          r"\annotations_conll_all_splitted\test")
