@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 export CUDA_VISIBLE_DEVICES=0
 BERT_BASE_DIR="/work/anlausch/replant/bert/data/BERT_base_new"
 VOCAB_DIR=$BERT_BASE_DIR/vocab.txt
@@ -24,7 +24,7 @@ for task_name in "STSB" ; do #"RTE" "MRPC" "CoLA" "SST2" "QNLI" "QQP" "MNLI" ; d
 
     export GLUE_DATA="$GLUE_DIR/$task_name"
 
-    python run_regression_wordnet.py   \
+    python 'C:\Users\Wifo\PycharmProjects\Masterthesis\onSTILTs\configFiles_STILTs\run_regression_wordnet.py'  \
     --task_name=$task_name \
     --do_train=true \
     --do_eval=true \
