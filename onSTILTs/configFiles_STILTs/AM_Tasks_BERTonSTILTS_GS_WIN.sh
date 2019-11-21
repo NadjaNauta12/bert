@@ -33,8 +33,8 @@ for task_name in "InsufficientArgSupport" "ArgRecognition" "ACI_Lauscher" "ACI_H
 
     python C:\\Users\\Wifo\\PycharmProjects\\Masterthesis\\BERT\\run_classifier.py  \
     --task_name=$task_name \
-    --do_train=true \
-    --do_eval=true \
+    --do_train=false \
+    --do_eval=false \
     #--do_early_stopping=false \
     --data_dir=$data_dir \
     --vocab_file=$VOCAB_DIR \
