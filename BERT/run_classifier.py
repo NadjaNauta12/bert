@@ -30,6 +30,7 @@ import pandas as pd
 import numpy as np
 
 # from load_datasets.data_loader import get_InsuffientSupport_datset
+from load_datasets import data_loader
 
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
@@ -917,9 +918,8 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
     :param num_train_epochs:
     :return:
     """
-    print("Strange")
-    # tf.logging.set_verbosity(tf.logging.INFO)
-    tf.logging.set_verbosity(tf.logging.FATAL)
+    tf.logging.set_verbosity(tf.logging.INFO)
+    #tf.logging.set_verbosity(tf.logging.FATAL)
     processors = {
         "cola": ColaProcessor,
         "mnli": MnliProcessor,
@@ -948,7 +948,8 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
             "was only trained up to sequence length %d" %
             (FLAGS.max_seq_length, bert_config.max_position_embeddings))
 
-    tf.gfile.MakeDirs(FLAGS.output_dir)
+    output_dir = FLAGS.output_dir + "_" + config_str
+    tf.gfile.MakeDirs(output_dir)
 
     task_name = FLAGS.task_name.lower()
 
@@ -958,10 +959,10 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
     processor = processors[task_name]()
 
     label_list = processor.get_labels()
-
+    #Mbox('Your title', 'Your text', 1)
     tokenizer = tokenization.FullTokenizer(
         vocab_file=FLAGS.vocab_file, do_lower_case=FLAGS.do_lower_case)
-    Mbox('Your title', 'Your text', 1)
+
     tpu_cluster_resolver = None
     if FLAGS.use_tpu and FLAGS.tpu_name:
         tpu_cluster_resolver = tf.contrib.cluster_resolver.TPUClusterResolver(
@@ -984,14 +985,14 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
     if FLAGS.do_train:
         train_examples = processor.get_train_examples(FLAGS.data_dir)
         num_train_steps = int(
-            len(train_examples) / FLAGS.train_batch_size * FLAGS.num_train_epochs)
+            len(train_examples) / train_batch_size * num_train_epochs)
         num_warmup_steps = int(num_train_steps * FLAGS.warmup_proportion)
-    print("huhu", type(train_examples[0]))
+
     model_fn = model_fn_builder(
         bert_config=bert_config,
         num_labels=len(label_list),
         init_checkpoint=FLAGS.init_checkpoint,
-        learning_rate=FLAGS.learning_rate,
+        learning_rate=learning_rate,
         num_train_steps=num_train_steps,
         num_warmup_steps=num_warmup_steps,
         use_tpu=FLAGS.use_tpu,
@@ -1003,17 +1004,17 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
         use_tpu=FLAGS.use_tpu,
         model_fn=model_fn,
         config=run_config,
-        train_batch_size=FLAGS.train_batch_size,
+        train_batch_size=train_batch_size,
         eval_batch_size=FLAGS.eval_batch_size,
         predict_batch_size=FLAGS.predict_batch_size)
 
     if FLAGS.do_train:
-        train_file = os.path.join(FLAGS.output_dir, "train.tf_record")
+        train_file = os.path.join(output_dir, "train.tf_record")
         file_based_convert_examples_to_features(
             train_examples, label_list, FLAGS.max_seq_length, tokenizer, train_file)
         tf.logging.info("***** Running training *****")
         tf.logging.info("  Num examples = %d", len(train_examples))
-        tf.logging.info("  Batch size = %d", FLAGS.train_batch_size)
+        tf.logging.info("  Batch size = %d", train_batch_size)
         tf.logging.info("  Num steps = %d", num_train_steps)
         train_input_fn = file_based_input_fn_builder(
             input_file=train_file,
@@ -1128,7 +1129,6 @@ def main(_):
 
     for (train_batch_size, learning_rate, train_epochs) in configs:
         config_str = str(train_batch_size) + "_" + str(learning_rate) + "_" + str(train_epochs)
-        print(config_str)
         tf.logging.info("Running %s", config_str)
         main_run_classifier(_, config_str=config_str, train_batch_size=train_batch_size, learning_rate=learning_rate,
                             num_train_epochs=train_epochs)
@@ -1140,40 +1140,43 @@ if __name__ == "__main__":
     flags.mark_flag_as_required("vocab_file")
     flags.mark_flag_as_required("bert_config_file")
     flags.mark_flag_as_required("output_dir")
-    tf.app.run()
+    #tf.app.run()
 
-    # GLUE = False
-    # if GLUE:
-    #     BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
-    #     GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
-    #     output_dir = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data_output'
-    #     FLAGS.task_name = "MRPC"
-    #     FLAGS.do_train = True
-    #     FLAGS.do_eval = True
-    #     FLAGS.data_dir = GLUE_DIR + "/MRPC"
-    #     FLAGS.vocab_file = BERT_BASE_DIR + "//vocab.txt"
-    #     FLAGS.bert_config_file = BERT_BASE_DIR + "//bert_config.json"
-    #     FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
-    #     FLAGS.max_seq_length = 128
-    #     FLAGS.train_batch_size = 16
-    #     FLAGS.learning_rate = 2e-5
-    #     FLAGS.num_train_epochs = 3.0
-    #     FLAGS.output_dir = ".//tmp//mrpc_output//"
-    #
-    # else:
-    #     BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
-    #     GLUE_DIR = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data'
-    #     output_dir = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data_output'
-    #     FLAGS.task_name = "InsufficientSupport"
-    #     FLAGS.do_train = True
-    #     FLAGS.do_eval = True
-    #     FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support"
-    #     FLAGS.vocab_file = BERT_BASE_DIR + "//vocab.txt"
-    #     FLAGS.bert_config_file = BERT_BASE_DIR + "//bert_config.json"
-    #     FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
-    #     FLAGS.max_seq_length = 128
-    #     FLAGS.train_batch_size = 16
-    #     FLAGS.learning_rate = 2e-5
-    #     FLAGS.num_train_epochs = 3.0
-    #     FLAGS.output_dir = r"C:\Users\Wifo\PycharmProjects\Masterthesis\onSTILTs\models\insufficientArgs"
-    # tf.app.run()
+    GLUE = False
+    if GLUE:
+        BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
+        # GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
+        # output_dir = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data_output'
+        # FLAGS.task_name = "MRPC"
+        # FLAGS.do_train = True
+        # FLAGS.do_eval = True
+        # FLAGS.data_dir = GLUE_DIR + "/MRPC"
+        # FLAGS.vocab_file = BERT_BASE_DIR + "//vocab.txt"
+        # FLAGS.bert_config_file = BERT_BASE_DIR + "//bert_config.json"
+        # FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        # FLAGS.max_seq_length = 128
+        # FLAGS.train_batch_size = 16
+        # FLAGS.learning_rate = 2e-5
+        # FLAGS.num_train_epochs = 3.0
+        # FLAGS.output_dir = ".//tmp//mrpc_output//"
+
+    else:
+        BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
+        GLUE_DIR = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data'
+        output_dir = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data_output'
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/InsufficientArgSupport"
+
+        FLAGS.task_name = "InsufficientArgSupport"
+        FLAGS.do_train = True
+        FLAGS.do_eval = False
+        FLAGS.do_predict = False
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support"
+        FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size = "[16]"
+        FLAGS.learning_rate = "[2e-5]"
+        FLAGS.num_train_epochs = "[3.0]"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir
+    tf.app.run()
