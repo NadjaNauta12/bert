@@ -13,28 +13,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """BERT finetuning runner."""
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import sys
+sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
+import os
 import collections
 import csv
-import os
 import modeling
 import optimization
 import tokenization
 import tensorflow as tf
 import itertools
 import pandas as pd
-import numpy as np
-
-# why req when run locally?
-from load_datasets import data_loader
-
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
-import ctypes  # An included library with Python install.
+import numpy as np
+import ctypes  # An included library with Python install for MSG boxen
+from util.load_datasets import data_loader
+
+
 
 
 def Mbox(title, text, style):
@@ -220,95 +220,6 @@ class DataProcessor(object):
             return lines
 
 
-class XnliProcessor(DataProcessor):
-    """Processor for the XNLI data set."""
-
-    def __init__(self):
-        self.language = "zh"
-
-    def get_train_examples(self, data_dir):
-        """See base class."""
-        lines = self._read_tsv(
-            os.path.join(data_dir, "multinli",
-                         "multinli.train.%s.tsv" % self.language))
-        examples = []
-        for (i, line) in enumerate(lines):
-            if i == 0:
-                continue
-            guid = "train-%d" % (i)
-            text_a = tokenization.convert_to_unicode(line[0])
-            text_b = tokenization.convert_to_unicode(line[1])
-            label = tokenization.convert_to_unicode(line[2])
-            if label == tokenization.convert_to_unicode("contradictory"):
-                label = tokenization.convert_to_unicode("contradiction")
-            examples.append(
-                InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-        return examples
-
-    def get_dev_examples(self, data_dir):
-        """See base class."""
-        lines = self._read_tsv(os.path.join(data_dir, "xnli.dev.tsv"))
-        examples = []
-        for (i, line) in enumerate(lines):
-            if i == 0:
-                continue
-            guid = "dev-%d" % (i)
-            language = tokenization.convert_to_unicode(line[0])
-            if language != tokenization.convert_to_unicode(self.language):
-                continue
-            text_a = tokenization.convert_to_unicode(line[6])
-            text_b = tokenization.convert_to_unicode(line[7])
-            label = tokenization.convert_to_unicode(line[1])
-            examples.append(
-                InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-        return examples
-
-    def get_labels(self):
-        """See base class."""
-        return ["contradiction", "entailment", "neutral"]
-
-
-class MnliProcessor(DataProcessor):
-    """Processor for the MultiNLI data set (GLUE version)."""
-
-    def get_train_examples(self, data_dir):
-        """See base class."""
-        return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, "train.tsv")), "train")
-
-    def get_dev_examples(self, data_dir):
-        """See base class."""
-        return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, "dev_matched.tsv")),
-            "dev_matched")
-
-    def get_test_examples(self, data_dir):
-        """See base class."""
-        return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, "test_matched.tsv")), "test")
-
-    def get_labels(self):
-        """See base class."""
-        return ["contradiction", "entailment", "neutral"]
-
-    def _create_examples(self, lines, set_type):
-        """Creates examples for the training and dev sets."""
-        examples = []
-        for (i, line) in enumerate(lines):
-            if i == 0:
-                continue
-            guid = "%s-%s" % (set_type, tokenization.convert_to_unicode(line[0]))
-            text_a = tokenization.convert_to_unicode(line[8])
-            text_b = tokenization.convert_to_unicode(line[9])
-            if set_type == "test":
-                label = "contradiction"
-            else:
-                label = tokenization.convert_to_unicode(line[-1])
-            examples.append(
-                InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-        return examples
-
-
 class MrpcProcessor(DataProcessor):
     """Processor for the MRPC data set (GLUE version)."""
 
@@ -349,72 +260,31 @@ class MrpcProcessor(DataProcessor):
         return examples
 
 
-class ColaProcessor(DataProcessor):
-    """Processor for the CoLA data set (GLUE version)."""
-
-    def get_train_examples(self, data_dir):
-        """See base class."""
-        return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, "train.tsv")), "train")
-
-    def get_dev_examples(self, data_dir):
-        """See base class."""
-        return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, "dev.tsv")), "dev")
-
-    def get_test_examples(self, data_dir):
-        """See base class."""
-        return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, "test.tsv")), "test")
-
-    def get_labels(self):
-        """See base class."""
-        return ["0", "1"]
-
-    def _create_examples(self, lines, set_type):
-        """Creates examples for the training and dev sets."""
-        examples = []
-        for (i, line) in enumerate(lines):
-            # Only the test set has a header
-            if set_type == "test" and i == 0:
-                continue
-            guid = "%s-%s" % (set_type, i)
-            if set_type == "test":
-                text_a = tokenization.convert_to_unicode(line[1])
-                label = "0"
-            else:
-                text_a = tokenization.convert_to_unicode(line[3])
-                label = tokenization.convert_to_unicode(line[1])
-            examples.append(
-                InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
-        return examples
-
-
-def convert_To_InputExamples(df_Insuff):
-    counter = 1
-    examples = []
-    for idx, row in df_Insuff.iterrows():
-        if idx == 0:
-            continue
-        guid = "%s-%s" % ("train", counter)
-        text = row['TEXT']
-        label = row['ANNOTATION']
-        examples.append(InputExample(guid=None, text_a=text, text_b=None, label=label))
-        counter += 1
-    return examples
-
-
 class InsufficientSupportProcessor(DataProcessor):
+
+    @staticmethod
+    def convert_To_InputExamples(df_Insuff, descr):
+        counter = 1
+        examples = []
+        for idx, row in df_Insuff.iterrows():
+            if idx == 0:
+                continue
+            guid = "%s-%s" % (descr, counter)
+            text = row['TEXT']
+            label = row['ANNOTATION']
+            examples.append(InputExample(guid=guid, text_a=text, text_b=None, label=label))
+            counter += 1
+        return examples
 
     def __init__(self, _data_split=None):
         self._data_split = _data_split
 
-    def __get_examples(self, filter_list):
+    def __get_examples(self, filter_list, descr):
         insufficient_corpus = data_loader.get_InsuffientSupport_datset()
         filtered = insufficient_corpus.loc[insufficient_corpus["ESSAY_ID"].isin(filter_list)]
         print(filtered[:1])
         print(len(filtered))
-        dev_InputExamples = convert_To_InputExamples(filtered)
+        dev_InputExamples = self.convert_To_InputExamples(filtered, descr)
         print("Convert Data to InputExample")
         return dev_InputExamples
 
@@ -487,19 +357,174 @@ class InsufficientSupportProcessor(DataProcessor):
         """Gets a collection of `InputExample`s for the train set."""
         """Ids based on the splits"""
         dev_id, train_id, test_id = self.read_data_splitting(1)
-        return self.__get_examples(filter_list=train_id)
+        return self.__get_examples(filter_list=train_id, descr="train")
 
     def get_dev_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the dev set."""
 
         dev_id, train_id, test_id = self.read_data_splitting(1)
-        return self.__get_examples(filter_list=dev_id)
+        return self.__get_examples(filter_list=dev_id, descr="dev")
 
     def get_test_examples(self, data_dir):
         """See base class."""
         """Ids based on the splits"""
         dev_id, train_id, test_id = self.read_data_splitting(1)
-        return self.__get_examples(filter_list=test_id)
+        return self.__get_examples(filter_list=test_id, descr="test")
+
+
+class ArgRecognitionProcessor(DataProcessor):
+
+    def _get_examples(self, getGM, descr):
+        corpus = data_loader.get_ArgRecognition_dataset()
+        if getGM:
+            corpus_GM = self.convert_To_InputExamples(corpus[0], descr)
+            return corpus_GM
+        else:
+            corpus_UGIP = self.convert_To_InputExamples(corpus[1], descr)
+            return corpus_UGIP
+
+    def convert_To_InputExamples(self, df, identifiertxt):
+        counter = 1
+        examples = []
+        for idx, row in df.iterrows():
+            guid = "%s-%s" % (identifiertxt, counter)
+            comment = row['comment_text']
+            argument = row['argument_text']
+            label = row['label']
+            examples.append(InputExample(guid=guid, text_a=comment, text_b=argument, label=label))
+            counter += 1
+        counter = 0
+        return examples
+
+    def get_train_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the train set."""
+        corpora = self._get_examples(getGM=True, descr="Train")
+
+        return corpora
+
+    def get_dev_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the dev set."""
+        corpora = self._get_examples(getGM=True, descr="Dev")
+
+        return corpora
+
+    def get_test_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for prediction."""
+        corpora = self._get_examples(getGM=False, descr="Test")
+
+        return corpora
+
+    def get_labels(self):
+        """Gets the list of labels for this data set."""
+        # return ["A", "a", "N", "s", "S"]
+        return ['1', '2', '3', '4', '5']
+
+
+class ACI_Lauscher_Processor(DataProcessor):
+
+    def _get_examples(self, data_dir, getGM, descr):
+        annotations_Lauscher = parse_annotations_Lauscher(
+            r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\compiled_corpus")
+        analyze_annotations_Lauscher(annotations_Lauscher)
+        ACI_Annotation_Lauscher = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
+        print(ACI_Annotation_Lauscher.head())
+
+        corpus = data_loader.get_ArgRecognition_dataset()
+        if getGM:
+            corpus_GM = self.convert_To_InputExamples(corpus[0], descr)
+            return corpus_GM
+        else:
+            corpus_UGIP = self.convert_To_InputExamples(corpus[1], descr)
+            return corpus_UGIP
+
+    def convert_To_InputExamples(self, df, identifiertxt):
+        counter = 1
+        examples = []
+        for idx, row in df.iterrows():
+            guid = "%s-%s" % (identifiertxt, counter)
+            comment = row['comment_text']
+            argument = row['argument_text']
+            label = row['label']
+            examples.append(InputExample(guid=guid, text_a=comment, text_b=argument, label=label))
+            counter += 1
+        counter = 0
+        return examples
+
+    def get_train_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the train set."""
+        corpora = self._get_examples(getGM=True, descr="Train")
+
+        return corpora
+
+    def get_dev_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the dev set."""
+        corpora = self._get_examples(getGM=True, descr="Dev")
+
+        return corpora
+
+    def get_test_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for prediction."""
+        corpora = self._get_examples(getGM=False, descr="Test")
+
+        return corpora
+
+    def get_labels(self):
+        """Gets the list of labels for this data set."""
+        return ['Label_Lauscher.BACKGROUND_CLAIM', 'Label_Lauscher.OWN_CLAIM', 'Label_Lauscher.DATA',
+                'Label_Lauscher.SUPPORTS', 'Label_Lauscher.CONTRADICTS', 'Label_Lauscher.PARTS_OF_SAME',
+                'Label_Lauscher.SEMANTICALLY_SAME']
+
+
+class ACI_Habernal_Processor(DataProcessor):
+
+    def _get_examples(self, data_dir, descr):
+        if descr == "train" or descr == "dev":
+            path = data_dir + '/train_dev'
+            c = brat_annotations.parse_annotations_Habernal(path=path)
+        else:
+            path = data_dir + '/test'
+            c = brat_annotations.parse_annotations_Habernal(path=path)
+
+        examples = self.convert_To_InputExamples(c)
+        return examples
+
+
+    def convert_To_InputExamples(self, df, identifiertxt):
+        counter = 1
+        examples = []
+        for idx, row in df.iterrows():
+            guid = "%s-%s" % (identifiertxt, counter)
+            comment = row['comment_text']
+            argument = row['argument_text']
+            label = row['label']
+            examples.append(InputExample(guid=guid, text_a=comment, text_b=argument, label=label))
+            counter += 1
+        counter = 0
+        return examples
+
+    def get_train_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the train set."""
+        corpora = self._get_examples( descr="Train")
+
+        return corpora
+
+    def get_dev_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the dev set."""
+        corpora = self._get_examples(descr="Dev")
+
+        return corpora
+
+    def get_test_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for prediction."""
+        corpora = self._get_examples(descr="Test")
+
+        return corpora
+
+    def get_labels(self):
+        """Gets the list of labels for this data set."""
+        return ['Label_Lauscher.BACKGROUND_CLAIM', 'Label_Lauscher.OWN_CLAIM', 'Label_Lauscher.DATA',
+                'Label_Lauscher.SUPPORTS', 'Label_Lauscher.CONTRADICTS', 'Label_Lauscher.PARTS_OF_SAME',
+                'Label_Lauscher.SEMANTICALLY_SAME']
 
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
@@ -919,16 +944,13 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
     :return:
     """
     tf.logging.set_verbosity(tf.logging.INFO)
-    #tf.logging.set_verbosity(tf.logging.FATAL)
+    # tf.logging.set_verbosity(tf.logging.FATAL)
     processors = {
-        "cola": ColaProcessor,
-        "mnli": MnliProcessor,
         "mrpc": MrpcProcessor,
-        "xnli": XnliProcessor,
         "insufficientargsupport": InsufficientSupportProcessor,
-        "aci_habernal": InsufficientSupportProcessor,
-        "aci_lauscher": InsufficientSupportProcessor,
-        "argrecognition": InsufficientSupportProcessor,
+        "aci_habernal": ACI_Habernal_Processor,
+        "aci_lauscher": ACI_Lauscher_Processor,
+        "argrecognition": ArgRecognitionProcessor,
         "argquality": InsufficientSupportProcessor,
         "argzoningi": InsufficientSupportProcessor
     }
@@ -959,7 +981,7 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
     processor = processors[task_name]()
 
     label_list = processor.get_labels()
-    #Mbox('Your title', 'Your text', 1)
+    # Mbox('Your title', 'Your text', 1)
     tokenizer = tokenization.FullTokenizer(
         vocab_file=FLAGS.vocab_file, do_lower_case=FLAGS.do_lower_case)
 
@@ -1121,6 +1143,11 @@ def main(_):
     :param _:
     :return:
     """
+    print("Current", os.path.dirname(os.path.realpath(__file__)))
+    print("PWD", os.getcwd())
+    import sys
+    from pprint import pprint
+    pprint(sys.path)
     train_batch_sizes_list = eval(FLAGS.train_batch_size)
     learning_rate_list = eval(FLAGS.learning_rate)
     train_epochs_list = eval(FLAGS.num_train_epochs)
@@ -1134,14 +1161,13 @@ def main(_):
                             num_train_epochs=train_epochs)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # is only run if started directly - when coming from the .sh file starts at main(_)
     flags.mark_flag_as_required("data_dir")
     flags.mark_flag_as_required("task_name")
     flags.mark_flag_as_required("vocab_file")
     flags.mark_flag_as_required("bert_config_file")
     flags.mark_flag_as_required("output_dir")
-    #tf.app.run()
-
+    # tf.app.run()
     GLUE = False
     if GLUE:
         BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
@@ -1166,7 +1192,7 @@ if __name__ == "__main__":
         output_dir = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data_output'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/InsufficientArgSupport"
 
-        FLAGS.task_name = "InsufficientArgSupport"
+        FLAGS.task_name = "ArgRecognition"
         FLAGS.do_train = True
         FLAGS.do_eval = False
         FLAGS.do_predict = False

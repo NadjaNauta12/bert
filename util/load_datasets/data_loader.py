@@ -7,7 +7,7 @@ from enum import Enum
 
 import pandas as pd
 import xmltodict
-from nltk.tokenize import word_tokenize
+import nltk.tokenize
 
 
 def get_InsuffientSupport_datset():

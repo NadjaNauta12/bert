@@ -9,7 +9,7 @@ def parse_essays(path):
             if '.txt' in file:
                 with codecs.open(os.path.join(subdir, file), mode="r", encoding="utf8") as essay_file:
                     content = essay_file.read()
-                    essays.append(Essay(int(file[5:8]), content))
+                    essays.append(Essay(int(file[5:7]), content))
 
     return essays
 
@@ -25,7 +25,3 @@ class Essay():
 
 
 
-
-essays = parse_essays(r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final")
-df_essay = pd.DataFrame.from_records([essay.as_dict() for essay in essays])
-print(df_essay.head())

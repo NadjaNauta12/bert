@@ -106,13 +106,12 @@ def load_data_multiple(path=""):
 
 def main():
     print("Process started")
-    #sentences = parse_conll_files(
-    #    r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted")
     sentences = parse_conll_files(
-        #"http://dws-09.informatik.uni-mannheim.de/work/anlausch/ArgumentMining/annotations_conll")
-        r"(./data/test_remote")
+       r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted")
     flat_sentences = [item for sublist in sentences for item in sublist]
     x, y_arg, y_rhet = transform_to_model_input(flat_sentences)
+    print("x", x)
+    print("Y", y_arg)
     print("Process ended")
 
 

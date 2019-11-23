@@ -9,11 +9,6 @@ class Type(Enum):
     RELATION = 2
 
 
-class Type(Enum):
-    ENTITY = 1
-    RELATION = 2
-
-
 class Label_Habernal(Enum):
     """
     [entities]
@@ -98,6 +93,10 @@ class Annotation_Habernal:
 
 def analyze_annotations_Habernal(annotations):
     print("Number of annotations: " + str(len(annotations)))
+    for a in annotations:
+        for b in a:
+            print(b)
+
     entities = [ann for ann in annotations if ann.type == Type.ENTITY]
     print("\tNumber of entities: " + str(len(entities)))
     claims = [ann for ann in annotations if
@@ -119,8 +118,8 @@ def analyze_annotations_Habernal(annotations):
     print("\t\tNumber of attacks: " + str(len(attacks)))
 
 
-def parse_annotations_Habernal():
-    path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final"
+def parse_annotations_Habernal(
+        path=r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final"):
     stance_occur = 0
     file_counter = 0
     annotations = []
@@ -140,18 +139,17 @@ def parse_annotations_Habernal():
                                     stance_occur += 1
                                     # print("Stance detected", file, line.rstrip(), "Stance#:", stance_occur, "ignored")
                                 else:
-                                    print("something is fischy")
+                                    print("something is fischy", valerr)
 
                             label, start, end = info.split(" ")
 
-                            annotations.append(
-                                Annotation_Habernal(id=id, label=label, start=start, end=end, file=int(file[5:8]), text=text))
+                            annotations.append( Annotation_Habernal(id=id, label=label, start=start, end=end, file=int(file[5:7]), text=text))
                         except Exception as e:
                             # prrint("\n")
-                            # print(e)
+                            print(e)
                             # print(file)
-                            print(line)
-                            # print("\n")
+                            # print(line)
+                            print("Something is not right...\n")
 
     # print("#stance",stance_occur)
     print("Annotation documents #:", file_counter)
@@ -166,8 +164,8 @@ def parse_annotations_Habernal():
     return df  # annotations
 
 
-#annotations_Habernal = parse_annotations_Habernal(
-#    r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final")
-#analyze_annotations_Habernal(annotations_Habernal)
-#ACI_Annotation_Habernal = pd.DataFrame([annotation.as_dict() for annotation in annotations_Habernal])
-#print(ACI_Annotation_Habernal.head())
+annotations_Habernal = parse_annotations_Habernal(
+   r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final")
+analyze_annotations_Habernal(annotations_Habernal)
+ACI_Annotation_Habernal = pd.DataFrame([annotation.as_dict() for annotation in annotations_Habernal])
+print(ACI_Annotation_Habernal.head())

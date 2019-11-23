@@ -780,72 +780,73 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
             drop_remainder=True)
 
         if FLAGS.do_early_stopping:
-            assert (FLAGS.do_eval == False)
-            eval_examples = processor.get_dev_examples(FLAGS.data_dir)
-            eval_file = os.path.join(output_dir, "eval.tf_record")
-            file_based_convert_examples_to_features(eval_examples, FLAGS.max_seq_length, tokenizer, eval_file)
-
-            eval_hook_listener = EvalRoutineCheckpointSaverListener(model_dir=output_dir,
-                                                                    path_eval_script=c.PATH_EVAL_SCRIPT,
-                                                                    server=c.DEV_SERVER,
-                                                                    gpu_fraction=c.DEV_CUDA_GPU_FRAC,
-                                                                    cuda_visible_devices=c.DEV_CUDA_VISIBLE_DEVICES,
-                                                                    params={},
-                                                                    input_file=eval_file,
-                                                                    bert_config_file=FLAGS.bert_config_file,
-                                                                    eval_batch_size=FLAGS.eval_batch_size,
-                                                                    max_sequence_length=FLAGS.max_seq_length,
-                                                                    model_fn=model_fn_builder,
-                                                                    input_fn=file_based_input_fn_builder,
-                                                                    )
-            # num_labels=len(processor.get_labels()))
-
-            estimator.train(input_fn=train_input_fn, max_steps=num_train_steps,
-                            saving_listeners=[eval_hook_listener], hooks=[eval_hook_listener])
-
-            # Now lets run the evaluation again, but in another output dir
-            best_checkpoint = checkmate.get_best_checkpoint(output_dir + "/eval/best_model/",
-                                                            select_maximum_value=False)
-
-            model_fn = model_fn_builder(bert_config=bert_config,
-                                        init_checkpoint=best_checkpoint,
-                                        learning_rate=0.0,
-                                        num_train_steps=0,
-                                        num_warmup_steps=0,
-                                        # num_labels=len(label_list),
-                                        use_one_hot_embeddings=True,
-                                        use_tpu=False)
-
-            run_config = tf.contrib.tpu.RunConfig(
-                cluster=None,
-                master=None,
-                model_dir=output_dir + "/final",
-                tpu_config=None
-            )
-
-            estimator = tf.contrib.tpu.TPUEstimator(
-                use_tpu=False,
-                model_fn=model_fn,
-                config=run_config,
-                train_batch_size=train_batch_size,
-                eval_batch_size=FLAGS.eval_batch_size,
-                predict_batch_size=FLAGS.predict_batch_size)
-
-            eval_input_fn = file_based_input_fn_builder(
-                input_file=eval_file,
-                seq_length=FLAGS.max_seq_length,
-                is_training=False,
-                drop_remainder=False)
-
-            result = estimator.evaluate(input_fn=eval_input_fn, steps=None)
-
-            output_eval_file = os.path.join(output_dir + "/final", "eval_results.txt")
-            with tf.gfile.GFile(output_eval_file, "w") as writer:
-                tf.logging.info("***** Eval results *****")
-                for key in sorted(result.keys()):
-                    tf.logging.info("  %s = %s", key, str(result[key]))
-                    writer.write("%s = %s\n" % (key, str(result[key])))
-
+            pass
+        #     assert (FLAGS.do_eval == False)
+        #     eval_examples = processor.get_dev_examples(FLAGS.data_dir)
+        #     eval_file = os.path.join(output_dir, "eval.tf_record")
+        #     file_based_convert_examples_to_features(eval_examples, FLAGS.max_seq_length, tokenizer, eval_file)
+        #
+        #     eval_hook_listener = EvalRoutineCheckpointSaverListener(model_dir=output_dir,
+        #                                                             path_eval_script=c.PATH_EVAL_SCRIPT,
+        #                                                             server=c.DEV_SERVER,
+        #                                                             gpu_fraction=c.DEV_CUDA_GPU_FRAC,
+        #                                                             cuda_visible_devices=c.DEV_CUDA_VISIBLE_DEVICES,
+        #                                                             params={},
+        #                                                             input_file=eval_file,
+        #                                                             bert_config_file=FLAGS.bert_config_file,
+        #                                                             eval_batch_size=FLAGS.eval_batch_size,
+        #                                                             max_sequence_length=FLAGS.max_seq_length,
+        #                                                             model_fn=model_fn_builder,
+        #                                                             input_fn=file_based_input_fn_builder,
+        #                                                             )
+        #     # num_labels=len(processor.get_labels()))
+        #
+        #     estimator.train(input_fn=train_input_fn, max_steps=num_train_steps,
+        #                     saving_listeners=[eval_hook_listener], hooks=[eval_hook_listener])
+        #
+        #     # Now lets run the evaluation again, but in another output dir
+        #     best_checkpoint = checkmate.get_best_checkpoint(output_dir + "/eval/best_model/",
+        #                                                     select_maximum_value=False)
+        #
+        #     model_fn = model_fn_builder(bert_config=bert_config,
+        #                                 init_checkpoint=best_checkpoint,
+        #                                 learning_rate=0.0,
+        #                                 num_train_steps=0,
+        #                                 num_warmup_steps=0,
+        #                                 # num_labels=len(label_list),
+        #                                 use_one_hot_embeddings=True,
+        #                                 use_tpu=False)
+        #
+        #     run_config = tf.contrib.tpu.RunConfig(
+        #         cluster=None,
+        #         master=None,
+        #         model_dir=output_dir + "/final",
+        #         tpu_config=None
+        #     )
+        #
+        #     estimator = tf.contrib.tpu.TPUEstimator(
+        #         use_tpu=False,
+        #         model_fn=model_fn,
+        #         config=run_config,
+        #         train_batch_size=train_batch_size,
+        #         eval_batch_size=FLAGS.eval_batch_size,
+        #         predict_batch_size=FLAGS.predict_batch_size)
+        #
+        #     eval_input_fn = file_based_input_fn_builder(
+        #         input_file=eval_file,
+        #         seq_length=FLAGS.max_seq_length,
+        #         is_training=False,
+        #         drop_remainder=False)
+        #
+        #     result = estimator.evaluate(input_fn=eval_input_fn, steps=None)
+        #
+        #     output_eval_file = os.path.join(output_dir + "/final", "eval_results.txt")
+        #     with tf.gfile.GFile(output_eval_file, "w") as writer:
+        #         tf.logging.info("***** Eval results *****")
+        #         for key in sorted(result.keys()):
+        #             tf.logging.info("  %s = %s", key, str(result[key]))
+        #             writer.write("%s = %s\n" % (key, str(result[key])))
+        #
 
         else:
             estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
