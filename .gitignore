@@ -122,4 +122,5 @@ dmypy.json
 /data/BERT_checkpoint/
 .idea
 /BERT/tmp/
-/onSTILTs/models/
+/onSTILTs/*
+/models_onSTILTs/models/*

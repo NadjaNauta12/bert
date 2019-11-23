@@ -2,6 +2,11 @@ import os
 import codecs
 import pandas as pd
 from enum import Enum
+from sklearn.preprocessing import LabelEncoder
+
+class Type(Enum):
+    ENTITY = 1
+    RELATION = 2
 
 
 class Essay:
@@ -176,8 +181,8 @@ def analyze_annotations_Habernal(annotations):
 
 
 if __name__ == "__main__":
-    load_essays = True
-    load_annotations = True
+    load_essays = False
+    load_annotations = False
     if load_essays:
         essay_list = parse_essays(
             r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project"

@@ -18,6 +18,10 @@ from __future__ import division
 from __future__ import print_function
 
 import sys
+
+sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
+from util.load_datasets import ACI_loader
+
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 import os
 import collections
@@ -28,13 +32,12 @@ import tokenization
 import tensorflow as tf
 import itertools
 import pandas as pd
+
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
 import numpy as np
 import ctypes  # An included library with Python install for MSG boxen
 from util.load_datasets import data_loader
-
-
 
 
 def Mbox(title, text, style):
@@ -478,54 +481,147 @@ class ACI_Lauscher_Processor(DataProcessor):
 class ACI_Habernal_Processor(DataProcessor):
 
     def _get_examples(self, data_dir, descr):
-        if descr == "train" or descr == "dev":
+        if descr == "Train" or descr == "Dev":
             path = data_dir + '/train_dev'
-            c = brat_annotations.parse_annotations_Habernal(path=path)
+            c = ACI_loader.parse_annotations_Habernal(path=path)
         else:
             path = data_dir + '/test'
-            c = brat_annotations.parse_annotations_Habernal(path=path)
+            c = ACI_loader.parse_annotations_Habernal(path=path)
 
-        examples = self.convert_To_InputExamples(c)
+        examples = self.convert_To_InputExamples(c, descr)
         return examples
-
 
     def convert_To_InputExamples(self, df, identifiertxt):
         counter = 1
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
-            comment = row['comment_text']
-            argument = row['argument_text']
-            label = row['label']
-            examples.append(InputExample(guid=guid, text_a=comment, text_b=argument, label=label))
+            comment = row['Text']
+            label = row['Label']
+            examples.append(InputExample(guid=guid, text_a=comment, text_b=None, label=label))
             counter += 1
         counter = 0
         return examples
 
     def get_train_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the train set."""
-        corpora = self._get_examples( descr="Train")
+        corpora = self._get_examples(data_dir=data_dir, descr="Train")
 
         return corpora
 
     def get_dev_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the dev set."""
-        corpora = self._get_examples(descr="Dev")
+        corpora = self._get_examples(data_dir=data_dir, descr="Dev")
 
         return corpora
 
     def get_test_examples(self, data_dir):
         """Gets a collection of `InputExample`s for prediction."""
-        corpora = self._get_examples(descr="Test")
+        corpora = self._get_examples(data_dir=data_dir, descr="Test")
 
         return corpora
 
     def get_labels(self):
         """Gets the list of labels for this data set."""
-        return ['Label_Lauscher.BACKGROUND_CLAIM', 'Label_Lauscher.OWN_CLAIM', 'Label_Lauscher.DATA',
-                'Label_Lauscher.SUPPORTS', 'Label_Lauscher.CONTRADICTS', 'Label_Lauscher.PARTS_OF_SAME',
-                'Label_Lauscher.SEMANTICALLY_SAME']
+        return ['Label_Habernal.MAJOR_CLAIM', 'Label_Habernal.CLAIM', 'Label_Habernal.PREMISE',
+                'Label_Habernal.SUPPORTS', 'Label_Habernal.ATTACKS']
 
+
+class ArgQualityProcessor(DataProcessor):
+
+    @staticmethod
+    def _get_examples( data_dir, descr):
+        if descr == "Train" or descr == "Dev":
+            path = data_dir + '/9.1_train_dev'
+            c = data_loader.load_QualityPrediction_datset(test_set=False)
+        else:
+            path = data_dir + '/9.1_test'
+            c = data_loader.load_QualityPrediction_datset(test_set=True)
+
+        examples = ArgQualityProcessor._convert_To_InputExamples(c, descr)
+        return examples
+
+    @staticmethod
+    def _convert_To_InputExamples(df, identifiertxt):
+        counter = 1
+        examples = []
+        for idx, row in df.iterrows():
+            guid = "%s-%s" % (identifiertxt, counter)
+            arg1 = row['a1']
+            arg2 = row['a2']
+            label = row['target_label']
+            examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=label))
+            counter += 1
+        counter = 0
+        return examples
+
+    def get_train_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the train set."""
+        corpora = self._get_examples(data_dir=data_dir, descr="Train")
+
+        return corpora
+
+    def get_dev_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the dev set."""
+        corpora = self._get_examples(data_dir=data_dir, descr="Dev")
+
+        return corpora
+
+    def get_test_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for prediction."""
+        corpora = self._get_examples(data_dir=data_dir, descr="Test")
+
+        return corpora
+
+    def get_labels(self):
+        """Gets the list of labels for this data set."""
+        return [0, 1]
+
+
+class ArgZoningIProcessor(DataProcessor):
+
+    @staticmethod
+    def _get_examples( data_dir, descr):
+        # TODO distribution
+        c = data_loader.get_ArgZoning_dataset(path=data_dir)
+        examples = ArgZoningIProcessor._convert_To_InputExamples(c, descr)
+        return examples
+
+    @staticmethod
+    def _convert_To_InputExamples(df, identifiertxt):
+        counter = 1
+        examples = []
+        for idx, row in df.iterrows():
+            guid = "%s-%s" % (identifiertxt, counter)
+            text = row['text']
+            label = row['target_label']
+            examples.append(InputExample(guid=guid, text_a=text, text_b=None, label=label))
+            counter += 1
+        counter = 0
+        return examples
+
+    def get_train_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the train set."""
+        corpora = self._get_examples(data_dir=data_dir, descr="Train")
+
+        return corpora
+
+    def get_dev_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for the dev set."""
+        corpora = self._get_examples(data_dir=data_dir, descr="Dev")
+
+        return corpora
+
+    def get_test_examples(self, data_dir):
+        """Gets a collection of `InputExample`s for prediction."""
+        corpora = self._get_examples(data_dir=data_dir, descr="Test")
+
+        return corpora
+
+    def get_labels(self):
+        """Gets the list of labels for this data set."""
+        #return ['BKG' 'OTH' 'CTR' 'AIM' 'BAS' 'OWN' 'TXT']
+        return [0,1,2,3,4,5,6]
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
                            tokenizer):
@@ -951,8 +1047,8 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
         "aci_habernal": ACI_Habernal_Processor,
         "aci_lauscher": ACI_Lauscher_Processor,
         "argrecognition": ArgRecognitionProcessor,
-        "argquality": InsufficientSupportProcessor,
-        "argzoningi": InsufficientSupportProcessor
+        "argquality": ArgQualityProcessor,
+        "argzoningi": ArgZoningIProcessor
     }
 
     tokenization.validate_case_matches_checkpoint(FLAGS.do_lower_case,
@@ -1192,11 +1288,11 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         output_dir = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data_output'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/InsufficientArgSupport"
 
-        FLAGS.task_name = "ArgRecognition"
+        FLAGS.task_name = "ArgZoningI"
         FLAGS.do_train = True
         FLAGS.do_eval = False
         FLAGS.do_predict = False
-        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support"
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Zoning"
         FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
         FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"

@@ -8,6 +8,7 @@ from enum import Enum
 import pandas as pd
 import xmltodict
 import nltk.tokenize
+from sklearn.preprocessing import LabelEncoder
 
 
 def get_InsuffientSupport_datset():
@@ -28,9 +29,10 @@ def get_InsuffientSupport_datset():
 
 def get_QualityPrediction_dataset():
     print("Loading Argument Quality Prediction Dataset")
-    return [_load_QualityPrediction_datset(test_set=False), _load_QualityPrediction_datset(test_set=True)]
+    return [load_QualityPrediction_datset(test_set=False), load_QualityPrediction_datset(test_set=True)]
 
-def _load_QualityPrediction_datset(test_set):
+
+def load_QualityPrediction_datset(test_set):
     #print("Loading Argument Quality Prediction Dataset")
     if test_set:
         path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality\9.1_test"
@@ -138,12 +140,12 @@ def _load_ArgRecognition_XML(load_GM, additional_tasks):
     return df
 
 
-def get_ArgZoning_dataset():
+def get_ArgZoning_dataset(path=r'./data/Argument_Zoning'):
     """
     Adapted from A. Lauscher
 
     """
-    path = r'./data/Argument_Zoning'
+    #path = r'./data/Argument_Zoning'
     documents = []
     for subdir, dirs, files in os.walk(path):
         for file in files:
@@ -162,12 +164,15 @@ def get_ArgZoning_dataset():
                         sentences.append(sentence)
                 documents.append(sentences)
         print("Number of documents loaded: ", len(documents))
-        # occurrences = Counter([sentence for sentences in documents for sentence in sentences])
-        # print("Stats: ", occurrences)
+        occurrences = Counter([sentence for sentences in documents for sentence in sentences])
+        #print("Stats: ", occurrences)
 
         df = pd.DataFrame([sentence.__dict__ for sentences in documents for sentence in sentences])
 
-        print(df.head())
+        LE = LabelEncoder()
+        df['target_label'] = LE.fit_transform(df['AZ_category'])
+        #print(df['AZ_category'].unique())
+       # print(df.head())
         # variables = arr[0].keys()
         # df = pd.DataFrame([[getattr(i, j) for j in variables] for i in arr], columns=variables)
 

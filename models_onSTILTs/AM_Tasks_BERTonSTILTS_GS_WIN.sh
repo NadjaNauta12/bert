@@ -12,7 +12,7 @@ if [ "$OS" = "Windows_NT" ] ; then
     export BERT_onSTILTS_output_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models"
     export data_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/data"
 
-    for task_name in  "ACI_Habernal"; do # "ArgRecognition" "InsufficientArgSupport""ACI_Lauscher"  "ArgQuality"  "ArgZoningI" ; do
+    for task_name in "ArgQuality" ; do # "ArgRecognition" "ACI_Habernal""InsufficientArgSupport""ACI_Lauscher"    "ArgZoningI" ; do
         echo $task_name
         case $task_name in
             InsufficientArgSupport) data_dir+="/Insufficient_Arg_Support"
