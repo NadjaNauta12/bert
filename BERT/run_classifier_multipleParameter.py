@@ -18,11 +18,10 @@ from __future__ import division
 from __future__ import print_function
 
 import sys
-
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
-from util.load_datasets import ACI_loader
+from util.load_datasets import ACI_loader, ACI_loader_Lauscher,data_loader
+from util import custom_exceptions
 
-sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 import os
 import collections
 import csv
@@ -32,17 +31,9 @@ import tokenization
 import tensorflow as tf
 import itertools
 import pandas as pd
-
+import numpy as np
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
-import numpy as np
-import ctypes  # An included library with Python install for MSG boxen
-from util.load_datasets import data_loader
-
-
-def Mbox(title, text, style):
-    return ctypes.windll.user32.MessageBoxW(0, text, title, style)
-
 
 flags = tf.flags
 
@@ -268,12 +259,16 @@ class InsufficientSupportProcessor(DataProcessor):
     @staticmethod
     def convert_To_InputExamples(df_Insuff, descr):
         counter = 1
+        counter_Seq = 0
         examples = []
         for idx, row in df_Insuff.iterrows():
             if idx == 0:
                 continue
             guid = "%s-%s" % (descr, counter)
             text = row['TEXT']
+            if (len(text.split()) > 128):
+                counter_Seq += 1
+                # raise InputLengthExceeded()
             label = row['ANNOTATION']
             examples.append(InputExample(guid=guid, text_a=text, text_b=None, label=label))
             counter += 1
@@ -425,49 +420,41 @@ class ArgRecognitionProcessor(DataProcessor):
 
 class ACI_Lauscher_Processor(DataProcessor):
 
-    def _get_examples(self, data_dir, getGM, descr):
-        annotations_Lauscher = parse_annotations_Lauscher(
+    def _get_examples(self, data_dir, descr):
+        annotations_Lauscher =  ACI_loader_Lauscher.parse_annotations_Lauscher(
             r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\compiled_corpus")
-        analyze_annotations_Lauscher(annotations_Lauscher)
-        ACI_Annotation_Lauscher = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
-        print(ACI_Annotation_Lauscher.head())
+        df = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
+        print(df.head())
 
-        corpus = data_loader.get_ArgRecognition_dataset()
-        if getGM:
-            corpus_GM = self.convert_To_InputExamples(corpus[0], descr)
-            return corpus_GM
-        else:
-            corpus_UGIP = self.convert_To_InputExamples(corpus[1], descr)
-            return corpus_UGIP
+        return self._convert_To_InputExamples(df, descr)
 
-    def convert_To_InputExamples(self, df, identifiertxt):
+    def _convert_To_InputExamples(self, df, identifiertxt):
         counter = 1
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
-            comment = row['comment_text']
-            argument = row['argument_text']
-            label = row['label']
-            examples.append(InputExample(guid=guid, text_a=comment, text_b=argument, label=label))
+            sentence = row['Text']
+            label = row['Label']
+            examples.append(InputExample(guid=guid, text_a=sentence, text_b=None, label=label))
             counter += 1
         counter = 0
         return examples
 
     def get_train_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the train set."""
-        corpora = self._get_examples(getGM=True, descr="Train")
+        corpora = self._get_examples(data_dir=data_dir, descr="Train")
 
         return corpora
 
     def get_dev_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the dev set."""
-        corpora = self._get_examples(getGM=True, descr="Dev")
+        corpora = self._get_examples(data_dir=data_dir, descr="Dev")
 
         return corpora
 
     def get_test_examples(self, data_dir):
         """Gets a collection of `InputExample`s for prediction."""
-        corpora = self._get_examples(getGM=False, descr="Test")
+        corpora = self._get_examples(data_dir=data_dir, descr="Test")
 
         return corpora
 
@@ -544,11 +531,15 @@ class ArgQualityProcessor(DataProcessor):
     @staticmethod
     def _convert_To_InputExamples(df, identifiertxt):
         counter = 1
+        counter_Seq =0
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
             arg1 = row['a1']
             arg2 = row['a2']
+            if (len(arg1.split()) >128 or len(arg2.split()) >128):
+                counter_Seq += 1
+                #raise InputLengthExceeded()
             label = row['target_label']
             examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=label))
             counter += 1
@@ -1077,7 +1068,7 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
     processor = processors[task_name]()
 
     label_list = processor.get_labels()
-    # Mbox('Your title', 'Your text', 1)
+
     tokenizer = tokenization.FullTokenizer(
         vocab_file=FLAGS.vocab_file, do_lower_case=FLAGS.do_lower_case)
 
@@ -1267,20 +1258,20 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
     GLUE = False
     if GLUE:
         BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
-        # GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
-        # output_dir = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data_output'
-        # FLAGS.task_name = "MRPC"
-        # FLAGS.do_train = True
-        # FLAGS.do_eval = True
-        # FLAGS.data_dir = GLUE_DIR + "/MRPC"
-        # FLAGS.vocab_file = BERT_BASE_DIR + "//vocab.txt"
-        # FLAGS.bert_config_file = BERT_BASE_DIR + "//bert_config.json"
-        # FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
-        # FLAGS.max_seq_length = 128
-        # FLAGS.train_batch_size = 16
-        # FLAGS.learning_rate = 2e-5
-        # FLAGS.num_train_epochs = 3.0
-        # FLAGS.output_dir = ".//tmp//mrpc_output//"
+        GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
+        output_dir = 'C://Users//Wifo//Documents//Universität_Mannheim//Master//Masterthesis//glue_data_output'
+        FLAGS.task_name = "MRPC"
+        FLAGS.do_train = True
+        FLAGS.do_eval = True
+        FLAGS.data_dir = GLUE_DIR + "/MRPC"
+        FLAGS.vocab_file = BERT_BASE_DIR + "//vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "//bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size ="[16]"
+        FLAGS.learning_rate = "[2e-5]"
+        FLAGS.num_train_epochs = "[3.0]"
+        FLAGS.output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
 
     else:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
@@ -1288,11 +1279,11 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         output_dir = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data_output'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/InsufficientArgSupport"
 
-        FLAGS.task_name = "ArgZoningI"
+        FLAGS.task_name = "ArgQuality"
         FLAGS.do_train = True
         FLAGS.do_eval = False
         FLAGS.do_predict = False
-        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Zoning"
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Quality"
         FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
         FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"

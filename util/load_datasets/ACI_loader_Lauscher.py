@@ -143,8 +143,9 @@ def analyze_annotations_Lauscher(annotations):
     print("\t\tNumber of semantically_same: " + str(len(semantically_same)))
 
 
-annotations_Lauscher = parse_annotations_Lauscher(
-    r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\compiled_corpus")
-analyze_annotations_Lauscher(annotations_Lauscher)
-ACI_Annotation_Lauscher = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
-print(ACI_Annotation_Lauscher.head())
+if __name__ == "__main__":
+    annotations_Lauscher = parse_annotations_Lauscher(
+        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\compiled_corpus")
+    analyze_annotations_Lauscher(annotations_Lauscher)
+    ACI_Annotation_Lauscher = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
+    print(ACI_Annotation_Lauscher.head())

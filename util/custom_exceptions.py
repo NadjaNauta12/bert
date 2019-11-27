@@ -8,3 +8,8 @@ class EvaluationFileAlreadyExists(Error):
     pass
 
 
+class InputLengthExceeded(Error):
+    """Raised when trying to write a file which already exists"""
+    pass
+
+

@@ -9,7 +9,7 @@ if [ "$OS" = "Windows_NT" ] ; then
     export BERT_BASE_DIR="C:\Users\Wifo\PycharmProjects\Masterthesis\data\BERT_checkpoint\uncased_L-12_H-768_A-12"
     export VOCAB_DIR=$BERT_BASE_DIR\\vocab.txt
     export BERT_CONFIG=$BERT_BASE_DIR/bert_config.json
-    export BERT_onSTILTS_output_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models"
+    export BERT_onSTILTS_output_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
     export data_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/data"
 
     for task_name in "ArgQuality" ; do # "ArgRecognition" "ACI_Habernal""InsufficientArgSupport""ACI_Lauscher"    "ArgZoningI" ; do
