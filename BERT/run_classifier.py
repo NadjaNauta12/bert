@@ -20,6 +20,7 @@ from __future__ import print_function
 
 import sys
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
+sys.path.append("/work/nseemann")
 import collections
 import csv
 import os
@@ -1125,7 +1126,7 @@ if __name__ == "__main__":
 
     else:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
-        GLUE_DIR = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data'
+        #GLUE_DIR = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data'
         output_dir = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data_output'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/InsufficientArgSupport"
 

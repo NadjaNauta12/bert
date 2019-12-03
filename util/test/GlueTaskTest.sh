@@ -1,5 +1,5 @@
 #!/usr/bin/sh
-
+export CUDA_VISIBLE_DEVICES=3
 if [ "$OS" = "Windows_NT" ] ; then
   export BERT_BASE_DIR='C:\Users\Wifo\PycharmProjects\Masterthesis\data\BERT_checkpoint\uncased_L-12_H-768_A-12'
   export GLUE_DIR='C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data'
@@ -40,4 +40,3 @@ else
       --num_train_epochs=3.0 \
       --output_dir=$output_dir
 fi
-  cmd /K

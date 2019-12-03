@@ -12,18 +12,16 @@ from sklearn.preprocessing import LabelEncoder
 
 
 def get_InsuffientSupport_datset():
-    print("Loading Inufficient Supported Argument Dataset by Habernal 2017")
     path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
     insufficientSupper_corpora = pd.read_csv(path, delimiter='\t', index_col=None, header=0, encoding='unicode_escape')
     insufficientSupper_corpora["ANNOTATION"].fillna("sufficient", inplace=True)
-    insufficientSupper_corpora["ESSAY_ID"] = [str(entry).zfill(3) for entry in insufficientSupper_corpora["ESSAY"]]
-    insufficientSupper_corpora["ESSAY_ID"] = ["essay" + str(entry) for entry in insufficientSupper_corpora["ESSAY"]]
+    # insufficientSupper_corpora["ESSAY_ID"] = [str(entry).zfill(3) for entry in insufficientSupper_corpora["ESSAY"]]
+    insufficientSupper_corpora["ESSAY_ID"] = ["essay" + str(entry).zfill(3) for entry in insufficientSupper_corpora["ESSAY"]]
     insufficientSupper_corpora["ESSAY_ID"] = insufficientSupper_corpora["ESSAY_ID"] \
                                              + ["_" for i in range(len(insufficientSupper_corpora["ESSAY"]))] \
                                              + insufficientSupper_corpora[
                                                  "ARGUMENT"].astype(str)
-    # print(insufficientSupper_corpora.head())
-    print("Datset loaded")
+
     return insufficientSupper_corpora
 
 

@@ -19,6 +19,7 @@ from __future__ import print_function
 
 import sys
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
+sys.path.append("/work/nseemann")
 from util.load_datasets import ACI_loader, ACI_loader_Lauscher,data_loader
 from util import custom_exceptions
 
@@ -155,6 +156,20 @@ class InputExample(object):
         self.text_a = text_a
         self.text_b = text_b
         self.label = label
+
+    def __str__(self):
+        attr = []
+        attr.append(self.guid)
+        attr.append(self.text_a)
+        attr.append(self.text_b)
+        attr.append(self.label)
+        return ''.join(attr)
+
+    def __repr__(self):
+        if self.text_b == None:
+            return  "{}({!r})".format(self.guid, self.text_a[:50], "-", str(self.label))
+        else:
+            return  "{}({!r})".format(self.guid, self.text_a[:50], self.text_b[:50], str(self.label))
 
 
 class PaddingInputExample(object):
@@ -383,11 +398,14 @@ class ArgRecognitionProcessor(DataProcessor):
 
     def convert_To_InputExamples(self, df, identifiertxt):
         counter = 1
+        counter_Seq = 0
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
             comment = row['comment_text']
             argument = row['argument_text']
+            if (len(comment.split()) > 128): # or len(argument.split()) > 128):
+                counter_Seq += 1
             label = row['label']
             examples.append(InputExample(guid=guid, text_a=comment, text_b=argument, label=label))
             counter += 1
@@ -421,6 +439,7 @@ class ArgRecognitionProcessor(DataProcessor):
 class ACI_Lauscher_Processor(DataProcessor):
 
     def _get_examples(self, data_dir, descr):
+        #TODO
         annotations_Lauscher =  ACI_loader_Lauscher.parse_annotations_Lauscher(
             r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\compiled_corpus")
         df = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
@@ -430,10 +449,13 @@ class ACI_Lauscher_Processor(DataProcessor):
 
     def _convert_To_InputExamples(self, df, identifiertxt):
         counter = 1
+        counter_Seq = 0
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
             sentence = row['Text']
+            if (len(sentence.split()) > 128):
+                counter_Seq += 1
             label = row['Label']
             examples.append(InputExample(guid=guid, text_a=sentence, text_b=None, label=label))
             counter += 1
@@ -460,10 +482,13 @@ class ACI_Lauscher_Processor(DataProcessor):
 
     def get_labels(self):
         """Gets the list of labels for this data set."""
-        return ['Label_Lauscher.BACKGROUND_CLAIM', 'Label_Lauscher.OWN_CLAIM', 'Label_Lauscher.DATA',
-                'Label_Lauscher.SUPPORTS', 'Label_Lauscher.CONTRADICTS', 'Label_Lauscher.PARTS_OF_SAME',
-                'Label_Lauscher.SEMANTICALLY_SAME']
-
+        return [0, 1, 2, 3, 4, 5, 6]
+        # return ['Label_Lauscher.BACKGROUND_CLAIM', 'Label_Lauscher.OWN_CLAIM', 'Label_Lauscher.DATA',
+        #         'Label_Lauscher.SUPPORTS', 'Label_Lauscher.CONTRADICTS', 'Label_Lauscher.PARTS_OF_SAME',
+        #         'Label_Lauscher.SEMANTICALLY_SAME']
+        # return ['BACKGROUND_CLAIM', 'OWN_CLAIM', 'DATA',
+        #         'SUPPORTS', 'CONTRADICTS', 'PARTS_OF_SAME',
+        #         'SEMANTICALLY_SAME']
 
 class ACI_Habernal_Processor(DataProcessor):
 
@@ -480,11 +505,14 @@ class ACI_Habernal_Processor(DataProcessor):
 
     def convert_To_InputExamples(self, df, identifiertxt):
         counter = 1
+        counter_Seq = 0
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
             comment = row['Text']
             label = row['Label']
+            if (len(comment.split()) > 128):
+                counter_Seq += 1
             examples.append(InputExample(guid=guid, text_a=comment, text_b=None, label=label))
             counter += 1
         counter = 0
@@ -581,11 +609,14 @@ class ArgZoningIProcessor(DataProcessor):
     @staticmethod
     def _convert_To_InputExamples(df, identifiertxt):
         counter = 1
+        counter_Seq = 0
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
             text = row['text']
             label = row['target_label']
+            if (len(text.split()) > 128):
+                counter_Seq += 1
             examples.append(InputExample(guid=guid, text_a=text, text_b=None, label=label))
             counter += 1
         counter = 0
@@ -1256,6 +1287,7 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
     flags.mark_flag_as_required("output_dir")
     # tf.app.run()
     GLUE = False
+    INSUFF_ARG = False
     if GLUE:
         BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
         GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
@@ -1273,17 +1305,17 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.num_train_epochs = "[3.0]"
         FLAGS.output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
 
-    else:
+    elif INSUFF_ARG:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
         GLUE_DIR = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data'
         output_dir = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data_output'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/InsufficientArgSupport"
 
-        FLAGS.task_name = "ArgQuality"
+        FLAGS.task_name = "InsufficientArgSupport"
         FLAGS.do_train = True
         FLAGS.do_eval = False
         FLAGS.do_predict = False
-        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Quality"
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support"
         FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
         FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
@@ -1292,4 +1324,21 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.learning_rate = "[2e-5]"
         FLAGS.num_train_epochs = "[3.0]"
         FLAGS.output_dir = BERT_onSTILTS_output_dir
+
+    else:
+        BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
+
+        FLAGS.task_name = "ArgQuality"
+        FLAGS.do_train = True
+        FLAGS.do_eval = True
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Quality"
+        FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size = "[16]"
+        FLAGS.learning_rate = "[2e-5]"
+        FLAGS.num_train_epochs = "[3.0]"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir+"/ArgQuality"
     tf.app.run()
