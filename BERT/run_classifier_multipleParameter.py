@@ -20,7 +20,7 @@ from __future__ import print_function
 import sys
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 sys.path.append("/work/nseemann")
-from util.load_datasets import ACI_loader, ACI_loader_Lauscher,data_loader
+from util.load_datasets import ACI_loader, AQ_loader, ACI_loader_Lauscher,data_loader
 from util import custom_exceptions
 
 import os
@@ -546,12 +546,12 @@ class ArgQualityProcessor(DataProcessor):
 
     @staticmethod
     def _get_examples( data_dir, descr):
-        if descr == "Train" or descr == "Dev":
-            path = data_dir + '/9.1_train_dev'
-            c = data_loader.load_QualityPrediction_datset(test_set=False)
+        if descr == "Train":
+            c = AQ_loader.load_ArgQuality_datset(1)
+        elif descr == "Dev":
+            c= AQ_loader.load_ArgQuality_datset(2)
         else:
-            path = data_dir + '/9.1_test'
-            c = data_loader.load_QualityPrediction_datset(test_set=True)
+            c = AQ_loader.load_ArgQuality_datset(3)
 
         examples = ArgQualityProcessor._convert_To_InputExamples(c, descr)
         return examples
