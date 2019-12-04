@@ -82,8 +82,9 @@ def load_ArgQuality_datset(case_ID=4):
         # print(quality_corpus['label'].value_counts())
         fn = lambda row: 1 if row.label == "a1" else 0
         quality_corpus['target_label'] = quality_corpus.apply(fn, axis=1)
+
         np.random.seed(3)
-        train, validate, test = np.split(quality_corpus.sample(frac=1), [int(.6 * len(df)), int(.7 * len(df))])
+        train, dev, test = np.split(quality_corpus.sample(frac=1), [int(.6 * len(quality_corpus)), int(.7 * len(quality_corpus))])
         # https://stackoverflow.com/questions/38250710/how-to-split-data-into-3-sets-train-validation-and-test
         # https://datascience.stackexchange.com/questions/15135/train-test-validation-set-splitting-in-sklearn
         # print(train.shape)
@@ -93,7 +94,7 @@ def load_ArgQuality_datset(case_ID=4):
         # pickle
         fileObject = open(container_file, 'wb')
         pickle.dump(train, fileObject)
-        pickle.dump(validate, fileObject)
+        pickle.dump(dev, fileObject)
         pickle.dump(test, fileObject)
         fileObject.close()
 

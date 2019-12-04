@@ -121,6 +121,8 @@ def parse_annotations_Habernal(path):
                         try:
                             try:
                                 id, info, text = line.split("\t")
+                                if id[0] == 'R':
+                                    continue
                             except ValueError as valerr:
                                 if "Premise" in line:
                                     id, info, text, empty = line.split("\t")
@@ -182,7 +184,7 @@ def analyze_annotations_Habernal(annotations):
 
 if __name__ == "__main__":
     load_essays = False
-    load_annotations = False
+    load_annotations = True
     if load_essays:
         essay_list = parse_essays(
             r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project"
