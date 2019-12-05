@@ -5,7 +5,7 @@ import os.path
 import shutil
 
 
-def get_file_list_from_dir(datadir, data_type):
+def _get_file_list_from_dir(datadir, data_type):
     all_files = os.listdir(os.path.abspath(datadir))
     # data_files = list(filter(lambda file: file.endswith('.data'), all_files))
     data_files = list(filter(lambda file: file.endswith(data_type), all_files))
@@ -16,17 +16,18 @@ def randomize_files(file_list):
     shuffle(file_list)
 
 
-def get_training_and_testing_sets(file_list):
-    split = 0.7
-    split_index = floor(len(file_list) * split)
-    training = file_list[:split_index]
-    testing = file_list[split_index:]
-    return training, testing
+def get_training_and_testing_sets(file_list, split_train=0.7, split_test=0.8):
+    split_index1 = floor(len(file_list) * split_train)
+    split_index2 = floor(len(file_list) * split_test)
+    training = file_list[:split_index1]
+    dev = file_list[split_index1:split_index2]
+    testing = file_list[split_index2:]
+    return training, dev, testing
 
 
 def split_ACI_Habernal():
     path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal"
-    train= []
+    train = []
     test = []
     with open(path + "\\train-test-split.csv", 'r') as f:
         for line in f:
@@ -39,21 +40,30 @@ def split_ACI_Habernal():
                 test.append(id)
     print("#Test files", len(train))
     print("# Train files", len(test))
+    # for f in train:
+    #     path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final"
+    #     shutil.move(
+    #         path + "\\" + f + ".txt"
+    #         , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\train_dev")
+    #     '**annotationf file too'
+    #     shutil.move(
+    #         path + "\\" + f + ".ann"
+    #         , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\train_dev")
     for f in train:
-        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final"
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\compiled_corpus"
         shutil.move(
-            path + "\\" + f + ".txt"
+            path + "\\" + f + ".comp"
             , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\train_dev")
-        '**annotationf file too'
+    for f in test:
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\compiled_corpus"
         shutil.move(
-            path + "\\" + f + ".ann"
-            , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\train_dev")
-
-
+            path + "\\" + f + ".comp"
+            ,
+            r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\test")
 
 
 def split_ACI_Habernal_wrong():
-    list_files = get_file_list_from_dir(
+    list_files = _get_file_list_from_dir(
         r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final",
         '.txt')
     randomize_files(list_files)
@@ -94,9 +104,39 @@ def split_ACI_Habernal_wrong():
             , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\train_dev")
 
 
-def main():
-    #split_ACI_Habernal()
-    pass
+def split_AZI():
+    file_list = _get_file_list_from_dir(r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning", "az-scixml")
+    randomize_files(file_list)
+    train, dev, test = get_training_and_testing_sets(file_list, split_train=0.7, split_test=0.8)
+    print("Train")
+    print(train)
+    print(len(train))
+    print("Test")
+    print(test)
+    print(len(test))
+    print("Dev")
+    print(dev)
+    print(len(dev))
+    '*** move files'
+
+    for f in train:
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning"
+        shutil.move(
+            path + "\\" + f
+            , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning\train")
+
+    for f in test:
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning"
+        shutil.move(
+            path + "\\" + f
+            , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning\test")
+
+    for f in dev:
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning"
+        shutil.move(
+            path + "\\" + f
+            , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning\dev")
+
 
 if __name__ == "__main__":
-    main()
+    split_ACI_Habernal()

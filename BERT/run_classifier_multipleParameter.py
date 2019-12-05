@@ -20,7 +20,7 @@ from __future__ import print_function
 import sys
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 sys.path.append("/work/nseemann")
-from util.load_datasets import ACI_loader, AQ_loader, ACI_loader_Lauscher,data_loader
+from util.load_datasets import ACI_loader_Habernal, AQ_loader, ACI_loader_Lauscher,data_loader
 from util import custom_exceptions
 
 import os
@@ -495,10 +495,10 @@ class ACI_Habernal_Processor(DataProcessor):
     def _get_examples(self, data_dir, descr):
         if descr == "Train" or descr == "Dev":
             path = data_dir + '/train_dev'
-            c = ACI_loader.parse_annotations_Habernal(path=path)
+            c = ACI_loader_Habernal.parse_annotations_Habernal(path=path)
         else:
             path = data_dir + '/test'
-            c = ACI_loader.parse_annotations_Habernal(path=path)
+            c = ACI_loader_Habernal.parse_annotations_Habernal(path=path)
 
         examples = self.convert_To_InputExamples(c, descr)
         return examples
@@ -569,7 +569,10 @@ class ArgQualityProcessor(DataProcessor):
                 counter_Seq += 1
                 #raise InputLengthExceeded()
             label = row['target_label']
-            examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=label))
+            if identifiertxt == "Test":
+                examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=None))
+            else:
+                examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=label))
             counter += 1
         counter = 0
         return examples

@@ -7,7 +7,9 @@ from nltk.tokenize import word_tokenize
 from nltk.tokenize import sent_tokenize
 
 '''Simple class for representing the desired output'''
-class CoNLL_Token:
+
+
+class BRAT_Token:
     def __init__(self, token, start, end, token_label=None, sentence_label=None, is_end_of_sentence=False, file=None):
         self.token = token
         self.start = start
@@ -29,7 +31,10 @@ class Type(Enum):
     ENTITY = 1
     RELATION = 2
 
+
 '''Enum for representing our argument labels'''
+
+
 class Token_Label(Enum):
     BEGIN_MAJOR_CLAIM = 1
     INSIDE_MAJOR_CLAIM = 2
@@ -38,6 +43,8 @@ class Token_Label(Enum):
     BEGIN_PREMISE = 5
     INSIDE_PREMISE = 6
     OUTSIDE = 7
+
+
 class Essay:
     def __init__(self, essay, text=""):
         # assign id
@@ -134,7 +141,7 @@ def parse_essays(path):
             if '.txt' in file:
                 with codecs.open(os.path.join(subdir, file), mode="r", encoding="utf8") as essay_file:
                     content = essay_file.read()
-                    #essays.append(Essay(int(file[5:7]), content))
+                    # essays.append(Essay(int(file[5:7]), content))
                     essays.append(Essay(file, content))
 
     return essays
@@ -154,7 +161,7 @@ def parse_annotations_Habernal(path):
                             try:
                                 id, info, text = line.split("\t")
                                 if id[0] == 'R':
-                                     continue
+                                    continue
                             except ValueError as valerr:
                                 if "Premise" in line:
                                     id, info, text, empty = line.split("\t")
@@ -163,7 +170,7 @@ def parse_annotations_Habernal(path):
                                     continue
                                     # print("Stance detected", file, line.rstrip(), "Stance#:", stance_occur, "ignored")
                                 else:
-                                    print("something is fischy", valerr)
+                                    print("something is fishy", valerr)
 
                             label, start, end = info.split(' ')
 
@@ -191,6 +198,7 @@ def parse_annotations_Habernal(path):
     df['target_label'] = LE.fit_transform(df['Label'])
     return df  # annotations
 
+
 def parse_annotations_Habernal_perFile(path):
     stance_occur = 0
     file_counter = 0
@@ -206,7 +214,7 @@ def parse_annotations_Habernal_perFile(path):
                             try:
                                 id, info, text = line.split("\t")
                                 if id[0] == 'R':
-                                     continue
+                                    continue
                             except ValueError as valerr:
                                 if "Premise" in line:
                                     id, info, text, empty = line.split("\t")
@@ -214,8 +222,11 @@ def parse_annotations_Habernal_perFile(path):
                                     stance_occur += 1
                                     continue
                                     # print("Stance detected", file, line.rstrip(), "Stance#:", stance_occur, "ignored")
+                                elif "Claim" in line:  # !!  one line has a \t in the description text'
+                                    id, info, text, text2 = line.split("\t")
+                                    text = text + " " + text2
                                 else:
-                                    print("something is fischy", valerr)
+                                    print("something is fishy", valerr)
 
                             label, start, end = info.split(' ')
 
@@ -228,8 +239,9 @@ def parse_annotations_Habernal_perFile(path):
                             # print(file)
                             print(line)
                             # print("Something is not right...\n")
-                #annotations_perFile.append(annotations)
+                # annotations_perFile.append(annotations)
     return annotations
+
 
 def analyze_annotations_Habernal(annotations):
     print("Number of annotations: " + str(len(annotations)))
@@ -254,8 +266,9 @@ def analyze_annotations_Habernal(annotations):
     print("\t\tNumber of attacks: " + str(len(attacks)))
 
 
-
 '''Takes the BRAT annotations and the corresponding text files and joins them accordingly'''
+
+
 def join_argument_annotations_and_texts(texts, annotations):
     for doc in texts:
         for ann in annotations:
@@ -263,41 +276,44 @@ def join_argument_annotations_and_texts(texts, annotations):
                 if ann.type == Type.ENTITY:
                     for token in doc.tokens:
                         try:
-                            # TODO: potential problem here: The token start might not be the ann start even for the first token, because there might be a problem with the annotation?
-                            # TODO: Fix this problem
-                            # TODO: Check whether everything worked fine with parts of the same
                             if token.start == ann.start and ann.label == Label_Habernal.CLAIM:
                                 token.token_label = Token_Label.BEGIN_CLAIM
                             elif token.start >= ann.start and token.end <= ann.end and ann.label == Label_Habernal.CLAIM:
                                 token.token_label = Token_Label.INSIDE_CLAIM
-                            elif token.start == ann.start and ann.label == Label_Habernal.BACKGROUND_CLAIM:
+                            elif token.start == ann.start and ann.label == Label_Habernal.MAJOR_CLAIM:
                                 token.token_label = Token_Label.BEGIN_MAJOR_CLAIM
                             elif token.start >= ann.start and token.end <= ann.end and ann.label == Label_Habernal.MAJOR_CLAIM:
                                 token.token_label = Token_Label.INSIDE_MAJOR_CLAIM
                             elif token.start == ann.start and ann.label == Label_Habernal.PREMISE:
-                                token.token_label = Token_Label.BEGIN_DATA
+                                token.token_label = Token_Label.BEGIN_PREMISE
                             elif token.start >= ann.start and token.end <= ann.end and ann.label == Label_Habernal.PREMISE:
-                                token.token_label = Token_Label.INSIDE_DATA
+                                token.token_label = Token_Label.INSIDE_PREMISE
                         except Exception as e:
                             print(e)
 
 
 '''Function that should not only tokenize the text but also return the character positions'''
+
+
 def span_tokenize(text):
     tokens = word_tokenize(text)
     offset = 0
     offset_new = 0
     for token in tokens:
-        if token == "\'\'":
+        if token == "\'\'" or token == "``":  # TODO windows has problems with these symbols that are ""
             token = '"'
         offset_new = text.find(token, offset)
         if offset_new < 0:
             print("Problem occured with token " + token)
         else:
             offset = offset_new
-            yield CoNLL_Token(token, offset, offset+len(token))
+            yield BRAT_Token(token, offset, offset + len(token))
             offset += len(token)
+
+
 '''Function that should not only tokenize the text but also return the character positions for sentences'''
+
+
 def span_tokenize_sentences(text):
     tokens = sent_tokenize(text)
     offset = 0
@@ -308,20 +324,20 @@ def span_tokenize_sentences(text):
             print("Problem occured with token " + token)
         else:
             offset = offset_new
-            yield CoNLL_Token(token, offset, offset+len(token))
+            yield BRAT_Token(token, offset, offset + len(token))
             offset += len(token)
 
 
 def write_annotated_essays(essay_list):
     path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\compiled_corpus"
     for essay_ele in essay_list:
-        path2 = path + "\\"+ essay_ele.essay[:len(essay_ele.essay)-4]
-        file = open(path + "\\"+ essay_ele.essay[:len(essay_ele.essay)-4] + ".comp", "w")
+        path2 = path + "\\" + essay_ele.essay[:len(essay_ele.essay) - 4]
+        file = open(path + "\\" + essay_ele.essay[:len(essay_ele.essay) - 4] + ".comp", "w", encoding='utf-8')
         for token in essay_ele.tokens:
             file.write(token.get_token_annotation())
+            if token.token == "." or token.token == "!" or token.token == "?":
+                file.write("\n")
         file.close()
-
-
 
 
 if __name__ == "__main__":
@@ -332,18 +348,19 @@ if __name__ == "__main__":
             r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project"
             r"-final")
         df_essay = pd.DataFrame.from_records([essay.as_dict() for essay in essay_list])
-        print(df_essay.head())
+        # print(df_essay.head())
     if load_annotations:
         annotations_Habernal = parse_annotations_Habernal(
             r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final")
-        print(annotations_Habernal.head())
+        # print(annotations_Habernal.head())
         ''' only req. if no df if returned but annotations as list'''
         # analyze_annotations_Habernal(annotations_Habernal)
         # ACI_Annotation_Habernal = pd.DataFrame([annotation.as_dict() for annotation in annotations_Habernal])
         # print(ACI_Annotation_Habernal.head())
 
     # go trough each essay
-    annotations = parse_annotations_Habernal_perFile(r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final")
+    annotations = parse_annotations_Habernal_perFile(
+        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\brat-project-final")
     join_argument_annotations_and_texts(essay_list, annotations)
     # write annotations
-    write_annotated_essays(essay_list)
+    # write_annotated_essays(essay_list)
