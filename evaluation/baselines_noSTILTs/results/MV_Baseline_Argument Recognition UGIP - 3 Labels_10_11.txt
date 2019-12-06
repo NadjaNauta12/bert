@@ -1,0 +1,10 @@
+Argument Recognition UGIP - 3 Labels >> 10_11
+              precision    recall  f1-score   support
+
+           1      0.000     0.000     0.000       134
+           2      0.682     1.000     0.811       691
+           3      0.000     0.000     0.000       188
+
+    accuracy                          0.682      1013
+   macro avg      0.227     0.333     0.270      1013
+weighted avg      0.465     0.682     0.553      1013

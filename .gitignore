@@ -114,3 +114,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/data/*
+/data/Argument*
+/data/Insufficient_Arg_Support/
+/data/Argument_Zoning/
+/data/Argument_Zoning2/
+/data/BERT_checkpoint/
+.idea
+/BERT/tmp/
+/onSTILTs/*
+/models_onSTILTs/models/*
+ServerHacks.pdf

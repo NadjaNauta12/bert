@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Run BERT on SQuAD 1.1 and SQuAD 2.0."""
+"""Run BERT_checkpoint on SQuAD 1.1 and SQuAD 2.0."""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -23,9 +23,7 @@ import json
 import math
 import os
 import random
-import modeling
-import optimization
-import tokenization
+from BERT import modeling, optimization, tokenization
 import six
 import tensorflow as tf
 
@@ -36,11 +34,11 @@ FLAGS = flags.FLAGS
 ## Required parameters
 flags.DEFINE_string(
     "bert_config_file", None,
-    "The config json file corresponding to the pre-trained BERT model. "
+    "The config json file corresponding to the pre-trained BERT_checkpoint model. "
     "This specifies the model architecture.")
 
 flags.DEFINE_string("vocab_file", None,
-                    "The vocabulary file that the BERT model was trained on.")
+                    "The vocabulary file that the BERT_checkpoint model was trained on.")
 
 flags.DEFINE_string(
     "output_dir", None,
@@ -56,7 +54,7 @@ flags.DEFINE_string(
 
 flags.DEFINE_string(
     "init_checkpoint", None,
-    "Initial checkpoint (usually from a pre-trained BERT model).")
+    "Initial checkpoint (usually from a pre-trained BERT_checkpoint model).")
 
 flags.DEFINE_bool(
     "do_lower_case", True,
@@ -1113,7 +1111,7 @@ def validate_flags_or_throw(bert_config):
 
   if FLAGS.max_seq_length > bert_config.max_position_embeddings:
     raise ValueError(
-        "Cannot use sequence length %d because the BERT model "
+        "Cannot use sequence length %d because the BERT_checkpoint model "
         "was only trained up to sequence length %d" %
         (FLAGS.max_seq_length, bert_config.max_position_embeddings))
 
