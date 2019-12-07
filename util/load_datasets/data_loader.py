@@ -11,7 +11,7 @@ import nltk.tokenize
 from sklearn.preprocessing import LabelEncoder
 
 
-def gti get_InsuffientSupport_datset():
+def get_InsuffientSupport_datset():
     path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
     insufficientSupper_corpora = pd.read_csv(path, delimiter='\t', index_col=None, header=0, encoding='unicode_escape')
     insufficientSupper_corpora["ANNOTATION"].fillna("sufficient", inplace=True)

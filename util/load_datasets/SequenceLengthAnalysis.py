@@ -4,7 +4,7 @@ from BERT.run_classifier_multipleParameter import InputExample
 import tensorflow as tf
 import csv
 import pandas as pd
-from util.load_datasets import ACI_loader, ACI_loader_Lauscher,data_loader
+from util.load_datasets import ACI_loader_Habernal, ACI_loader_Lauscher,data_loader
 
 def ArgQuality_Analysis():
     path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality"
@@ -219,10 +219,10 @@ def ACI_Habernal_Analysis():
     def _get_examples( data_dir, descr):
         if descr == "Train" or descr == "Dev":
             path = data_dir + '/train_dev'
-            c = ACI_loader.parse_annotations_Habernal(path=path)
+            c = ACI_loader_Habernal.parse_annotations_Habernal(path=path)
         else:
             path = data_dir + '/test'
-            c = ACI_loader.parse_annotations_Habernal(path=path)
+            c = ACI_loader_Habernal.parse_annotations_Habernal(path=path)
 
         examples = convert_To_InputExamples(c, descr)
         return examples
@@ -241,7 +241,7 @@ def ACI_Habernal_Analysis():
                 counter_Seq += 1
             if (len(comment.split()) > min):
                 min = len(comment.split())
-            if len(comment.split()) ==0 and comment != '\n':
+            if len(comment.split()) ==0: #and comment != '\n':
                 print("very short")
             examples.append(InputExample(guid=guid, text_a=comment, text_b=None, label=label))
             counter += 1
@@ -283,6 +283,6 @@ if __name__ == "__main__":
     # ArgQuality_Analysis()
     # ArgZoningI_Analysis()
     # ArgRecognition_Analysis()
-    InsufficientArgSupport_Analysis()
+    # InsufficientArgSupport_Analysis()
     # not affected
-    # ACI_Habernal_Analysis()
+    ACI_Habernal_Analysis()
