@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=0
+#export CUDA_VISIBLE_DEVICES=0
 #echo "$OS"
 
 export single_run=true
@@ -7,12 +7,12 @@ if [ "$OS" = "Windows_NT" ] ; then
 else
     echo "Looks like UNIX to me..."
     export BERT_BASE_DIR="/content/drive/My Drive/Masterthesis/BERT_checkpoint/uncased_L-12_H-768_A-12"
-    export VOCAB_DIR=$BERT_BASE_DIR/vocab.txt
-    export BERT_CONFIG=$BERT_BASE_DIR/bert_config.json
+    export VOCAB_DIR="${BERT_BASE_DIR}/vocab.txt"
+    export BERT_CONFIG="${BERT_BASE_DIR}/bert_config.json"
     export BERT_onSTILTS_output_dir="/content/drive/My Drive/Masterthesis/onSTILTs/models"
     export data_dir="/content/drive/My Drive/Masterthesis/data"
-
-
+  echo $BERT_BASE_DIR
+	echo "Running Tasks"
     for task_name in "ArgQuality"; do # "ACI_Lauscher""ArgRecognition" "ACI_Habernal""InsufficientArgSupport"   "ArgZoningI" ; do
         echo $task_name
         case $task_name in
@@ -44,15 +44,15 @@ else
         --do_train=true \
         --do_eval=true \
         --do_predict =false \
-        --data_dir=$data_dir \
-        --vocab_file=$VOCAB_DIR \
-        --bert_config_file=$BERT_CONFIG \
-        --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
+        --data_dir="${data_dir}" \
+        --vocab_file="${VOCAB_DIR}" \
+        --bert_config_file="${BERT_CONFIG}" \
+        --init_checkpoint="${BERT_BASE_DIR}/bert_model.ckpt" \
         --max_seq_length=128 \
         --train_batch_size="[16]" \
         --learning_rate="[2e-5]" \
         --num_train_epochs="[3]" \
-        --output_dir=$BERT_onSTILTS_output_dir/$task_name
+        --output_dir="${BERT_onSTILTS_output_dir}/${task_name}"
 
     done
 fi

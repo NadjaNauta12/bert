@@ -13,7 +13,6 @@ import pickle
 import os
 
 
-
 def get_QualityPrediction_dataset():
     print("Loading Argument Quality Prediction Dataset")
     return [load_QualityPrediction_datset_2part(test_set=False), load_QualityPrediction_datset_2part(test_set=True)]
@@ -54,8 +53,14 @@ def load_ArgQuality_datset(case_ID=4):
     pickled = True
     if os.name == "nt":
         container_file = r"C:\Users\Wifo\PycharmProjects\Masterthesis\util\AQ_data.pkl"
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality"
+    elif os.name == "posix":  # GOOGLE COLAB
+        print("AQ_Google Colab")
+        container_file = "/content/bert/util/AQ_data.pkl"
+        path = "/content/drive/My Drive/Masterthesis/data/Argument_Quality"
     else:
         container_file = r"/work/nseemann/util/AQ_data.pkl"
+        path = "/work/nseemann/data/Argument_Quality"
 
     try:
         file = open(container_file, 'rb')
@@ -69,7 +74,7 @@ def load_ArgQuality_datset(case_ID=4):
         test = pickle.load(file)
     else:
         print("Load Dataset from scratch and pickle")
-        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality"
+        # path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality"
         all_files = glob.glob(path + "/*/*.csv")
         read_files_single = []
         for filename in all_files:
@@ -84,7 +89,8 @@ def load_ArgQuality_datset(case_ID=4):
         quality_corpus['target_label'] = quality_corpus.apply(fn, axis=1)
 
         np.random.seed(3)
-        train, dev, test = np.split(quality_corpus.sample(frac=1), [int(.6 * len(quality_corpus)), int(.7 * len(quality_corpus))])
+        train, dev, test = np.split(quality_corpus.sample(frac=1),
+                                    [int(.6 * len(quality_corpus)), int(.7 * len(quality_corpus))])
         # https://stackoverflow.com/questions/38250710/how-to-split-data-into-3-sets-train-validation-and-test
         # https://datascience.stackexchange.com/questions/15135/train-test-validation-set-splitting-in-sklearn
         # print(train.shape)

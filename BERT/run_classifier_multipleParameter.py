@@ -20,6 +20,7 @@ from __future__ import print_function
 import sys
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 sys.path.append("/work/nseemann")
+sys.path.append("/content/bert")
 from util.load_datasets import ACI_loader_Habernal, AQ_loader, ACI_loader_Lauscher,data_loader
 from util import custom_exceptions
 
@@ -729,7 +730,7 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
     assert len(input_ids) == max_seq_length
     assert len(input_mask) == max_seq_length
     assert len(segment_ids) == max_seq_length
-
+    print ("ECHO LABEL", example.label)
     label_id = label_map[example.label]
     if ex_index < 5:
         tf.logging.info("*** Example ***")
