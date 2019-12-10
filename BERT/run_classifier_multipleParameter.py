@@ -18,10 +18,12 @@ from __future__ import division
 from __future__ import print_function
 
 import sys
+
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 sys.path.append("/work/nseemann")
 sys.path.append("/content/bert")
-from util.load_datasets import ACI_loader_Habernal, AQ_loader, ACI_loader_Lauscher,data_loader
+from util.load_datasets import ACI_loader_Habernal, AQ_loader, AZ_loader, ISA_loader, AR_loader, ACI_loader_Lauscher, \
+    data_loader
 from util import custom_exceptions
 
 import os
@@ -34,6 +36,7 @@ import tensorflow as tf
 import itertools
 import pandas as pd
 import numpy as np
+
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
 
@@ -168,9 +171,9 @@ class InputExample(object):
 
     def __repr__(self):
         if self.text_b == None:
-            return  "{}({!r})".format(self.guid, self.text_a[:50], "-", str(self.label))
+            return "{}({!r})".format(self.guid, self.text_a[:50], "-", str(self.label))
         else:
-            return  "{}({!r})".format(self.guid, self.text_a[:50], self.text_b[:50], str(self.label))
+            return "{}({!r})".format(self.guid, self.text_a[:50], self.text_b[:50], str(self.label))
 
 
 class PaddingInputExample(object):
@@ -389,7 +392,7 @@ class InsufficientSupportProcessor(DataProcessor):
 class ArgRecognitionProcessor(DataProcessor):
 
     def _get_examples(self, getGM, descr):
-        corpus = data_loader.get_ArgRecognition_dataset()
+        corpus = AR_loader.get_ArgRecognition_dataset(additional_tasks=False)
         if getGM:
             corpus_GM = self.convert_To_InputExamples(corpus[0], descr)
             return corpus_GM
@@ -405,7 +408,7 @@ class ArgRecognitionProcessor(DataProcessor):
             guid = "%s-%s" % (identifiertxt, counter)
             comment = row['comment_text']
             argument = row['argument_text']
-            if (len(comment.split()) > 128): # or len(argument.split()) > 128):
+            if (len(comment.split()) > 128):  # or len(argument.split()) > 128):
                 counter_Seq += 1
             label = row['label']
             examples.append(InputExample(guid=guid, text_a=comment, text_b=argument, label=label))
@@ -440,8 +443,8 @@ class ArgRecognitionProcessor(DataProcessor):
 class ACI_Lauscher_Processor(DataProcessor):
 
     def _get_examples(self, data_dir, descr):
-        #TODO
-        annotations_Lauscher =  ACI_loader_Lauscher.parse_annotations_Lauscher(
+        # TODO
+        annotations_Lauscher = ACI_loader_Lauscher.parse_annotations_Lauscher(
             r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\compiled_corpus")
         df = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
         print(df.head())
@@ -490,6 +493,7 @@ class ACI_Lauscher_Processor(DataProcessor):
         # return ['BACKGROUND_CLAIM', 'OWN_CLAIM', 'DATA',
         #         'SUPPORTS', 'CONTRADICTS', 'PARTS_OF_SAME',
         #         'SEMANTICALLY_SAME']
+
 
 class ACI_Habernal_Processor(DataProcessor):
 
@@ -546,11 +550,11 @@ class ACI_Habernal_Processor(DataProcessor):
 class ArgQualityProcessor(DataProcessor):
 
     @staticmethod
-    def _get_examples( data_dir, descr):
+    def _get_examples(data_dir, descr):
         if descr == "Train":
             c = AQ_loader.load_ArgQuality_datset(1)
         elif descr == "Dev":
-            c= AQ_loader.load_ArgQuality_datset(2)
+            c = AQ_loader.load_ArgQuality_datset(2)
         else:
             c = AQ_loader.load_ArgQuality_datset(3)
 
@@ -560,20 +564,21 @@ class ArgQualityProcessor(DataProcessor):
     @staticmethod
     def _convert_To_InputExamples(df, identifiertxt):
         counter = 1
-        counter_Seq =0
+        counter_Seq = 0
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
             arg1 = row['a1']
             arg2 = row['a2']
-            if (len(arg1.split()) >128 or len(arg2.split()) >128):
+            if (len(arg1.split()) > 128 or len(arg2.split()) > 128):
                 counter_Seq += 1
-                #raise InputLengthExceeded()
+                # raise InputLengthExceeded()
             label = row['target_label']
-            if identifiertxt == "Test":
-                examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=None))
-            else:
-                examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=label))
+            # if identifiertxt == "Test":
+            #     examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=None))
+            # else:
+            #     examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=label))
+            examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=label))
             counter += 1
         counter = 0
         return examples
@@ -604,9 +609,14 @@ class ArgQualityProcessor(DataProcessor):
 class ArgZoningIProcessor(DataProcessor):
 
     @staticmethod
-    def _get_examples( data_dir, descr):
-        # TODO distribution
-        c = data_loader.get_ArgZoning_dataset(path=data_dir)
+    def _get_examples(data_dir, descr):
+        if descr == "Train":
+            c = AZ_loader.get_ArgZoning_dataset(1)
+        elif descr == "Dev":
+            c = AZ_loader.get_ArgZoning_dataset(2)
+        else:
+            c = AZ_loader.get_ArgZoning_dataset(3)
+
         examples = ArgZoningIProcessor._convert_To_InputExamples(c, descr)
         return examples
 
@@ -646,8 +656,9 @@ class ArgZoningIProcessor(DataProcessor):
 
     def get_labels(self):
         """Gets the list of labels for this data set."""
-        #return ['BKG' 'OTH' 'CTR' 'AIM' 'BAS' 'OWN' 'TXT']
-        return [0,1,2,3,4,5,6]
+        # return ['BKG' 'OTH' 'CTR' 'AIM' 'BAS' 'OWN' 'TXT']
+        return [0, 1, 2, 3, 4, 5, 6]
+
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
                            tokenizer):
@@ -730,7 +741,7 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
     assert len(input_ids) == max_seq_length
     assert len(input_mask) == max_seq_length
     assert len(segment_ids) == max_seq_length
-    print ("ECHO LABEL", example.label)
+    # print ("ECHO LABEL", example.label)
     label_id = label_map[example.label]
     if ex_index < 5:
         tf.logging.info("*** Example ***")
@@ -1093,6 +1104,7 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
             (FLAGS.max_seq_length, bert_config.max_position_embeddings))
 
     output_dir = FLAGS.output_dir + "_" + config_str
+    FLAGS.output_dir = output_dir
     tf.gfile.MakeDirs(output_dir)
 
     task_name = FLAGS.task_name.lower()
@@ -1304,7 +1316,7 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.bert_config_file = BERT_BASE_DIR + "//bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
         FLAGS.max_seq_length = 128
-        FLAGS.train_batch_size ="[16]"
+        FLAGS.train_batch_size = "[16]"
         FLAGS.learning_rate = "[2e-5]"
         FLAGS.num_train_epochs = "[3.0]"
         FLAGS.output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
@@ -1333,10 +1345,10 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
 
-        FLAGS.task_name = "ArgQuality"
+        FLAGS.task_name = "ArgZoningI"
         FLAGS.do_train = True
         FLAGS.do_eval = True
-        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Quality"
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Zoning"
         FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
         FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
@@ -1344,5 +1356,5 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.train_batch_size = "[16]"
         FLAGS.learning_rate = "[2e-5]"
         FLAGS.num_train_epochs = "[3.0]"
-        FLAGS.output_dir = BERT_onSTILTS_output_dir+"/ArgQuality"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/ArgZoningI"
     tf.app.run()

@@ -13,12 +13,27 @@ import pickle
 import os
 
 
-def get_ArgZoning_dataset(path=r'./data/Argument_Zoning'):
+def get_ArgZoning_dataset(case=4):
     """
     Adapted from A. Lauscher
 
     """
-    #path = r'./data/Argument_Zoning'
+    if os.name == "nt":
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning"
+    elif os.name == "posix":  # GOOGLE COLAB
+        print("AQ_Google Colab")
+        path = "/content/drive/My Drive/Masterthesis/data/Argument_Zoning"
+    else:
+        path = "/work/nseemann/data/Argument_Zoning"
+
+    if case == 1:
+        path = path + "/train"
+    elif case == 2:
+        path = path + "/dev"
+    elif case == 3:
+        path = path + "/test"
+    else:
+        path = path
     documents = []
     for subdir, dirs, files in os.walk(path):
         for file in files:
@@ -38,14 +53,14 @@ def get_ArgZoning_dataset(path=r'./data/Argument_Zoning'):
                 documents.append(sentences)
         print("Number of documents loaded: ", len(documents))
         occurrences = Counter([sentence for sentences in documents for sentence in sentences])
-        #print("Stats: ", occurrences)
+        # print("Stats: ", occurrences)
 
         df = pd.DataFrame([sentence.__dict__ for sentences in documents for sentence in sentences])
 
         LE = LabelEncoder()
         df['target_label'] = LE.fit_transform(df['AZ_category'])
-        #print(df['AZ_category'].unique())
-       # print(df.head())
+        # print(df['AZ_category'].unique())
+        # print(df.head())
         # variables = arr[0].keys()
         # df = pd.DataFrame([[getattr(i, j) for j in variables] for i in arr], columns=variables)
 
@@ -54,5 +69,18 @@ def get_ArgZoning_dataset(path=r'./data/Argument_Zoning'):
         return df
 
 
+class Sentence:
+    def __init__(self, text, category, file, sentence_id):
+        self.text = text
+        self.AZ_category = category
+        self.file = file
+        self.sentenceID = sentence_id
+
+
 if __name__ == "__main__":
-    loaded = get_ArgZoning_dataset()
+    loaded = get_ArgZoning_dataset(case=1)
+    print(loaded.shape)
+    loaded = get_ArgZoning_dataset(case=2)
+    print(loaded.shape)
+    loaded = get_ArgZoning_dataset(case=3)
+    print(loaded.shape)

@@ -15,8 +15,12 @@ import numpy as np
 def get_ArgRecognition_UGIP_dataset(case_ID=4):
     container_file = "UGIP_splitted.pkl"
     pickled = True
+
     if os.name == "nt":
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
+    elif os.name == "posix":  # GOOGLE COLAB
+        print("AQ_Google Colab")
+        container_file = "/content/bert/util/" + container_file
     else:
         container_file = "/work/nseemann/util/" + container_file
 
@@ -112,7 +116,14 @@ def _load_ArgRecognition_XML(load_GM, additional_tasks):
       </unit>"""
     df_cols = ["id", "comment", "argument", "label"]
     # path = "./data/Argument_Recognition/comarg.v1/comarg"
-    path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Recognition\comarg.v1\comarg"
+    if os.name == "nt":
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Recognition\comarg"
+    elif os.name == "posix":  # GOOGLE COLAB
+        print("AQ_Google Colab")
+        path = "/content/drive/My Drive/Masterthesis/data/Argument_Recognition/comarg"
+    else:
+        path = "/work/nseemann/data/Argument_Recognition/comarg"
+
     if load_GM:
         path = path + "/GM.xml"
     else:

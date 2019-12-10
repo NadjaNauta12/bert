@@ -13,7 +13,7 @@ else
     export data_dir="/content/drive/My Drive/Masterthesis/data"
   echo $BERT_BASE_DIR
 	echo "Running Tasks"
-    for task_name in "ArgQuality"; do # "ACI_Lauscher""ArgRecognition" "ACI_Habernal""InsufficientArgSupport"   "ArgZoningI" ; do
+    for task_name in InsufficientArgSupport"; do # "ArgQuality""ACI_Lauscher""ArgRecognition" "ACI_Habernal""   "ArgZoningI" ; do
         echo $task_name
         case $task_name in
             InsufficientArgSupport) data_dir+="/Insufficient_Arg_Support"
