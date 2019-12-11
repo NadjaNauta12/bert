@@ -577,7 +577,7 @@ class ArgQualityProcessor(DataProcessor):
             if (len(arg1.split()) > 128 or len(arg2.split()) > 128):
                 counter_Seq += 1
                 # raise InputLengthExceeded()
-            label = row['target_label']
+            label = row['label']
             # if identifiertxt == "Test":
             #     examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=None))
             # else:
@@ -607,7 +607,8 @@ class ArgQualityProcessor(DataProcessor):
 
     def get_labels(self):
         """Gets the list of labels for this data set."""
-        return [0, 1]
+        #return [0, 1]
+        return ["a1", "a2"]
 
 
 class ArgZoningIProcessor(DataProcessor):
@@ -632,7 +633,8 @@ class ArgZoningIProcessor(DataProcessor):
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
             text = row['text']
-            label = row['target_label']
+            label = row['AZ_category']
+            #label = row['target_label']
             if (len(text.split()) > 128):
                 counter_Seq += 1
             examples.append(InputExample(guid=guid, text_a=text, text_b=None, label=label))
@@ -660,8 +662,8 @@ class ArgZoningIProcessor(DataProcessor):
 
     def get_labels(self):
         """Gets the list of labels for this data set."""
-        # return ['BKG' 'OTH' 'CTR' 'AIM' 'BAS' 'OWN' 'TXT']
-        return [0, 1, 2, 3, 4, 5, 6]
+        return ['BKG', 'OTH', 'CTR', 'AIM', 'BAS', 'OWN', 'TXT']
+        #return [0, 1, 2, 3, 4, 5, 6]
 
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
@@ -745,7 +747,7 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
     assert len(input_ids) == max_seq_length
     assert len(input_mask) == max_seq_length
     assert len(segment_ids) == max_seq_length
-    # print ("ECHO LABEL", example.label)
+    print ("ECHO LABEL", example.label)
     label_id = label_map[example.label]
     if ex_index < 5:
         tf.logging.info("*** Example ***")
@@ -1307,7 +1309,13 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
     flags.mark_flag_as_required("output_dir")
     # tf.app.run()
     GLUE = False
-    INSUFF_ARG = False
+    ISA = False
+    AR = False
+    AQ = False
+    AZ = True
+    ACI_H = False
+    ACI_L = False
+
     if GLUE:
         BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
         GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
@@ -1325,7 +1333,7 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.num_train_epochs = "[3.0]"
         FLAGS.output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
 
-    elif INSUFF_ARG:
+    elif ISA:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
         GLUE_DIR = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data'
         output_dir = 'C:/Users/Wifo/Documents/Universität_Mannheim/Master/Masterthesis/glue_data_output'
@@ -1345,14 +1353,14 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.num_train_epochs = "[3.0]"
         FLAGS.output_dir = BERT_onSTILTS_output_dir
 
-    else:
+    elif AQ:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
 
-        FLAGS.task_name = "InsufficientArgSupport"
+        FLAGS.task_name = "ArgQuality"
         FLAGS.do_train = True
         FLAGS.do_eval = True
-        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support"
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Arg_Quality"
         FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
         FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
@@ -1360,5 +1368,40 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.train_batch_size = "[16]"
         FLAGS.learning_rate = "[2e-5]"
         FLAGS.num_train_epochs = "[3.0]"
-        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/InsufficientArgSupport"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/Arg_Quality"
+
+    elif AR:
+        BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
+
+        FLAGS.task_name = "ArgRecognition"
+        FLAGS.do_train = True
+        FLAGS.do_eval = True
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Arg_Recognition"
+        FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size = "[16]"
+        FLAGS.learning_rate = "[2e-5]"
+        FLAGS.num_train_epochs = "[3.0]"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/Arg_Recognition"
+
+    elif AZ:
+        BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
+
+        FLAGS.task_name = "ArgZoningI"
+        FLAGS.do_train = True
+        FLAGS.do_eval = True
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Arg_Zoning"
+        FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size = "[16]"
+        FLAGS.learning_rate = "[2e-5]"
+        FLAGS.num_train_epochs = "[3.0]"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/Arg_Zoning"
+
     tf.app.run()

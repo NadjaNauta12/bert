@@ -85,8 +85,8 @@ def load_ArgQuality_datset(case_ID=4):
 
         quality_corpus = pd.concat(read_files_single, axis=0, ignore_index=True)
         # print(quality_corpus['label'].value_counts())
-        fn = lambda row: 1 if row.label == "a1" else 0
-        quality_corpus['target_label'] = quality_corpus.apply(fn, axis=1)
+        #fn = lambda row: 1 if row.label == "a1" else 0
+        #quality_corpus['target_label'] = quality_corpus.apply(fn, axis=1)
 
         np.random.seed(3)
         train, dev, test = np.split(quality_corpus.sample(frac=1),

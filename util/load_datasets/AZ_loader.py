@@ -57,9 +57,9 @@ def get_ArgZoning_dataset(case=4):
 
         df = pd.DataFrame([sentence.__dict__ for sentences in documents for sentence in sentences])
 
-        LE = LabelEncoder()
-        df['target_label'] = LE.fit_transform(df['AZ_category'])
-        # print(df['AZ_category'].unique())
+        #LE = LabelEncoder()
+        #df['target_label'] = LE.fit_transform(df['AZ_category'])
+        print(df['AZ_category'].unique())
         # print(df.head())
         # variables = arr[0].keys()
         # df = pd.DataFrame([[getattr(i, j) for j in variables] for i in arr], columns=variables)

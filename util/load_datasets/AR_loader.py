@@ -170,11 +170,11 @@ def _load_ArgRecognition_XML(load_GM, additional_tasks):
     # print(df.label.value_counts())
 
     """Check Baseline for two additional Tasks"""
-    fn = lambda row: int(1) if row.label == "1" or row.label == "2" else (
-        int(3) if row.label == "5" or row.label == "4" else int(2))
-    if additional_tasks:
-        # do same but attach it to the dataframe
-        df['task_3labels'] = df.apply(fn, axis=1)
+    # fn = lambda row: int(1) if row.label == "1" or row.label == "2" else (
+    #     int(3) if row.label == "5" or row.label == "4" else int(2))
+    # if additional_tasks:
+    #     # do same but attach it to the dataframe
+    #     df['task_3labels'] = df.apply(fn, axis=1)
 
     return df
 
