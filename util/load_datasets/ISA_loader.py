@@ -16,15 +16,16 @@ import csv
 
 
 def _get_InsuffientSupport_datset():
+    container_file = "ISA_data.pkl"
     if os.name == "nt":
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
         path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
     elif os.name == "posix":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        container_file = "/content/bert/util/" + contailer_file
+        container_file = "/content/bert/util/" + container_file
         path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
     else:
-        container_file = "/work/nseemann/util/" + contailer_file
+        container_file = "/work/nseemann/util/" + container_file
         path = "/work/nseemann/data/Insufficient_Arg_Support/data-tokenized.tsv"
 
     insufficientSupper_corpora = pd.read_csv(path, delimiter='\t', index_col=None, header=0,
@@ -157,10 +158,10 @@ def get_InsuffientSupport_datset_byFilter(split_idx=1, case=4):
         path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
     elif os.name == "posix":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        container_file = "/content/bert/util/" + contailer_file
+        container_file = "/content/bert/util/" + container_file
         path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
     else:
-        container_file = "/work/nseemann/util/" + contailer_file
+        container_file = "/work/nseemann/util/" + container_file
         path = "/work/nseemann/data/Insufficient_Arg_Support/data-tokenized.tsv"
 
     try:

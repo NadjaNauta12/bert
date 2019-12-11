@@ -293,11 +293,9 @@ class InsufficientSupportProcessor(DataProcessor):
             counter += 1
         return examples
 
-    def __init__(self, _data_split=None):
-        self._data_split = _data_split
 
     def __get_examples(self, filter_list, descr):
-        insufficient_corpus = data_loader.get_InsuffientSupport_datset()
+        insufficient_corpus = ISA_loader._get_InsuffientSupport_datset()
         filtered = insufficient_corpus.loc[insufficient_corpus["ESSAY_ID"].isin(filter_list)]
         print(filtered[:1])
         print(len(filtered))
@@ -333,31 +331,37 @@ class InsufficientSupportProcessor(DataProcessor):
         return ["sufficient", "insufficient"]
 
     def read_data_splitting(self, idx):
-        if self._data_split is None:
-            complete_split = DataProcessor._read_tsv(
-                "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-splitting.tsv")
-            # print(type(complete_split))
-            # print(len(complete_split))
-            # print(complete_split[1])
-            # print(len(complete_split[1]))
-            complete_split = np.array(complete_split)
-            cols = list(range(1, 102))
-            # cols = ["Essay_ID"] + cols
-            # print(cols)
-            # print(complete_split[0: , 1:].shape)
-            df_split = pd.DataFrame(data=complete_split[0:, 1:], index=complete_split[0:, 0], columns=cols)
-            # print(df_split.shape)
-            # print(df_split.head())
-            df_split.drop(df_split.columns[len(df_split.columns) - 1], axis=1, inplace=True)
-            # print(df_split.head())
-            self._data_split = df_split
+        if os.name == "nt":
+            path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-splitting.tsv'
+        elif os.name == "posix":  # GOOGLE COLAB
+            print("AQ_Google Colab")
+            path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-splitting.tsv"
+        else:
+            path = "/work/nseemann/data/Insufficient_Arg_Support/data-splitting.tsv"
+
+
+        complete_split = DataProcessor._read_tsv(path)
+        # print(type(complete_split))
+        # print(len(complete_split))
+        # print(complete_split[1])
+        # print(len(complete_split[1]))
+        complete_split = np.array(complete_split)
+        cols = list(range(1, 102))
+        # cols = ["Essay_ID"] + cols
+        # print(cols)
+        # print(complete_split[0: , 1:].shape)
+        df_split = pd.DataFrame(data=complete_split[0:, 1:], index=complete_split[0:, 0], columns=cols)
+        # print(df_split.shape)
+        # print(df_split.head())
+        df_split.drop(df_split.columns[len(df_split.columns) - 1], axis=1, inplace=True)
+        # print(df_split.head())
 
         train = []
         test = []
         dev = []
-        index = self._data_split.index.values
-        for i in range(0, self._data_split.shape[0]):
-            cur = self._data_split[idx][i]
+        index = df_split.index.values
+        for i in range(0, df_split.shape[0]):
+            cur = df_split[idx][i]
             if cur == "TRAIN":
                 train.append(index[i].strip())
             elif cur == "DEV":
@@ -873,7 +877,7 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
     #
     # If you want to use the token-level output, use model.get_sequence_output()
     # instead.
-    output_layer = model.get_pooled_output()
+    output_layer = model.get_pooled_output()  # TODO look into this
 
     hidden_size = output_layer.shape[-1].value
 
@@ -1345,10 +1349,10 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
 
-        FLAGS.task_name = "ArgZoningI"
+        FLAGS.task_name = "InsufficientArgSupport"
         FLAGS.do_train = True
         FLAGS.do_eval = True
-        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Zoning"
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support"
         FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
         FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
@@ -1356,5 +1360,5 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.train_batch_size = "[16]"
         FLAGS.learning_rate = "[2e-5]"
         FLAGS.num_train_epochs = "[3.0]"
-        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/ArgZoningI"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/InsufficientArgSupport"
     tf.app.run()
