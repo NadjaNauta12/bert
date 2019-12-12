@@ -12,7 +12,7 @@ if [ "$OS" = "Windows_NT" ] ; then
     export BERT_onSTILTS_output_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
     export data_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/data"
 
-    for task_name in "ArgQuality" ; do # "ACI_Lauscher""ArgRecognition" "ACI_Habernal""InsufficientArgSupport"   "ArgZoningI" ; do
+    for task_name in "ArgQuality" "ArgRecognition"; do # "ACI_Lauscher" "ACI_Habernal""InsufficientArgSupport"   "ArgZoningI" ; do
         echo $task_name
         case $task_name in
             InsufficientArgSupport) data_dir+="/Insufficient_Arg_Support"
@@ -48,9 +48,9 @@ if [ "$OS" = "Windows_NT" ] ; then
         --bert_config_file=$BERT_CONFIG \
         --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
         --max_seq_length=128 \
-        --train_batch_size="[16]" \
-        --learning_rate="[2e-5]" \
-        --num_train_epochs="[3]" \
+        --train_batch_size="[16, 32]" \
+        --learning_rate="[5e-5, 3e-5, 2e-5]" \
+        --num_train_epochs="[2, 3, 4]" \
         --output_dir=$BERT_onSTILTS_output_dir/$task_name
 
     done
@@ -62,11 +62,10 @@ else
     export BERT_CONFIG=$BERT_BASE_DIR/bert_config.json
     export output_dir='/work/nseemann/data/glue_data_output'
     export BERT_onSTILTS_output_dir="/work/nseemann/onSTILTs/models"
-    export data_dir="work/Seemann/"
+    export data_dir="work/nseemann/data"
 
-    export data_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/data"
 
-    for task_name in "ArgQuality"; do # "ACI_Lauscher""ArgRecognition" "ACI_Habernal""InsufficientArgSupport"   "ArgZoningI" ; do
+    for task_name in "ArgQuality" "ArgRecognition"; do # "ACI_Lauscher""ArgRecognition" "ACI_Habernal""InsufficientArgSupport"   "ArgZoningI" ; do
         echo $task_name
         case $task_name in
             InsufficientArgSupport) data_dir+="/Insufficient_Arg_Support"

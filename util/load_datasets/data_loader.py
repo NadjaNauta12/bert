@@ -207,7 +207,7 @@ def get_ACI_dataset_Habernal():
     ACI_DOC_Habernal_corpus = pd.concat(read_Documents_single, axis=0, ignore_index=True)
     print("Statistics\n", ACI_DOC_Habernal_corpus.describe())
 
-    path = r"C:\Users\Wifo\Documents\Universität Mannheim\Master\Masterthesis\Datasets\Argument Component Identification Habernal"
+    path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal"
     # get the prompts
     with open(path + "/prompts.csv", 'rb') as f:
         lines = [l.decode('utf8', 'ignore') for l in f.readlines()]

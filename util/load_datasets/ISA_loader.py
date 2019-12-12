@@ -13,14 +13,14 @@ import pickle
 import os
 import tensorflow as tf
 import csv
-
+import platform
 
 def _get_InsuffientSupport_datset():
     container_file = "ISA_data.pkl"
     if os.name == "nt":
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
         path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
-    elif os.name == "posix":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         container_file = "/content/bert/util/" + container_file
         path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
@@ -44,7 +44,7 @@ def _get_InsuffientSupport_datset():
 def read_data_splitting(idx):
     if os.name == "nt":
         path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
-    elif os.name == "posix":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
     else:
@@ -127,7 +127,7 @@ def _load_data_and_create_pickle(split_idx, case=4):
 
     if os.name == "nt":
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
-    elif os.name == "posix":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         container_file = "/content/bert/util/" + contailer_file
     else:
@@ -135,9 +135,9 @@ def _load_data_and_create_pickle(split_idx, case=4):
 
     # pickle
     fileObject = open(container_file, 'wb')
-    pickle.dump(train, fileObject)
-    pickle.dump(dev, fileObject)
-    pickle.dump(test, fileObject)
+    pickle.dump(train, fileObject, protocol=2)
+    pickle.dump(dev, fileObject, protocol=2)
+    pickle.dump(test, fileObject, protocol=2)
     fileObject.close()
 
     if case_ID == 1:
@@ -156,7 +156,7 @@ def get_InsuffientSupport_datset_byFilter(split_idx=1, case=4):
     if os.name == "nt":
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
         path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
-    elif os.name == "posix":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         container_file = "/content/bert/util/" + container_file
         path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
@@ -166,7 +166,7 @@ def get_InsuffientSupport_datset_byFilter(split_idx=1, case=4):
 
     try:
         file = open(container_file, 'rb')
-    except FileNotFoundError as err:
+    except IOError as err:
         pickled = False
 
     if pickled:

@@ -8,10 +8,9 @@ import numpy as np
 import pandas as pd
 import xmltodict
 import nltk.tokenize
-from sklearn.preprocessing import LabelEncoder
-import pickle
+#from sklearn.preprocessing import LabelEncoder
 import os
-
+import platform
 
 def get_ArgZoning_dataset(case=4):
     """
@@ -20,7 +19,7 @@ def get_ArgZoning_dataset(case=4):
     """
     if os.name == "nt":
         path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning"
-    elif os.name == "posix":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         path = "/content/drive/My Drive/Masterthesis/data/Argument_Zoning"
     else:

@@ -22,7 +22,7 @@ import sys
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 sys.path.append("/work/nseemann")
 sys.path.append("/content/bert")
-from util.load_datasets import ACI_loader_Habernal, AQ_loader, AZ_loader, ISA_loader, AR_loader, ACI_loader_Lauscher, \
+from util.load_datasets import ACI_loader_Habernal, AQ_loader, AZ_loader, ISA_loader, AR_loader, load_conll, \
     data_loader
 from util import custom_exceptions
 
@@ -36,7 +36,7 @@ import tensorflow as tf
 import itertools
 import pandas as pd
 import numpy as np
-
+import platform
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
 
@@ -333,7 +333,7 @@ class InsufficientSupportProcessor(DataProcessor):
     def read_data_splitting(self, idx):
         if os.name == "nt":
             path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-splitting.tsv'
-        elif os.name == "posix":  # GOOGLE COLAB
+        elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
             print("AQ_Google Colab")
             path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-splitting.tsv"
         else:
@@ -447,12 +447,19 @@ class ArgRecognitionProcessor(DataProcessor):
 class ACI_Lauscher_Processor(DataProcessor):
 
     def _get_examples(self, data_dir, descr):
-        # TODO
-        annotations_Lauscher = ACI_loader_Lauscher.parse_annotations_Lauscher(
-            r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\compiled_corpus")
-        df = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
+        if descr == "Train":
+            annotations_Lauscher = load_conll.load_ACI_Lauscher(caseID=1)
+        elif descr == "Dev": # TODO
+            annotations_Lauscher = load_conll.load_ACI_Lauscher(caseID=1)
+        elif descr == "Test":
+            annotations_Lauscher = load_conll.load_ACI_Lauscher(caseID=3)
+        else:
+            return None
+        flat_sentences = [item for sublist in annotations_Lauscher for item in sublist ]
+        #flat_sentences = [subitem for sublist in annotations_Lauscher for item in sublist for subitem in item]
+        #df = pd.DataFrame(flat_sentences, columns=['token', 'Token_Label', 'DRI_Label'])
+        #df = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
         print(df.head())
-
         return self._convert_To_InputExamples(df, descr)
 
     def _convert_To_InputExamples(self, df, identifiertxt):
@@ -461,7 +468,7 @@ class ACI_Lauscher_Processor(DataProcessor):
         examples = []
         for idx, row in df.iterrows():
             guid = "%s-%s" % (identifiertxt, counter)
-            sentence = row['Text']
+            sentence = row['Token']
             if (len(sentence.split()) > 128):
                 counter_Seq += 1
             label = row['Label']
@@ -490,10 +497,10 @@ class ACI_Lauscher_Processor(DataProcessor):
 
     def get_labels(self):
         """Gets the list of labels for this data set."""
-        return [0, 1, 2, 3, 4, 5, 6]
-        # return ['Label_Lauscher.BACKGROUND_CLAIM', 'Label_Lauscher.OWN_CLAIM', 'Label_Lauscher.DATA',
-        #         'Label_Lauscher.SUPPORTS', 'Label_Lauscher.CONTRADICTS', 'Label_Lauscher.PARTS_OF_SAME',
-        #         'Label_Lauscher.SEMANTICALLY_SAME']
+        #return [0, 1, 2, 3, 4, 5, 6]
+        return ['Label_Lauscher.BACKGROUND_CLAIM', 'Label_Lauscher.OWN_CLAIM', 'Label_Lauscher.DATA',
+                'Label_Lauscher.SUPPORTS', 'Label_Lauscher.CONTRADICTS', 'Label_Lauscher.PARTS_OF_SAME',
+                'Label_Lauscher.SEMANTICALLY_SAME']
         # return ['BACKGROUND_CLAIM', 'OWN_CLAIM', 'DATA',
         #         'SUPPORTS', 'CONTRADICTS', 'PARTS_OF_SAME',
         #         'SEMANTICALLY_SAME']
@@ -747,7 +754,7 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
     assert len(input_ids) == max_seq_length
     assert len(input_mask) == max_seq_length
     assert len(segment_ids) == max_seq_length
-    print ("ECHO LABEL", example.label)
+    #print ("ECHO LABEL", example.label)
     label_id = label_map[example.label]
     if ex_index < 5:
         tf.logging.info("*** Example ***")
@@ -1312,10 +1319,9 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
     ISA = False
     AR = False
     AQ = False
-    AZ = True
+    AZ = False
     ACI_H = False
-    ACI_L = False
-
+    ACI_L = True
     if GLUE:
         BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
         GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
@@ -1403,5 +1409,20 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.learning_rate = "[2e-5]"
         FLAGS.num_train_epochs = "[3.0]"
         FLAGS.output_dir = BERT_onSTILTS_output_dir + "/Arg_Zoning"
+    elif ACI_L:
+        BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
 
+        FLAGS.task_name = "ACI_Lauscher"
+        FLAGS.do_train = True
+        FLAGS.do_eval = True
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Component_Identification_Lauscher"
+        FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size = "[16]"
+        FLAGS.learning_rate = "[2e-5]"
+        FLAGS.num_train_epochs = "[3.0]"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/ACI_Lauscher"
     tf.app.run()

@@ -10,7 +10,7 @@ import xmltodict
 import nltk.tokenize
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
-
+import platform
 
 def get_ArgRecognition_UGIP_dataset(case_ID=4):
     container_file = "UGIP_splitted.pkl"
@@ -18,7 +18,7 @@ def get_ArgRecognition_UGIP_dataset(case_ID=4):
 
     if os.name == "nt":
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
-    elif os.name == "posix":  # GOOGLE COLAB
+    elif oplatform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         container_file = "/content/bert/util/" + container_file
     else:
@@ -26,7 +26,7 @@ def get_ArgRecognition_UGIP_dataset(case_ID=4):
 
     try:
         file = open(container_file, 'rb')
-    except FileNotFoundError as err:
+    except IOFoundError as err:
         pickled = False
 
     if pickled:
@@ -41,9 +41,9 @@ def get_ArgRecognition_UGIP_dataset(case_ID=4):
                                     [int(.6 * len(UGIP_complete)), int(.7 * len(UGIP_complete))])
         # pickle
         fileObject = open(container_file, 'wb')
-        pickle.dump(train, fileObject)
-        pickle.dump(dev, fileObject)
-        pickle.dump(test, fileObject)
+        pickle.dump(train, fileObject, protocol=2)
+        pickle.dump(dev, fileObject, protocol=2)
+        pickle.dump(test, fileObject, protocol=2)
         fileObject.close()
 
     if case_ID == 1:
@@ -66,7 +66,7 @@ def get_ArgRecognition_GM_dataset(case_ID=4):
 
     try:
         file = open(container_file, 'rb')
-    except FileNotFoundError as err:
+    except IOError as err:
         pickled = False
 
     if pickled:
@@ -82,9 +82,9 @@ def get_ArgRecognition_GM_dataset(case_ID=4):
 
         # pickle
         fileObject = open(container_file, 'wb')
-        pickle.dump(train, fileObject)
-        pickle.dump(dev, fileObject)
-        pickle.dump(test, fileObject)
+        pickle.dump(train, fileObject, protocol=2)
+        pickle.dump(dev, fileObject, protocol=2)
+        pickle.dump(test, fileObject, protocol=2)
         fileObject.close()
 
     if case_ID == 1:
@@ -118,7 +118,7 @@ def _load_ArgRecognition_XML(load_GM, additional_tasks):
     # path = "./data/Argument_Recognition/comarg.v1/comarg"
     if os.name == "nt":
         path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Recognition\comarg"
-    elif os.name == "posix":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         path = "/content/drive/My Drive/Masterthesis/data/Argument_Recognition/comarg"
     else:

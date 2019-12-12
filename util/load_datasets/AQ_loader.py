@@ -11,7 +11,7 @@ import nltk.tokenize
 from sklearn.preprocessing import LabelEncoder
 import pickle
 import os
-
+import platform
 
 def get_QualityPrediction_dataset():
     print("Loading Argument Quality Prediction Dataset")
@@ -54,17 +54,17 @@ def load_ArgQuality_datset(case_ID=4):
     if os.name == "nt":
         container_file = r"C:\Users\Wifo\PycharmProjects\Masterthesis\util\AQ_data.pkl"
         path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality"
-    elif os.name == "posix":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         container_file = "/content/bert/util/AQ_data.pkl"
         path = "/content/drive/My Drive/Masterthesis/data/Argument_Quality"
     else:
-        container_file = r"/work/nseemann/util/AQ_data.pkl"
+        container_file = "/work/nseemann/util/AQ_data.pkl"
         path = "/work/nseemann/data/Argument_Quality"
 
     try:
         file = open(container_file, 'rb')
-    except FileNotFoundError as err:
+    except IOError as err:
         pickled = False
 
     if pickled:
@@ -74,6 +74,8 @@ def load_ArgQuality_datset(case_ID=4):
         test = pickle.load(file)
     else:
         print("Load Dataset from scratch and pickle")
+        print(path)
+        print(platform.system())
         # path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality"
         all_files = glob.glob(path + "/*/*.csv")
         read_files_single = []
@@ -99,9 +101,9 @@ def load_ArgQuality_datset(case_ID=4):
 
         # pickle
         fileObject = open(container_file, 'wb')
-        pickle.dump(train, fileObject)
-        pickle.dump(dev, fileObject)
-        pickle.dump(test, fileObject)
+        pickle.dump(train, fileObject, protocol=2)
+        pickle.dump(dev, fileObject, protocol=2)
+        pickle.dump(test, fileObject, protocol=2)
         fileObject.close()
 
     if case_ID == 1:
