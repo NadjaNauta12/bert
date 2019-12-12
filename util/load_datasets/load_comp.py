@@ -97,7 +97,7 @@ def load_data(path):
 
 
 def load_data_multiple(path=""):
-    sentences = parse_comp_files(path, multiple=False)  # TODO changes Multiple to false
+    sentences = parse_comp_files(path, multiple=False)  # TODO changed Multiple to false
     flat_sentences = [item for sublist in sentences for item in sublist]
     x, y_arg, y_rhet, y_aspect, y_summary, y_citation = transform_to_model_input_multiple(flat_sentences)
     print("Data size: " + str(len(x)))
@@ -107,7 +107,7 @@ def load_data_multiple(path=""):
 def main():
     print("Process started")
     sentences = parse_comp_files(
-        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\compiled_corpus")
+        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\test")
     flat_sentences = [item for sublist in sentences for item in sublist]
     #x, y_arg, y_rhet = transform_to_model_input(flat_sentences)
     x, y_arg = transform_to_model_input(flat_sentences)

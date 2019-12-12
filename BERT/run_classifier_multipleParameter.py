@@ -23,9 +23,9 @@ sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 sys.path.append("/work/nseemann")
 sys.path.append("/content/bert")
 from util.load_datasets import ACI_loader_Habernal, AQ_loader, AZ_loader, ISA_loader, AR_loader, load_conll, \
-    data_loader
+    load_comp, data_loader
 from util import custom_exceptions
-
+import re
 import os
 import collections
 import csv
@@ -459,8 +459,29 @@ class ACI_Lauscher_Processor(DataProcessor):
         #flat_sentences = [subitem for sublist in annotations_Lauscher for item in sublist for subitem in item]
         #df = pd.DataFrame(flat_sentences, columns=['token', 'Token_Label', 'DRI_Label'])
         #df = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
-        print(df.head())
-        return self._convert_To_InputExamples(df, descr)
+        return self._flat_sentences_to_InputExamples(flat_sentences, descr)
+        #print(df.head())
+        #return self._convert_To_InputExamples(df, descr)
+
+    def _flat_sentences_to_InputExamples(self, flat_sentences, descr):
+        examples_list = []
+        counter_Seq = 0
+        counter = 1
+        max_val =0
+        for ele in flat_sentences:
+            words=    [ list[0] for list in ele]
+            test =  ' '.join(words)
+            if (len(words) > 170):
+                counter_Seq += 1
+
+            labels = [list[1] for list in ele]
+            most_frequent = max(set(labels), key = labels.count)
+            print ("MOST FREQ. Label", most_frequent)
+            guid = descr + "-" + str(counter)
+            examples_list.append(InputExample(guid=guid, text_a=' '.join(words), text_b=None, label=most_frequent))
+            counter += 1
+        return examples_list
+
 
     def _convert_To_InputExamples(self, df, identifiertxt):
         counter = 1
@@ -511,13 +532,41 @@ class ACI_Habernal_Processor(DataProcessor):
     def _get_examples(self, data_dir, descr):
         if descr == "Train" or descr == "Dev":
             path = data_dir + '/train_dev'
-            c = ACI_loader_Habernal.parse_annotations_Habernal(path=path)
+            c = load_comp.parse_comp_files(path= path)
+#                ACI_loader_Habernal.parse_annotations_Habernal(path=path)
         else:
             path = data_dir + '/test'
-            c = ACI_loader_Habernal.parse_annotations_Habernal(path=path)
+            c = load_comp.parse_comp_files(path= path) #ACI_loader_Habernal.parse_annotations_Habernal(path=path)
 
-        examples = self.convert_To_InputExamples(c, descr)
-        return examples
+        flat_sentences = [item for sublist in c for item in sublist]
+        # flat_sentences = [subitem for sublist in annotations_Lauscher for item in sublist for subitem in item]
+        # df = pd.DataFrame(flat_sentences, columns=['token', 'Token_Label', 'DRI_Label'])
+        # df = pd.DataFrame([annotation.as_dict() for annotation in annotations_Lauscher])
+        return self._flat_sentences_to_InputExamples(flat_sentences, descr)
+        # print(df.head())
+        #examples = self.convert_To_InputExamples(c, descr)
+        #return examples
+    def _flat_sentences_to_InputExamples(self, flat_sentences, descr):
+        p = re.compile("[\. \., \^,  \$, \*, \+, \?, \{, \}, \[, \], \\, \|, \(, \)]")
+        examples_list = []
+        counter_Seq = 0
+        counter = 1
+        max_val = 0
+        for ele in flat_sentences:
+            words = [list[0] for list in ele]
+            test = ' '.join(words)
+            if (len(words) > 170):
+                counter_Seq += 1
+            if p.match(test):
+                print (p.findall(test))
+            labels = [list[1] for list in ele]
+            most_frequent = max(set(labels), key=labels.count)
+            #print("MOST FREQ. Label", most_frequent)
+            guid = descr + "-" + str(counter)
+            examples_list.append(InputExample(guid=guid, text_a=' '.join(words), text_b=None, label=most_frequent))
+            counter += 1
+        return examples_list
+
 
     def convert_To_InputExamples(self, df, identifiertxt):
         counter = 1
@@ -554,9 +603,11 @@ class ACI_Habernal_Processor(DataProcessor):
 
     def get_labels(self):
         """Gets the list of labels for this data set."""
-        return ['Label_Habernal.MAJOR_CLAIM', 'Label_Habernal.CLAIM', 'Label_Habernal.PREMISE',
-                'Label_Habernal.SUPPORTS', 'Label_Habernal.ATTACKS']
-
+        # return ['Label_Habernal.MAJOR_CLAIM', 'Label_Habernal.CLAIM', 'Label_Habernal.PREMISE',
+        #         'Label_Habernal.SUPPORTS', 'Label_Habernal.ATTACKS']
+        return ['Token_Label.BEGIN_MAJOR_CLAIM', 'Token_Label.INSIDE_MAJOR_CLAIM',   'Token_Label.BEGIN_CLAIM' ,
+                'Token_Label.INSIDE_CLAIM' , 'Token_Label.BEGIN_PREMISE' ,  'Token_Label.INSIDE_PREMISE',
+                'Token_Label.OUTSIDE']
 
 class ArgQualityProcessor(DataProcessor):
 
@@ -1117,7 +1168,6 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
             (FLAGS.max_seq_length, bert_config.max_position_embeddings))
 
     output_dir = FLAGS.output_dir + "_" + config_str
-    FLAGS.output_dir = output_dir
     tf.gfile.MakeDirs(output_dir)
 
     task_name = FLAGS.task_name.lower()
@@ -1141,7 +1191,7 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
     run_config = tf.contrib.tpu.RunConfig(
         cluster=tpu_cluster_resolver,
         master=FLAGS.master,
-        model_dir=FLAGS.output_dir,
+        model_dir=output_dir,
         save_checkpoints_steps=FLAGS.save_checkpoints_steps,
         tpu_config=tf.contrib.tpu.TPUConfig(
             iterations_per_loop=FLAGS.iterations_per_loop,
@@ -1204,7 +1254,7 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
             while len(eval_examples) % FLAGS.eval_batch_size != 0:
                 eval_examples.append(PaddingInputExample())
 
-        eval_file = os.path.join(FLAGS.output_dir, "eval.tf_record")
+        eval_file = os.path.join(output_dir, "eval.tf_record")
         file_based_convert_examples_to_features(
             eval_examples, label_list, FLAGS.max_seq_length, tokenizer, eval_file)
 
@@ -1231,7 +1281,7 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
 
         result = estimator.evaluate(input_fn=eval_input_fn, steps=eval_steps)
 
-        output_eval_file = os.path.join(FLAGS.output_dir, "eval_results.txt")
+        output_eval_file = os.path.join(output_dir, "eval_results.txt")
         with tf.gfile.GFile(output_eval_file, "w") as writer:
             tf.logging.info("***** Eval results *****")
             for key in sorted(result.keys()):
@@ -1249,7 +1299,7 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
             while len(predict_examples) % FLAGS.predict_batch_size != 0:
                 predict_examples.append(PaddingInputExample())
 
-        predict_file = os.path.join(FLAGS.output_dir, "predict.tf_record")
+        predict_file = os.path.join(output_dir, "predict.tf_record")
         file_based_convert_examples_to_features(predict_examples, label_list,
                                                 FLAGS.max_seq_length, tokenizer,
                                                 predict_file)
@@ -1269,7 +1319,7 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
 
         result = estimator.predict(input_fn=predict_input_fn)
 
-        output_predict_file = os.path.join(FLAGS.output_dir, "test_results.tsv")
+        output_predict_file = os.path.join(output_dir, "test_results.tsv")
         with tf.gfile.GFile(output_predict_file, "w") as writer:
             num_written_lines = 0
             tf.logging.info("***** Predict results *****")
@@ -1320,8 +1370,8 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
     AR = False
     AQ = False
     AZ = False
-    ACI_H = False
-    ACI_L = True
+    ACI_H = True
+    ACI_L = False
     if GLUE:
         BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'
         GLUE_DIR = r"C:\Users\Wifo\Documents\Universität_Mannheim\Master\Masterthesis\glue_data"
@@ -1409,6 +1459,7 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.learning_rate = "[2e-5]"
         FLAGS.num_train_epochs = "[3.0]"
         FLAGS.output_dir = BERT_onSTILTS_output_dir + "/Arg_Zoning"
+
     elif ACI_L:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
         BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
@@ -1425,4 +1476,21 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
         FLAGS.learning_rate = "[2e-5]"
         FLAGS.num_train_epochs = "[3.0]"
         FLAGS.output_dir = BERT_onSTILTS_output_dir + "/ACI_Lauscher"
+
+    elif ACI_H:
+        BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
+
+        FLAGS.task_name = "ACI_Habernal"
+        FLAGS.do_train = True
+        FLAGS.do_eval = True
+        FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Component_Identification_Habernal"
+        FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
+        FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
+        FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
+        FLAGS.max_seq_length = 128
+        FLAGS.train_batch_size = "[16]"
+        FLAGS.learning_rate = "[2e-5]"
+        FLAGS.num_train_epochs = "[3.0]"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/ACI_Habernal"
     tf.app.run()

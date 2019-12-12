@@ -61,7 +61,7 @@ else
     export VOCAB_DIR=$BERT_BASE_DIR/vocab.txt
     export BERT_CONFIG=$BERT_BASE_DIR/bert_config.json
     export output_dir='/work/nseemann/data/glue_data_output'
-    export BERT_onSTILTS_output_dir="/work/nseemann/onSTILTs/models"
+    export BERT_onSTILTS_output_dir="/work/nseemann/models_onSTILTs/models"
     export data_dir="work/nseemann/data"
 
 
@@ -101,9 +101,9 @@ else
         --bert_config_file=$BERT_CONFIG \
         --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
         --max_seq_length=128 \
-        --train_batch_size="[16]" \
-        --learning_rate="[2e-5]" \
-        --num_train_epochs="[3]" \
+        --train_batch_size="[16, 32]" \
+        --learning_rate="[5e-5, 3e-5, 2e-5]" \
+        --num_train_epochs="[2, 3, 4]" \
         --output_dir=$BERT_onSTILTS_output_dir/$task_name
 
     done

@@ -26,6 +26,10 @@ def parse_conll_file(file, multiple=False):
             else:
                 token = [parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]]
             tokens.append(token)
+        if len(tokens) > 170:
+            print(len(tokens))
+            print(file.stream.name)
+            #print(tokens)
     return sentences
 
 
