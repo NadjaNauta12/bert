@@ -394,15 +394,66 @@ class InsufficientSupportProcessor(DataProcessor):
 
 
 class ArgRecognitionProcessor(DataProcessor):
+    _AR_flag_GM = False
+    _AR_flag_UGIP = False
+    _AR_flag_GM_UNIP = False
+    _AR_flag_UGIP_GM = False
 
-    def _get_examples(self, getGM, descr):
-        corpus = AR_loader.get_ArgRecognition_dataset(additional_tasks=False)
-        if getGM:
-            corpus_GM = self.convert_To_InputExamples(corpus[0], descr)
-            return corpus_GM
+    @staticmethod
+    def set_experimental_setting(setting):
+        if setting == "GM":
+            ArgRecognitionProcessor._AR_flag_GM = True
+        if setting == "UGIP":
+            ArgRecognitionProcessor._AR_flag_UGIP = True
+        if setting == "GM_UGIP":
+            ArgRecognitionProcessor._AR_flag_GM_UNIP = True
+        if setting == "UGIP_GM":
+            ArgRecognitionProcessor. _AR_flag_UGIP_GM = True
+
+    def _get_examples(self, descr):
+        if self._AR_flag_GM:
+            if descr == "Train":
+                data = AR_loader.get_ArgRecognition_GM_dataset(case_ID=1)
+            elif descr == "Dev":
+                data = AR_loader.get_ArgRecognition_GM_dataset(case_ID=2)
+            elif descr == "Test":
+                data = AR_loader.get_ArgRecognition_GM_dataset(case_ID=3)
+            else:
+                return None
+        elif self._AR_flag_UGIP:
+            if descr == "Train":
+                data = AR_loader.get_ArgRecognition_UGIP_dataset(case_ID=1)
+            elif descr == "Dev":
+                data = AR_loader.get_ArgRecognition_UGIP_dataset(case_ID=2)
+            elif descr == "Test":
+                data = AR_loader.get_ArgRecognition_UGIP_dataset(case_ID=3)
+            else:
+                return None
+        elif self._AR_flag_GM_UNIP:
+            train, dev, test = AR_loader.get_ArgRecognition_dataset(case_ID=1)
+            if descr == "Train":
+                data =  train
+            elif descr == "Dev":
+                data =  dev
+            elif descr == "Test":
+                data =  test
+            else:
+                return None
+        elif self._AR_flag_UGIP_GM:
+            train_dev, test =  AR_loader.get_ArgRecognition_dataset(case_ID=2)
+            if descr == "Train":
+                data =  train
+            elif descr == "Dev":
+                data =  dev
+            elif descr == "Test":
+                data =  test
+            else:
+                return None
         else:
-            corpus_UGIP = self.convert_To_InputExamples(corpus[1], descr)
-            return corpus_UGIP
+            return None
+
+        return self.convert_To_InputExamples(data, descr)
+
 
     def convert_To_InputExamples(self, df, identifiertxt):
         counter = 1
@@ -422,19 +473,19 @@ class ArgRecognitionProcessor(DataProcessor):
 
     def get_train_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the train set."""
-        corpora = self._get_examples(getGM=True, descr="Train")
+        corpora = self._get_examples( descr="Train")
 
         return corpora
 
     def get_dev_examples(self, data_dir):
         """Gets a collection of `InputExample`s for the dev set."""
-        corpora = self._get_examples(getGM=True, descr="Dev")
+        corpora = self._get_examples(descr="Dev")
 
         return corpora
 
     def get_test_examples(self, data_dir):
         """Gets a collection of `InputExample`s for prediction."""
-        corpora = self._get_examples(getGM=False, descr="Test")
+        corpora = self._get_examples( descr="Test")
 
         return corpora
 
@@ -471,12 +522,12 @@ class ACI_Lauscher_Processor(DataProcessor):
         for ele in flat_sentences:
             words=    [ list[0] for list in ele]
             test =  ' '.join(words)
-            if (len(words) > 170):
+            if (len(words) >128):
                 counter_Seq += 1
 
             labels = [list[1] for list in ele]
             most_frequent = max(set(labels), key = labels.count)
-            print ("MOST FREQ. Label", most_frequent)
+            #print ("MOST FREQ. Label", most_frequent)
             guid = descr + "-" + str(counter)
             examples_list.append(InputExample(guid=guid, text_a=' '.join(words), text_b=None, label=most_frequent))
             counter += 1
@@ -530,10 +581,12 @@ class ACI_Lauscher_Processor(DataProcessor):
 class ACI_Habernal_Processor(DataProcessor):
 
     def _get_examples(self, data_dir, descr):
-        if descr == "Train" or descr == "Dev":
-            path = data_dir + '/train_dev'
+        if descr == "Train":
+            path = data_dir + '/train'
+            c = load_comp.parse_comp_files(path=path)
+        elif descr == "Dev":
+            path = data_dir + '/dev'
             c = load_comp.parse_comp_files(path= path)
-#                ACI_loader_Habernal.parse_annotations_Habernal(path=path)
         else:
             path = data_dir + '/test'
             c = load_comp.parse_comp_files(path= path) #ACI_loader_Habernal.parse_annotations_Habernal(path=path)
@@ -1351,6 +1404,12 @@ def main(_):
 
     configs = list(itertools.product(train_batch_sizes_list, learning_rate_list, train_epochs_list))
 
+    if FLAGS.task_name == "ArgRecognition":
+        setting = "UGIP_GM" #"UGIP" #"GM" # "UGIP", "GM_UGIP", "UGIP_GM"
+        ArgRecognitionProcessor.set_experimental_setting(setting=setting)
+        tf.logging.info("AR Running with setting %s", setting)
+
+
     for (train_batch_size, learning_rate, train_epochs) in configs:
         config_str = str(train_batch_size) + "_" + str(learning_rate) + "_" + str(train_epochs)
         tf.logging.info("Running %s", config_str)
@@ -1367,10 +1426,10 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
     # tf.app.run()
     GLUE = False
     ISA = False
-    AR = False
+    AR = True
     AQ = False
     AZ = False
-    ACI_H = True
+    ACI_H = False
     ACI_L = False
     if GLUE:
         BERT_BASE_DIR = 'C://Users//Wifo//PycharmProjects//Masterthesis//data//BERT_checkpoint//uncased_L-12_H-768_A-12'

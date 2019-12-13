@@ -11,6 +11,8 @@ import nltk.tokenize
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import platform
+from sklearn.model_selection import train_test_split
+
 
 def get_ArgRecognition_UGIP_dataset(case_ID=4):
     container_file = "UGIP_splitted.pkl"
@@ -26,7 +28,7 @@ def get_ArgRecognition_UGIP_dataset(case_ID=4):
 
     try:
         file = open(container_file, 'rb')
-    except IOFoundError as err:
+    except IOError as err:
         pickled = False
 
     if pickled:
@@ -35,10 +37,10 @@ def get_ArgRecognition_UGIP_dataset(case_ID=4):
         dev = pickle.load(file)
         test = pickle.load(file)
     else:
-        UGIP_complete = _load_ArgRecognition_XML(load_GM=False, additional_tasks=False)
+        UGIP_complete = _load_ArgRecognition_XML(load_GM=False)
         np.random.seed(4)
         train, dev, test = np.split(UGIP_complete.sample(frac=1),
-                                    [int(.6 * len(UGIP_complete)), int(.7 * len(UGIP_complete))])
+                                    [int(.49 * len(UGIP_complete)), int(.7 * len(UGIP_complete))])
         # pickle
         fileObject = open(container_file, 'wb')
         pickle.dump(train, fileObject, protocol=2)
@@ -75,10 +77,10 @@ def get_ArgRecognition_GM_dataset(case_ID=4):
         dev = pickle.load(file)
         test = pickle.load(file)
     else:
-        GM_complete = _load_ArgRecognition_XML(load_GM=True, additional_tasks=False)
+        GM_complete = _load_ArgRecognition_XML(load_GM=True)
         np.random.seed(4)
         train, dev, test = np.split(GM_complete.sample(frac=1),
-                                    [int(.6 * len(GM_complete)), int(.7 * len(GM_complete))])
+                                    [int(.49 * len(GM_complete)), int(.7 * len(GM_complete))])
 
         # pickle
         fileObject = open(container_file, 'wb')
@@ -97,11 +99,22 @@ def get_ArgRecognition_GM_dataset(case_ID=4):
         return None
 
 
-def get_ArgRecognition_dataset(additional_tasks=False):
-    return [_load_ArgRecognition_XML(True, additional_tasks), _load_ArgRecognition_XML(False, additional_tasks)]
+def get_ArgRecognition_dataset(case_ID=3):
+    if case_ID == 1:
+        train_dev = _load_ArgRecognition_XML(True)
+        train, dev = train_test_split(train_dev, test_size=0.3)
+        print(len(train), len(dev))
+        return [train, dev, _load_ArgRecognition_XML(False)]
+    if case_ID == 2:
+        train_dev = _load_ArgRecognition_XML(False)
+        train, dev = train_test_split(train_dev, test_size=0.3)
+        print(len(train), len(dev))
+        return [train, dev, _load_ArgRecognition_XML(True)]
+    else:
+        return None
 
 
-def _load_ArgRecognition_XML(load_GM, additional_tasks):
+def _load_ArgRecognition_XML(load_GM):
     """EXAMPLE
        <unit id="1arg2">
          <comment>
@@ -180,17 +193,16 @@ def _load_ArgRecognition_XML(load_GM, additional_tasks):
 
 
 if __name__ == "__main__":
-    loaded = get_ArgRecognition_UGIP_dataset(case_ID=2)
-    print(len(loaded))
     loaded = get_ArgRecognition_UGIP_dataset(case_ID=1)
+    print(len(loaded))
+    loaded = get_ArgRecognition_UGIP_dataset(case_ID=2)
     print(len(loaded))
     loaded = get_ArgRecognition_UGIP_dataset(case_ID=3)
     print(len(loaded))
 
-    loaded = get_ArgRecognition_GM_dataset(case_ID=2)
-    print(len(loaded))
     loaded = get_ArgRecognition_GM_dataset(case_ID=1)
+    print(len(loaded))
+    loaded = get_ArgRecognition_GM_dataset(case_ID=2)
     print(len(loaded))
     loaded = get_ArgRecognition_GM_dataset(case_ID=3)
     print(len(loaded))
-

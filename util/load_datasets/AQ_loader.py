@@ -53,20 +53,20 @@ def load_ArgQuality_datset(case_ID=4):
     pickled = True
     if os.name == "nt":
         container_file = r"C:\Users\Wifo\PycharmProjects\Masterthesis\util\AQ_data.pkl"
-        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality"
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality\IBM-ArgQ-9.1kPairs"
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         container_file = "/content/bert/util/AQ_data.pkl"
-        path = "/content/drive/My Drive/Masterthesis/data/Argument_Quality"
+        path = "/content/drive/My Drive/Masterthesis/data/Argument_Quality/IBM-ArgQ-9.1kPairs"
     else:
         container_file = "/work/nseemann/util/AQ_data.pkl"
-        path = "/work/nseemann/data/Argument_Quality"
+        path = "/work/nseemann/data/Argument_Quality/IBM-ArgQ-9.1kPairs"
 
     try:
         file = open(container_file, 'rb')
     except IOError as err:
         pickled = False
-
+    pickled = False
     if pickled:
         # file = open(container_file, 'rb')
         train = pickle.load(file)
@@ -74,10 +74,7 @@ def load_ArgQuality_datset(case_ID=4):
         test = pickle.load(file)
     else:
         print("Load Dataset from scratch and pickle")
-        print(path)
-        print(platform.system())
-        # path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality"
-        all_files = glob.glob(path + "/*/*.csv")
+        all_files = glob.glob(path + "/*.csv")
         read_files_single = []
         for filename in all_files:
             # df = pd.read_csv(filename, delimiter='\t', index_col=None, header=0)
@@ -89,15 +86,15 @@ def load_ArgQuality_datset(case_ID=4):
         # print(quality_corpus['label'].value_counts())
         #fn = lambda row: 1 if row.label == "a1" else 0
         #quality_corpus['target_label'] = quality_corpus.apply(fn, axis=1)
-
+        print(len(quality_corpus))
         np.random.seed(3)
         train, dev, test = np.split(quality_corpus.sample(frac=1),
-                                    [int(.6 * len(quality_corpus)), int(.7 * len(quality_corpus))])
+                                    [int(.49 * len(quality_corpus)), int(.7 * len(quality_corpus))])
         # https://stackoverflow.com/questions/38250710/how-to-split-data-into-3-sets-train-validation-and-test
         # https://datascience.stackexchange.com/questions/15135/train-test-validation-set-splitting-in-sklearn
-        # print(train.shape)
-        # print(validate.shape)
-        # print(test.shape)
+        print(train.shape)
+        print(dev.shape)
+        print(test.shape)
 
         # pickle
         fileObject = open(container_file, 'wb')

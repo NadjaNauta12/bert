@@ -40,17 +40,17 @@ if [ "$OS" = "Windows_NT" ] ; then
 
         python C:/Users/Wifo/PycharmProjects/Masterthesis/BERT/run_classifier_multipleParameter.py  \
         --task_name=$task_name \
-        --do_train=true \
+        --do_train=false \
         --do_eval=false \
-        --do_predict=false \
+        --do_predict =true \
         --data_dir=$data_dir \
         --vocab_file=$VOCAB_DIR \
         --bert_config_file=$BERT_CONFIG \
         --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
         --max_seq_length=128 \
-        --train_batch_size="[32]" \
+        --train_batch_size="[16, 32]" \
         --learning_rate="[5e-5, 3e-5, 2e-5]" \
-        --num_train_epochs="[3, 4]" \
+        --num_train_epochs="[2, 3, 4]" \
         --output_dir=$BERT_onSTILTS_output_dir/$task_name
 
     done
@@ -93,18 +93,23 @@ else
 
         python /work/nseemann/BERT/run_classifier_multipleParameter.py  \
         --task_name=$task_name \
-        --do_train=true \
-        --do_eval=true \
-        --do_predict=false \
+        --do_train=false \
+        --do_eval=false \
+        --do_predict =true \
         --data_dir=$data_dir \
         --vocab_file=$VOCAB_DIR \
         --bert_config_file=$BERT_CONFIG \
         --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
         --max_seq_length=128 \
-        --train_batch_size="[32]" \
-        --learning_rate="[5e-5, 3e-5, 2e-5]" \
-        --num_train_epochs="[3, 4]" \
+        --train_batch_size="[16]" \
+        --learning_rate="[5e-5]" \
+        --num_train_epochs="[4]" \
         --output_dir=$BERT_onSTILTS_output_dir/$task_name
 
     done
 fi
+#
+#        --train_batch_size="[16, 32]" \
+#        --learning_rate="[5e-5, 3e-5, 2e-5]" \
+#        --num_train_epochs="[2, 3, 4]" \
+#        --output_dir=$BERT_onSTILTS_output_dir/$task_name
