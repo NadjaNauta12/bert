@@ -1,0 +1,15 @@
+Argument Zoning I >> 15_12
+              precision    recall  f1-score   support
+
+         BKG      0.000     0.000     0.000       232
+         OTH      0.000     0.000     0.000       655
+         CTR      0.000     0.000     0.000       200
+         AIM      0.000     0.000     0.000        62
+         BAS      0.000     0.000     0.000        46
+         OWN      0.654     1.000     0.791      2368
+         TXT      0.000     0.000     0.000        59
+
+    accuracy                          0.654      3622
+   macro avg      0.093     0.143     0.113      3622
+weighted avg      0.427     0.654     0.517      3622
+Receiver Operating Characteristic Curve (ROC AUC):

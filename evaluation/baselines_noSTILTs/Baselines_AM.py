@@ -1,20 +1,20 @@
 import pandas as pd
+pd.set_option('display.width', 400)
+pd.set_option('display.max_columns', 10)
+
 import os.path
 import toolkit
 from datetime import datetime
 from sklearn.metrics import classification_report
 from custom_exceptions import EvaluationFileAlreadyExists
-from load_datasets import brat_annotations
-from util.load_datasets.data_loader import *
-import pickle
 import numpy as np
-from sklearn.metrics import precision_recall_fscore_support
-from sklearn.metrics import classification_report
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import precision_recall_fscore_support, classification_report, roc_auc_score
 from sklearn.model_selection import train_test_split
+from util.load_datasets import ACI_loader_Habernal, AQ_loader, AZ_loader, ISA_loader, AR_loader, load_conll, \
+    load_comp, data_loader
+from BERT.run_classifier_multipleParameter import ArgZoningIProcessor as AZIProcessor
 
-pd.set_option('display.width', 400)
-pd.set_option('display.max_columns', 10)
+
 
 
 def majority_vote(train, test, column, task, multilabel=None):
@@ -32,19 +32,18 @@ def majority_vote(train, test, column, task, multilabel=None):
     # print(  print(df.isna().sum()))
     result = Result(label_list=train[column].unique(), predictions=predictions, truth=test[column].tolist(),
                     descr="BL Majority Vote " + task)
-    # pickle.dump(result, open("./results/Baseline_MV_InsufficientSupport.txt", 'wb'))
+
 
     if multilabel is None:
-        # label =[1,2,3,4,5]
         eva = classification_report(result.truth, result.predictions, labels=result.label_list, digits=3)
-        """ ROC AUC"""
-        roc_auc = roc_auc_score(y_true=result.truth, y_score=result.predictions, average="macro", sample_weight=None,
-                            max_fpr=None)
-        print("ROC: ", roc_auc)
+        # """ ROC AUC"""
+        # roc_auc = roc_auc_score(y_true=result.truth, y_score=result.predictions, average="macro", sample_weight=None,
+        #                     max_fpr=None)
+        # roc_auc = 0.0
+        # print("ROC: ", roc_auc)
     else:
-        print("Type: ", type(multilabel[1]))
         eva = classification_report(result.truth, result.predictions, labels=multilabel, digits=3)
-        roc_auc = "~Not defined for multilabel~"
+        # roc_auc = "~Not defined for multilabel~"
 
     print("Evaluation result MV:")
     print(eva)
@@ -52,10 +51,10 @@ def majority_vote(train, test, column, task, multilabel=None):
     ##### save results
     now = datetime.now()  # current date and time
     date_time = now.strftime("%d_%m")
-    filename = "./evaluation/baselines_noSTILTS/results/MV_Baseline_" + task + "_" + date_time + ".txt"
+    filename = "C:/Users/Wifo/PycharmProjects/Masterthesis/evaluation/baselines_noSTILTs/results/MV_Baseline_" + task + "_" + date_time + ".txt"
     file_exists = os.path.isfile(filename)
     if not file_exists:
-        write_evaluationTXT(filename, task,  eva, roc_auc)
+        write_evaluationTXT(filename, task, eva, None)
     else:
         # ensures that previous results are not overwritten
         raise EvaluationFileAlreadyExists
@@ -82,14 +81,14 @@ def majority_vote_dict(array, label_counts_dict, task):
     """ ROC AUC"""
     roc_auc = roc_auc_score(y_true=result.truth, y_score=result.predictions, average="macro", sample_weight=None,
                             max_fpr=None)
-    print("ROC: " , roc_auc)
+    print("ROC: ", roc_auc)
     ##### save results
     now = datetime.now()  # current date and time
     date_time = now.strftime("%d_%m")
-    filename = "./evaluation/baselines_noSTILTS/results/MV_Baseline_" + task + "_" + date_time + ".txt"
+    filename = "C:/Users/Wifo/PycharmProjects/Masterthesis/evaluation/baselines_noSTILTs/results/MV_Baseline_" + task + "_" + date_time + ".txt"
     file_exists = os.path.isfile(filename)
     if not file_exists:
-        write_evaluationTXT(filename, task,  eva, roc_auc)
+        write_evaluationTXT(filename, task, eva, roc_auc)
     else:
         # ensures that previous results are not overwritten
         raise EvaluationFileAlreadyExists
@@ -105,50 +104,79 @@ class Result:
         self.description = descr
 
 
-def write_evaluationTXT(filename, task,  eva, roc):
+def write_evaluationTXT(filename, task, eva, roc=None):
     now = datetime.now()  # current date and time
     date_time = now.strftime("%d_%m")
-    eva_file = open(filename, "a")
+    eva_file = open(filename, "w")
     eva_file.write(task + " >> " + date_time)
     eva_file.write("\n")
     eva_file.write(eva)
-    eva_file.write("Receiver Operating Characteristic Curve (ROC AUC):")
-    eva_file.write("\n")
-    eva_file.write("ROC: \t")
-    eva_file.write(str(roc))
+    if roc != None:
+        eva_file.write("Receiver Operating Characteristic Curve (ROC AUC):")
+        eva_file.write("\n")
+        eva_file.write("ROC: \t")
+        eva_file.write(str(roc))
     eva_file.close()
 
 
 def main():
     pass
-    # corpora = get_InsuffientSupport_datset()
-    # train, test = train_test_split(corpora, test_size=0.3, random_state=6)
-    # majority_vote(train=train, test=test, column="ANNOTATION", task="Insufficient Supported Arguments")
 
-    # corpora = get_QualityPrediction_dataset()
-    # train, test = train_test_split(corpora, test_size=0.3, random_state=6)
-    # majority_vote(train=corpora[0], test=corpora[1], column="target_label", task="Argument Quality Prediction")
+    # Currently there is no ROC
 
-    # corpora = get_ArgRecognition_dataset(additional_tasks=True)
+
+    # Final Version
+    # train = ISA_loader.get_InsuffientSupport_datset_byFilter(case=1)
+    # print(len(train))
+    # dev = ISA_loader.get_InsuffientSupport_datset_byFilter(case=2)
+    # print(len(dev))
+    # train_dev = pd.concat([train, dev], ignore_index=True)
+    # test = ISA_loader.get_InsuffientSupport_datset_byFilter(case=3)
+    # print(len(test))
+    # majority_vote(train=train_dev, test=test, column="ANNOTATION", task="Insufficient Supported Arguments")
+
+    # Final Version
+    # train = AQ_loader.load_ArgQuality_datset(1)
+    # dev = AQ_loader.load_ArgQuality_datset(2)
+    # test = AQ_loader.load_ArgQuality_datset(3)
+    # train_dev = pd.concat((train, dev), axis=0)
+    # majority_vote(train=train_dev, test=test, column="label", task="Argument Quality Prediction")
+
+    # Final Version - GM Setting
+    # train = AR_loader.get_ArgRecognition_GM_dataset(1)
+    # dev = AR_loader.get_ArgRecognition_GM_dataset(2)
+    #
+    # train_dev = pd.concat((train, dev), axis=0)
+    # test = AR_loader.get_ArgRecognition_GM_dataset(3)
     # multilabel_ArgRec = [1, 2, 3, 4, 5]
-    # majority_vote(corpora[1], corpora[0], "label", "Argument Recogniiton GM", multilabel=multilabel_ArgRec)
-    # majority_vote(corpora[0], corpora[1], "label", "Argument Recognition UGIP", multilabel=multilabel_ArgRec)
-    # multilabel_ArgRec_3labels = [1, 2, 3]
-    # majority_vote(corpora[1], corpora[0], "task_3labels", "Argument Recogniiton GM - 3 Labels", multilabel=multilabel_ArgRec_3labels)
-    # majority_vote(corpora[0], corpora[1], "task_3labels", "Argument Recognition UGIP - 3 Labels", multilabel=multilabel_ArgRec_3labels)
-    # corpora_whole = corpora[0].append(corpora[1], ignore_index=True)
-    # print(corpora_whole.head())
-    # print(corpora_whole.describe())
-    # print(corpora_whole.groupby("comment_text").head())
-    # print(corpora_whole.label.value_counts())
-    # majority_vote(corpora_whole, "label", "Argument Recognition  GM & UGIP", multilabel=multilabel_ArgRec)
+    # majority_vote(train=train_dev, test=test, column="label", task="Argument Recogniiton GM",
+    #               multilabel=multilabel_ArgRec)
 
-    # corpora = get_ArgZoning_dataset()
-    # multilabel_AZI = corpora.AZ_category.unique()
-    # train, test = train_test_split(corpora, test_size=0.3, random_state=6)
-    # majority_vote(train=train, test=test, column="AZ_category", task="Argument Zoning I", multilabel=multilabel_AZI)
+    # Final Version - GM_UGIP Setting
+    # train, dev, test =  AR_loader.get_ArgRecognition_dataset(case_ID=1)
+    # train_dev = pd.concat((train, dev), axis=0)
+    # multilabel_ArgRec = [1, 2, 3, 4, 5]
+    # majority_vote(train=train_dev, test=test, column="label", task="Argument Recogniiton GM_UGIP Setting",
+    #               multilabel=multilabel_ArgRec)
 
-    ACI_Annotation_Habernal = brat_annotations.parse_annotations_Habernal()
+
+    # Final Version
+    # train = AZ_loader.get_ArgZoning_dataset(1)
+    # dev = AZ_loader.get_ArgZoning_dataset(2)
+    # test = AZ_loader.get_ArgZoning_dataset(3)
+    # train_dev = pd.concat((train, dev), axis=0)
+    # multilabel_AZI = AZIProcessor.get_labels()
+    # majority_vote(train=train_dev, test=test, column="AZ_category", task="Argument Zoning I", multilabel=multilabel_AZI)
+
+
+
+
+
+    # >>>>>>>>>>>>>> REDO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+    # ACI_Annotation_Habernal = brat_annotations.parse_annotations_Habernal()
     # #ACI_Annotation_Habernal = ACI_Annotation_Habernal["Label"].apply(pd.DataFrame.to_string)
     # #print(ACI_Annotation_Habernal.head())
     # multilabel_ACI_Habernal = ACI_Annotation_Habernal.target_label.unique()

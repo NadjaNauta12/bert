@@ -440,7 +440,7 @@ class ArgRecognitionProcessor(DataProcessor):
             else:
                 return None
         elif self._AR_flag_UGIP_GM:
-            train_dev, test =  AR_loader.get_ArgRecognition_dataset(case_ID=2)
+            train, dev, test  =  AR_loader.get_ArgRecognition_dataset(case_ID=2)
             if descr == "Train":
                 data =  train
             elif descr == "Dev":
@@ -492,7 +492,9 @@ class ArgRecognitionProcessor(DataProcessor):
     def get_labels(self):
         """Gets the list of labels for this data set."""
         # return ["A", "a", "N", "s", "S"]
-        return ['1', '2', '3', '4', '5']
+        return [ '1' , '2', '3', '4', '5']
+
+
 
 
 class ACI_Lauscher_Processor(DataProcessor):
@@ -1393,11 +1395,7 @@ def main(_):
     :param _:
     :return:
     """
-    print("Current", os.path.dirname(os.path.realpath(__file__)))
-    print("PWD", os.getcwd())
-    import sys
-    from pprint import pprint
-    pprint(sys.path)
+
     train_batch_sizes_list = eval(FLAGS.train_batch_size)
     learning_rate_list = eval(FLAGS.learning_rate)
     train_epochs_list = eval(FLAGS.num_train_epochs)
@@ -1405,7 +1403,7 @@ def main(_):
     configs = list(itertools.product(train_batch_sizes_list, learning_rate_list, train_epochs_list))
 
     if FLAGS.task_name == "ArgRecognition":
-        setting = "UGIP_GM" #"UGIP" #"GM" # "UGIP", "GM_UGIP", "UGIP_GM"
+        setting = "GM_UGIP" #"UGIP" #"GM" # "UGIP", "GM_UGIP", "UGIP_GM"
         ArgRecognitionProcessor.set_experimental_setting(setting=setting)
         tf.logging.info("AR Running with setting %s", setting)
 

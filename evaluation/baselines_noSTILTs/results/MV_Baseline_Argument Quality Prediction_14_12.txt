@@ -1,0 +1,9 @@
+Argument Quality Prediction >> 14_12
+              precision    recall  f1-score   support
+
+          a2      0.504     1.000     0.671      1381
+          a1      0.000     0.000     0.000      1357
+
+    accuracy                          0.504      2738
+   macro avg      0.252     0.500     0.335      2738
+weighted avg      0.254     0.504     0.338      2738

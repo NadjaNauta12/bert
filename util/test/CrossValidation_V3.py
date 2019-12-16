@@ -1,13 +1,10 @@
-from sklearn.datasets import load_iris
-from matplotlib import pyplot as plt
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV, cross_val_score, KFold
 import numpy as np
 from sklearn import preprocessing
-from load_datasets.data_loader import get_ArgRecognition_UGIP_dataset, get_ArgRecognition_GM_dataset
-
+from util.load_datasets import AR_loader
 train_UGIP = True
 train_GM = True
 

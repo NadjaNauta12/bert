@@ -8,24 +8,24 @@ import numpy as np
 import pandas as pd
 import xmltodict
 import nltk.tokenize
-from sklearn.preprocessing import LabelEncoder
 import pickle
 import os
 import tensorflow as tf
 import csv
 import platform
 
+
 def _get_InsuffientSupport_datset():
     container_file = "ISA_data.pkl"
     if os.name == "nt":
-        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
+        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/" + container_file
         path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        container_file = "/content/bert/util/" + container_file
+        container_file = "/content/bert/util/pkl/" + container_file
         path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
     else:
-        container_file = "/work/nseemann/util/" + container_file
+        container_file = "/work/nseemann/util/pkl/" + container_file
         path = "/work/nseemann/data/Insufficient_Arg_Support/data-tokenized.tsv"
 
     insufficientSupper_corpora = pd.read_csv(path, delimiter='\t', index_col=None, header=0,
@@ -43,12 +43,12 @@ def _get_InsuffientSupport_datset():
 
 def read_data_splitting(idx):
     if os.name == "nt":
-        path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
+        path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-splitting.tsv'
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
+        path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-splitting.tsv"
     else:
-        path = "/work/nseemann/data/Insufficient_Arg_Support/data-tokenized.tsv"
+        path = "/work/nseemann/data/Insufficient_Arg_Support/data-splitting.tsv"
 
     complete_split = _read_tsv(input_file=path)
     # print(type(complete_split))
@@ -65,14 +65,13 @@ def read_data_splitting(idx):
     # print(df_split.head())
     df_split.drop(df_split.columns[len(df_split.columns) - 1], axis=1, inplace=True)
     # print(df_split.head())
-    self._data_split = df_split
 
     train = []
     test = []
     dev = []
-    index = self._data_split.index.values
-    for i in range(0, self._data_split.shape[0]):
-        cur = self._data_split[idx][i]
+    index = df_split.index.values
+    for i in range(0, df_split.shape[0]):
+        cur = df_split[idx][i]
         if cur == "TRAIN":
             train.append(index[i].strip())
         elif cur == "DEV":
@@ -118,26 +117,27 @@ def read_data_splitting(idx):
         #     return lines
 
 
-def _load_data_and_create_pickle(split_idx, case=4):
+def _load_data_and_create_pickle(split_idx, case_ID=4):
     train, dev, test = read_data_splitting(split_idx)
     insufficient_corpus = _get_InsuffientSupport_datset()
     train_data = insufficient_corpus.loc[insufficient_corpus["ESSAY_ID"].isin(train)]
     dev_data = insufficient_corpus.loc[insufficient_corpus["ESSAY_ID"].isin(dev)]
     test_data = insufficient_corpus.loc[insufficient_corpus["ESSAY_ID"].isin(test)]
 
+    container_file = "ISA_data_split_" + str(split_idx) + ".pkl"
     if os.name == "nt":
-        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
+        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/" + container_file
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        container_file = "/content/bert/util/" + contailer_file
+        container_file = "/content/bert/util/pkl/" + contailer_file
     else:
-        container_file = "/work/nseemann/util/" + contailer_file
+        container_file = "/work/nseemann/util/pkl/" + contailer_file
 
     # pickle
     fileObject = open(container_file, 'wb')
-    pickle.dump(train, fileObject, protocol=2)
-    pickle.dump(dev, fileObject, protocol=2)
-    pickle.dump(test, fileObject, protocol=2)
+    pickle.dump(train_data, fileObject, protocol=2)
+    pickle.dump(dev_data, fileObject, protocol=2)
+    pickle.dump(test_data, fileObject, protocol=2)
     fileObject.close()
 
     if case_ID == 1:
@@ -151,33 +151,33 @@ def _load_data_and_create_pickle(split_idx, case=4):
 
 
 def get_InsuffientSupport_datset_byFilter(split_idx=1, case=4):
-    container_file = "ISA_data_split" + str(split_idx) + ".pkl"
+    container_file = "ISA_data_split_" + str(split_idx) + ".pkl"
     pickled = True
     if os.name == "nt":
-        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
-        path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
+        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/" + container_file
+        #path = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv'
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        container_file = "/content/bert/util/" + container_file
-        path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
+        container_file = "/content/bert/util/pkl/" + container_file
+        #path = "/content/drive/My Drive/Masterthesis/data/Insufficient_Arg_Support/data-tokenized.tsv"
     else:
-        container_file = "/work/nseemann/util/" + container_file
-        path = "/work/nseemann/data/Insufficient_Arg_Support/data-tokenized.tsv"
+        container_file = "/work/nseemann/util/pkl/" + container_file
+        #path = "/work/nseemann/data/Insufficient_Arg_Support/data-tokenized.tsv"
 
     try:
         file = open(container_file, 'rb')
-    except IOError as err:
+    except IOError:
         pickled = False
 
     if pickled:
         train = pickle.load(file)
         dev = pickle.load(file)
         test = pickle.load(file)
-        if case_ID == 1:
+        if case == 1:
             return train
-        elif case_ID == 2:
+        elif case == 2:
             return dev
-        elif case_ID == 3:
+        elif case == 3:
             return test
         else:
             return None
@@ -185,6 +185,20 @@ def get_InsuffientSupport_datset_byFilter(split_idx=1, case=4):
         print("ISA - Load an create pickle..")
         req_data = _load_data_and_create_pickle(split_idx, case)
         return req_data
+
+
+def _read_tsv_escape(input_file):
+    """Reads a tab separated value file."""
+    essay_list = pd.read_csv(input_file, delimiter='\t', index_col=None, header=0, encoding='unicode_escape')
+    essay_list["ANNOTATION"].fillna("sufficient", inplace=True)
+    essay_list["ESSAY_ID"] = [str(entry).zfill(3) for entry in essay_list["ESSAY"]]
+    essay_list["ESSAY_ID"] = ["essay" + str(entry) for entry in essay_list["ESSAY"]]
+
+    essay_list["ESSAY_ID"] = essay_list["ESSAY_ID"] + ["_" for i in range(len(essay_list["ESSAY"]))] + essay_list[
+        "ARGUMENT"].astype(str)
+
+    # return essay_list.values.tolist()
+    return essay_list
 
 
 def _read_tsv(input_file, quotechar=None):
@@ -195,6 +209,7 @@ def _read_tsv(input_file, quotechar=None):
         for line in reader:
             lines.append(line)
         return lines
+
 
 if __name__ == "__main__":
     loaded = get_InsuffientSupport_datset_byFilter(case=1)

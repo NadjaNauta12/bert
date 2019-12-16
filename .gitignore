@@ -125,4 +125,4 @@ dmypy.json
 /onSTILTs/*
 /models_onSTILTs/models/*
 ServerHacks.pdf
-/util/*.pkl
+/util/pkl

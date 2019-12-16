@@ -1,0 +1,9 @@
+Insufficient Supported Arguments >> 15_12
+              precision    recall  f1-score   support
+
+  sufficient      0.660     1.000     0.795       136
+insufficient      0.000     0.000     0.000        70
+
+    accuracy                          0.660       206
+   macro avg      0.330     0.500     0.398       206
+weighted avg      0.436     0.660     0.525       206

@@ -1,0 +1,776 @@
+C:\Users\Wifo\AppData\Local\Programs\Python\Python37\python.exe "C:\Program Files\JetBrains\PyCharm 2019.2.4\helpers\pydev\pydevd.py" --cmd-line --multiproc --qt-support=auto --client 127.0.0.1 --port 50664 --file C:/Users/Wifo/PycharmProjects/Masterthesis/evaluation/baselines_noSTILTs/CrossValidation_GM.py
+pydev debugger: process 5436 is connecting
+Connected to pydev debugger (build 192.7142.42)
+ Cross Validation with Setting - GM_ONLY
+Content size of xml file 1013
+709 304
+Content size of xml file 1285
+Train_IDX (1028,) [ 1  2  3  5  6  7  8  9 10 13]
+Test_IDX (257,) [ 0  4 11 12 14 15 22 24 31 33]
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Best parameter of 1 fold: with parasetting 0
+Train_IDX (1028,) [ 0  3  4  5  6  7  8  9 10 11]
+Test_IDX (257,) [ 1  2 17 35 40 43 45 46 50 63]
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Best parameter of 2 fold: with parasetting 0
+Train_IDX (1028,) [ 0  1  2  3  4  5  6  9 11 12]
+Test_IDX (257,) [ 7  8 10 13 18 23 25 27 32 41]
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Best parameter of 3 fold: with parasetting 0
+Train_IDX (1028,) [ 0  1  2  3  4  5  7  8  9 10]
+Test_IDX (257,) [ 6 16 19 20 21 28 30 44 49 54]
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Best parameter of 4 fold: with parasetting 0
+Train_IDX (1028,) [ 0  1  2  4  6  7  8 10 11 12]
+Test_IDX (257,) [ 3  5  9 26 29 34 36 38 39 42]
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.01 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= auto
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= scale
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.0001
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.01
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Settings:  C= 0.1 Gamma= 0.1
+Train_IDX inner (685,) [ 0  1  2  3  4  5  6  7  8 10]
+Test_IDX inner (343,) [ 9 13 15 20 22 23 24 25 26 34]
+Score 0.6530612244897959
+Train_IDX inner (685,) [ 1  5  6  8  9 11 12 13 15 16]
+Test_IDX inner (343,) [ 0  2  3  4  7 10 14 17 27 28]
+Score 0.6268221574344023
+Train_IDX inner (686,) [ 0  2  3  4  7  9 10 13 14 15]
+Test_IDX inner (342,) [ 1  5  6  8 11 12 16 18 19 21]
+Score 0.672514619883041
+Best parameter of 5 fold: with parasetting 0
+[0.6381322957198443, 0.6575875486381323, 0.6731517509727627, 0.6731517509727627, 0.6614785992217899]
+Unbiased prediction error: 0.6607
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit (AMD64)] on win32

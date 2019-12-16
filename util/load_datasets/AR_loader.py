@@ -19,12 +19,12 @@ def get_ArgRecognition_UGIP_dataset(case_ID=4):
     pickled = True
 
     if os.name == "nt":
-        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
+        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/" + container_file
     elif oplatform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        container_file = "/content/bert/util/" + container_file
+        container_file = "/content/bert/util/pkl/" + container_file
     else:
-        container_file = "/work/nseemann/util/" + container_file
+        container_file = "/work/nseemann/util/pkl/" + container_file
 
     try:
         file = open(container_file, 'rb')
@@ -62,9 +62,12 @@ def get_ArgRecognition_GM_dataset(case_ID=4):
     container_file = "GM_splitted.pkl"
     pickled = True
     if os.name == "nt":
-        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/" + container_file
+        container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/" + container_file
+    elif oplatform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
+        print("AQ_Google Colab")
+        container_file = "/content/bert/util/pkl/" + container_file
     else:
-        container_file = "/work/nseemann/util/" + container_file
+        container_file = "/work/nseemann/util/pkl/" + container_file
 
     try:
         file = open(container_file, 'rb')

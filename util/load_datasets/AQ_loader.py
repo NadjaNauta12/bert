@@ -56,10 +56,10 @@ def load_ArgQuality_datset(case_ID=4):
         path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality\IBM-ArgQ-9.1kPairs"
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        container_file = "/content/bert/util/AQ_data.pkl"
+        container_file = "/content/bert/pkl/util/pkl/AQ_data.pkl"
         path = "/content/drive/My Drive/Masterthesis/data/Argument_Quality/IBM-ArgQ-9.1kPairs"
     else:
-        container_file = "/work/nseemann/util/AQ_data.pkl"
+        container_file = "/work/nseemann/util/pkl/AQ_data.pkl"
         path = "/work/nseemann/data/Argument_Quality/IBM-ArgQ-9.1kPairs"
 
     try:
