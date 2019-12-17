@@ -161,12 +161,12 @@ def main():
 
 
     # Final Version
-    # train = AZ_loader.get_ArgZoning_dataset(1)
-    # dev = AZ_loader.get_ArgZoning_dataset(2)
-    # test = AZ_loader.get_ArgZoning_dataset(3)
-    # train_dev = pd.concat((train, dev), axis=0)
-    # multilabel_AZI = AZIProcessor.get_labels()
-    # majority_vote(train=train_dev, test=test, column="AZ_category", task="Argument Zoning I", multilabel=multilabel_AZI)
+    train = AZ_loader.get_ArgZoning_dataset(1)
+    dev = AZ_loader.get_ArgZoning_dataset(2)
+    test = AZ_loader.get_ArgZoning_dataset(3)
+    train_dev = pd.concat((train, dev), axis=0)
+    multilabel_AZI = AZIProcessor().get_labels()
+    majority_vote(train=train_dev, test=test, column="AZ_category", task="Argument Zoning I", multilabel=multilabel_AZI)
 
 
 

@@ -13,10 +13,15 @@ from sklearn import model_selection
 from sklearn.datasets import load_boston
 
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
+sys.path.append("/work/nseemann")
+sys.path.append("/content/bert")
 from load_datasets import AR_loader
 from sklearn.preprocessing import LabelEncoder
 from sklearn.svm import SVC
 # set random state
+
+
+
 state = 6
 para_c = [0.01, .01, .1, 1, 50]
 # NOTE from Seemann :  Gamma has no effect - thas Why I only changes Parameter C
