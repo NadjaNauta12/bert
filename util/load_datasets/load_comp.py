@@ -7,7 +7,7 @@ import codecs
 import numpy as np
 
 
-def parse_comp_file(file, multiple=False):
+def _parse_comp_file(file, multiple=False):
     tokens = []
     sentences = []
     for line in file.readlines():
@@ -35,7 +35,7 @@ def parse_comp_files(path, multiple=False):
     for subdir, dirs, files in os.walk(path):
         for file in files:
             with codecs.open(os.path.join(subdir, file), "r", "utf8") as f:
-                file_sentences = parse_comp_file(f, multiple=multiple)
+                file_sentences = _parse_comp_file(f, multiple=multiple)
                 sentences.append(file_sentences)
     return sentences
 

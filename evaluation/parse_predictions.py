@@ -1,17 +1,17 @@
 import sys
 
-#sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
+sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 #sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis/BERT") # TODO check this for server
 
 sys.path.append("/work/nseemann")
 sys.path.append("/content/bert")
-print(sys.path)
+#print(sys.path)
 import codecs
 import itertools
 import numpy as np
 import os
 import argparse
-
+from run_classifier_multipleParameter import ArgRecognitionProcessor
 
 def parse_predictions(input_path, output_path, task):
     """
@@ -45,8 +45,8 @@ def parse_predictions(input_path, output_path, task):
             predictions = np.array(line.split("\t"), dtype=np.float32)
 
             predicted_index = np.argmax(predictions)
-            if predicted_index != 2:
-                print("Not like the others")
+            # if predicted_index != 2:
+            #     print("Not like the others")
             predicted_labels.append(labels[predicted_index])
             # else:
             #     predicted_labels.append(predictions[0])
@@ -94,19 +94,22 @@ def main():
         task = args.task
         task = "ArgRecognition"
         print(args.input_path)
-        input_path = args.input_path + "_" + config_str + "/test_results.tsv"
-        output_path = args.input_path + "_" + config_str + "/" + str(task) + "-parsed_test_results.tsv"
-        a = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
-        input_path = a + "/" + str(task) + "_" + config_str + "/test_results.tsv"
-        output_path = a + "/" + str(task) + "_" + config_str + "/" + str(task) + "-parsed_test_results.tsv"
+        if task == "ArgRecognition":
+            setting_AR = "Not done yet" # ArgRecognitionProcessor.get_experimental_setting() #"_" + ArgRecognitionProcessor.get_experimental_setting()
+            input_path = args.input_path + "_" + config_str + setting_AR +  "/test_results.tsv"
+            output_path = args.input_path + "_" + config_str + "/" + str(task) + "-parsed_test_results.tsv"
+        else:
+            input_path = args.input_path + "_" + config_str + "/test_results.tsv"
+            output_path = args.input_path + "_" + config_str + "/" + str(task) + "-parsed_test_results.tsv"
+
+
+
+        #a = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
+        #input_path = a + "/" + str(task) + "_" + config_str + "/test_results.tsv"
+        #output_path = a + "/" + str(task) + "_" + config_str + "/" + str(task) + "-parsed_test_results.tsv"
         #print(input_path)
         #print(output_path)
-        parse_predictions( input_path, output_path, task=task)
-
-        # parse_predictions(
-        #     "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models/ArgZoningI_32__2e-05_2/test_results.tsv",
-        #     'C:/Users/Wifo/PycharmProjects/Masterthesis/evaluation/onSTILTs/ArgZoningI_32__2e-05_2/test_results_NN.tsv',
-        #     task="ArgZoningI")
+        parse_predictions(input_path, output_path, task=task)
 
 
 if __name__ == "__main__":

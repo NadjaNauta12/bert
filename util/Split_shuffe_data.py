@@ -166,8 +166,29 @@ def split_AZI():
             , r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Zoning\dev")
 
 
+def split_ACI_Habernal_Train_Dev():
+    list_files = _get_file_list_from_dir(
+        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\train_dev",
+        '.txt')
+    randomize_files(list_files)
+    train, dev = get_two_sets(list_files)
+    assert len(train) == 19
+    assert len(dev) == 9
+    print("#Test files", len(train))
+    print("# Train files", len(dev))
+
+    for f in train:
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\train_dev"
+        shutil.move(path + "\\" + f,
+                    r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\train")
+    for f in dev:
+        path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\train_dev"
+        shutil.move(path + "\\" + f,
+                    r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\dev")
+
 if __name__ == "__main__":
-    #split_ACI_Habernal()
-    #split_ACI_Habeneral_Train_Dev()
-    # split_AZI()
     pass
+    # split_ACI_Habernal()
+    # split_ACI_Habeneral_Train_Dev()
+    # split_AZI()
+    # split_ACI_Habernal_Train_Dev()

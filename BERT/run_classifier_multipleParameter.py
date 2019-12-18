@@ -22,6 +22,7 @@ import sys
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
 sys.path.append("/work/nseemann")
 sys.path.append("/content/bert")
+
 from util.load_datasets import ACI_loader_Habernal, AQ_loader, AZ_loader, ISA_loader, AR_loader, load_conll, \
     load_comp, data_loader
 from util import custom_exceptions
@@ -37,6 +38,8 @@ import itertools
 import pandas as pd
 import numpy as np
 import platform
+import codecs
+
 pd.set_option('display.width', 400)
 pd.set_option('display.max_columns', 10)
 
@@ -142,14 +145,15 @@ flags.DEFINE_integer(
     "Only used if `use_tpu` is True. Total number of TPU cores to use.")
 
 
-class InputExample(object):
+
+class InputExample_Sequence(object):
     """A single training/test example for simple sequence classification."""
 
-    def __init__(self, guid, text_a, text_b=None, label=None):
+    def __init__(self, guid, text_a, label=None):
         """Constructs a InputExample.
         Args:
           guid: Unique id for the example.
-          text_a: string. The untokenized text of the first sequence. For single
+          text_a: List os Strings. The untokenized text of the first sequence. For single
             sequence tasks, only this sequence must be specified.
           text_b: (Optional) string. The untokenized text of the second sequence.
             Only must be specified for sequence pair tasks.
@@ -158,14 +162,12 @@ class InputExample(object):
         """
         self.guid = guid
         self.text_a = text_a
-        self.text_b = text_b
         self.label = label
 
     def __str__(self):
         attr = []
         attr.append(self.guid)
         attr.append(self.text_a)
-        attr.append(self.text_b)
         attr.append(self.label)
         return ''.join(attr)
 
@@ -173,7 +175,7 @@ class InputExample(object):
         if self.text_b == None:
             return "{}({!r})".format(self.guid, self.text_a[:50], "-", str(self.label))
         else:
-            return "{}({!r})".format(self.guid, self.text_a[:50], self.text_b[:50], str(self.label))
+            return "{}({!r})".format(self.guid, self.text_a[:50], str(self.label))
 
 
 class PaddingInputExample(object):
@@ -287,7 +289,7 @@ class InsufficientSupportProcessor(DataProcessor):
             text = row['TEXT']
             if (len(text.split()) > 128):
                 counter_Seq += 1
-                # raise InputLengthExceeded()
+                text = " ".join(text.split()[:128])
             label = row['ANNOTATION']
             examples.append(InputExample(guid=guid, text_a=text, text_b=None, label=label))
             counter += 1
@@ -400,6 +402,19 @@ class ArgRecognitionProcessor(DataProcessor):
     _AR_flag_UGIP_GM = False
 
     @staticmethod
+    def get_experimental_setting():
+        if ArgRecognitionProcessor._AR_flag_GM:
+            return "GM"
+        elif ArgRecognitionProcessor._AR_flag_UGIP:
+            return "UGIP"
+        elif ArgRecognitionProcessor._AR_flag_GM_UNIP:
+            return "GM_UGIP"
+        elif ArgRecognitionProcessor._AR_flag_UGIP_GM:
+            return "UGIP_GM"
+        else:
+            return None
+
+    @staticmethod
     def set_experimental_setting(setting):
         if setting == "GM":
             ArgRecognitionProcessor._AR_flag_GM = True
@@ -463,8 +478,9 @@ class ArgRecognitionProcessor(DataProcessor):
             guid = "%s-%s" % (identifiertxt, counter)
             comment = row['comment_text']
             argument = row['argument_text']
-            if (len(comment.split()) > 128):  # or len(argument.split()) > 128):
+            if (len(comment.split()) > 128):
                 counter_Seq += 1
+                comment = " ".join(comment.split()[:128])
             label = row['label']
             examples.append(InputExample(guid=guid, text_a=comment, text_b=argument, label=label))
             counter += 1
@@ -502,8 +518,8 @@ class ACI_Lauscher_Processor(DataProcessor):
     def _get_examples(self, data_dir, descr):
         if descr == "Train":
             annotations_Lauscher = load_conll.load_ACI_Lauscher(caseID=1)
-        elif descr == "Dev": # TODO
-            annotations_Lauscher = load_conll.load_ACI_Lauscher(caseID=1)
+        elif descr == "Dev":
+            annotations_Lauscher = load_conll.load_ACI_Lauscher(caseID=2)
         elif descr == "Test":
             annotations_Lauscher = load_conll.load_ACI_Lauscher(caseID=3)
         else:
@@ -523,15 +539,15 @@ class ACI_Lauscher_Processor(DataProcessor):
         max_val =0
         for ele in flat_sentences:
             words=    [ list[0] for list in ele]
-            test =  ' '.join(words)
-            if (len(words) >128):
+            text =  ' '.join(words)
+            if (len(words) > 128):
                 counter_Seq += 1
-
+                text = ' '.join(words[:128])
             labels = [list[1] for list in ele]
             most_frequent = max(set(labels), key = labels.count)
             #print ("MOST FREQ. Label", most_frequent)
             guid = descr + "-" + str(counter)
-            examples_list.append(InputExample(guid=guid, text_a=' '.join(words), text_b=None, label=most_frequent))
+            examples_list.append(InputExample(guid=guid, text_a=text, text_b=None, label=most_frequent))
             counter += 1
         return examples_list
 
@@ -601,6 +617,8 @@ class ACI_Habernal_Processor(DataProcessor):
         # print(df.head())
         #examples = self.convert_To_InputExamples(c, descr)
         #return examples
+
+
     def _flat_sentences_to_InputExamples(self, flat_sentences, descr):
         p = re.compile("[\. \., \^,  \$, \*, \+, \?, \{, \}, \[, \], \\, \|, \(, \)]")
         examples_list = []
@@ -687,9 +705,12 @@ class ArgQualityProcessor(DataProcessor):
             guid = "%s-%s" % (identifiertxt, counter)
             arg1 = row['a1']
             arg2 = row['a2']
-            if (len(arg1.split()) > 128 or len(arg2.split()) > 128):
-                counter_Seq += 1
-                # raise InputLengthExceeded()
+            if len(arg1.split()) > 128:
+                arg1 = " ".join(arg1.split()[:128])
+
+            if len(arg2.split()) > 128:
+                arg2 = " ".join(arg2.split()[:128])
+
             label = row['label']
             # if identifiertxt == "Test":
             #     examples.append(InputExample(guid=guid, text_a=arg1, text_b=arg2, label=None))
@@ -715,7 +736,6 @@ class ArgQualityProcessor(DataProcessor):
     def get_test_examples(self, data_dir):
         """Gets a collection of `InputExample`s for prediction."""
         corpora = self._get_examples(data_dir=data_dir, descr="Test")
-
         return corpora
 
     def get_labels(self):
@@ -750,6 +770,7 @@ class ArgZoningIProcessor(DataProcessor):
             #label = row['target_label']
             if (len(text.split()) > 128):
                 counter_Seq += 1
+                text = " ".join(text.split()[:128])
             examples.append(InputExample(guid=guid, text_a=text, text_b=None, label=label))
             counter += 1
         counter = 0
@@ -1223,9 +1244,14 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
             (FLAGS.max_seq_length, bert_config.max_position_embeddings))
 
     output_dir = FLAGS.output_dir + "_" + config_str
+    task_name = FLAGS.task_name.lower()
+
+    if task_name == "argrecognition":
+        setting_AR = ArgRecognitionProcessor.get_experimental_setting()
+        output_dir = output_dir + "_" + setting_AR
     tf.gfile.MakeDirs(output_dir)
 
-    task_name = FLAGS.task_name.lower()
+
 
     if task_name not in processors:
         raise ValueError("Task not found: %s" % (task_name))
@@ -1345,6 +1371,8 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
 
     if FLAGS.do_predict:
         predict_examples = processor.get_test_examples(FLAGS.data_dir)
+        # write original example labels
+        write_original_labels(predict_examples, config_str, FLAGS.task_name, output_dir)
         num_actual_predict_examples = len(predict_examples)
         if FLAGS.use_tpu:
             # TPU requires a fixed batch size for all batches, therefore the number
@@ -1389,6 +1417,15 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
                 num_written_lines += 1
         assert num_written_lines == num_actual_predict_examples
 
+def write_original_labels(examples, config, task, path):
+    print ("Writing original Labels")
+    output_path = path + "/" + task + "-goldlabels.tsv"
+    with codecs.open(output_path, "w", "utf8") as f_out:
+        f_out.write("index\tlabel\n")
+        for i, ele in enumerate(examples):
+            f_out.write(str(i) + "\t" + str(ele.label) + "\n")
+        f_out.close()
+
 
 def main(_):
     """ Invokes the run_classifier once for all possible combinations of the given paramters
@@ -1403,7 +1440,7 @@ def main(_):
     configs = list(itertools.product(train_batch_sizes_list, learning_rate_list, train_epochs_list))
 
     if FLAGS.task_name == "ArgRecognition":
-        setting = "GM_UGIP" #"UGIP" #"GM" # "UGIP", "GM_UGIP", "UGIP_GM"
+        setting = "GM" #"UGIP" #"GM" # "UGIP", "GM_UGIP", "UGIP_GM"
         ArgRecognitionProcessor.set_experimental_setting(setting=setting)
         tf.logging.info("AR Running with setting %s", setting)
 
@@ -1413,6 +1450,8 @@ def main(_):
         tf.logging.info("Running %s", config_str)
         main_run_classifier(_, config_str=config_str, train_batch_size=train_batch_size, learning_rate=learning_rate,
                             num_train_epochs=train_epochs)
+
+
 
 
 if __name__ == "__main__":  # is only run if started directly - when coming from the .sh file starts at main(_)
@@ -1468,41 +1507,43 @@ if __name__ == "__main__":  # is only run if started directly - when coming from
 
     elif AQ:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
-        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
 
         FLAGS.task_name = "ArgQuality"
         FLAGS.do_train = True
         FLAGS.do_eval = True
+        FLAGS.do_predict = False
         FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Arg_Quality"
         FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
         FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
         FLAGS.max_seq_length = 128
-        FLAGS.train_batch_size = "[16]"
+        FLAGS.train_batch_size = "[32]"
         FLAGS.learning_rate = "[2e-5]"
-        FLAGS.num_train_epochs = "[3.0]"
+        FLAGS.num_train_epochs = "[2]"
         FLAGS.output_dir = BERT_onSTILTS_output_dir + "/Arg_Quality"
 
     elif AR:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
-        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
 
         FLAGS.task_name = "ArgRecognition"
         FLAGS.do_train = True
         FLAGS.do_eval = True
+        FLAGS.do_predict = False
         FLAGS.data_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Arg_Recognition"
         FLAGS.vocab_file = BERT_BASE_DIR + "/vocab.txt"
         FLAGS.bert_config_file = BERT_BASE_DIR + "/bert_config.json"
         FLAGS.init_checkpoint = BERT_BASE_DIR + "/bert_model.ckpt"
         FLAGS.max_seq_length = 128
-        FLAGS.train_batch_size = "[16]"
+        FLAGS.train_batch_size = "[32]"
         FLAGS.learning_rate = "[2e-5]"
-        FLAGS.num_train_epochs = "[3.0]"
-        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/Arg_Recognition"
+        FLAGS.num_train_epochs = "[2]"
+        FLAGS.output_dir = BERT_onSTILTS_output_dir + "/ArgRecognition"
 
     elif AZ:
         BERT_BASE_DIR = 'C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12'
-        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/onSTILTs/models/"
+        BERT_onSTILTS_output_dir = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
 
         FLAGS.task_name = "ArgZoningI"
         FLAGS.do_train = True

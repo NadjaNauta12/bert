@@ -12,7 +12,7 @@ if [ "$OS" = "Windows_NT" ] ; then
     export BERT_onSTILTS_output_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
     export data_dir="C:/Users/Wifo/PycharmProjects/Masterthesis/data"
 
-    for task_name in "ArgQuality" "ArgRecognition"; do # "ACI_Lauscher" "ACI_Habernal""InsufficientArgSupport"   "ArgZoningI" ; do
+    for task_name in "ArgZoningI"; do # "ArgQuality" "ArgRecognition""ACI_Lauscher" "ACI_Habernal""InsufficientArgSupport"    ; do
         echo $task_name
         case $task_name in
             InsufficientArgSupport) data_dir+="/Insufficient_Arg_Support"
@@ -53,6 +53,15 @@ if [ "$OS" = "Windows_NT" ] ; then
         --num_train_epochs="[3, 4]" \
         --output_dir=$BERT_onSTILTS_output_dir/$task_name
 
+
+
+        python C:/Users/Wifo/PycharmProjects/Masterthesis/evaluation/parse_predictions.py  \
+        --task=$task_name \
+        --input_path=$BERT_onSTILTS_output_dir/$task_name \
+        --train_batch_size="[32]" \
+        --learning_rate="[5e-5, 3e-5, 2e-5]" \
+        --num_train_epochs="[3, 4]"
+
     done
 
 else
@@ -65,7 +74,7 @@ else
     export data_dir="work/nseemann/data"
 
 
-    for task_name in "ArgQuality" "ArgRecognition"; do # "ACI_Lauscher""ArgRecognition" "ACI_Habernal""InsufficientArgSupport"   "ArgZoningI" ; do
+    for task_name in "ArgZoningI" "ArgQuality" "ArgRecognition" "InsufficientArgSupport"; do #" "ACI_Lauscher""ArgRecognition" "ACI_Habernal"   ; do
         echo $task_name
         case $task_name in
             InsufficientArgSupport) data_dir+="/Insufficient_Arg_Support"
@@ -91,20 +100,27 @@ else
                 ;;
         esac
 
-        python /work/nseemann/BERT/run_classifier_multipleParameter.py  \
-        --task_name=$task_name \
-        --do_train=true \
-        --do_eval=true \
-        --do_predict=false \
-        --data_dir=$data_dir \
-        --vocab_file=$VOCAB_DIR \
-        --bert_config_file=$BERT_CONFIG \
-        --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
-        --max_seq_length=128 \
+#        python /work/nseemann/BERT/run_classifier_multipleParameter.py  \
+#        --task_name=$task_name \
+#        --do_train=true \
+#        --do_eval=true \
+#        --do_predict=false \
+#        --data_dir=$data_dir \
+#        --vocab_file=$VOCAB_DIR \
+#        --bert_config_file=$BERT_CONFIG \
+#        --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
+#        --max_seq_length=128 \
+#        --train_batch_size="[32]" \
+#        --learning_rate="[5e-5, 3e-5, 2e-5]" \
+#        --num_train_epochs="[3, 4]" \
+#        --output_dir=$BERT_onSTILTS_output_dir/$task_name
+
+
+        python /work/nseemann/evaluation/parse_predictions.py  \
+        --task=$task_name \
+        --input_path=$BERT_onSTILTS_output_dir/$task_name \
         --train_batch_size="[32]" \
         --learning_rate="[5e-5, 3e-5, 2e-5]" \
-        --num_train_epochs="[3, 4]" \
-        --output_dir=$BERT_onSTILTS_output_dir/$task_name
-
+        --num_train_epochs="[3, 4]"
     done
 fi

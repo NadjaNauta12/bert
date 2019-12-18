@@ -80,6 +80,7 @@ def get_ArgRecognition_GM_dataset(case_ID=4):
         dev = pickle.load(file)
         test = pickle.load(file)
     else:
+        print("Load Dataset from scratch and pickle")
         GM_complete = _load_ArgRecognition_XML(load_GM=True)
         np.random.seed(4)
         train, dev, test = np.split(GM_complete.sample(frac=1),

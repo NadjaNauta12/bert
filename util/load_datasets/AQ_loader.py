@@ -52,7 +52,7 @@ def load_ArgQuality_datset(case_ID=4):
     """
     pickled = True
     if os.name == "nt":
-        container_file = r"C:\Users\Wifo\PycharmProjects\Masterthesis\util\AQ_data.pkl"
+        container_file = r"C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/AQ_data.pkl"
         path = r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Quality\IBM-ArgQ-9.1kPairs"
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
@@ -66,7 +66,7 @@ def load_ArgQuality_datset(case_ID=4):
         file = open(container_file, 'rb')
     except IOError as err:
         pickled = False
-    pickled = False
+
     if pickled:
         # file = open(container_file, 'rb')
         train = pickle.load(file)

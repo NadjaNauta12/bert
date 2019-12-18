@@ -57,11 +57,11 @@ if [ "$OS" = "Windows_NT" ] ; then
     #    --learning_rate="[2e-5, 3e-5]" \
     #    --num_train_epochs="[3, 4]" \
     #    --output_dir=$BERT_onSTILTS_output_dir/$task_name
-    # *** work with lists - TODO switch to lists on server
+    # *** work with lists -
     done
 
 else
-    echo "Looks like UNIX to me..."  # TODO change paths for server
+    echo "Looks like UNIX to me..."
     export BERT_BASE_DIR="C:/Users/Wifo/PycharmProjects/Masterthesis/data/BERT_checkpoint/uncased_L-12_H-768_A-12"
     export VOCAB_DIR=$BERT_BASE_DIR/vocab.txt
     export BERT_CONFIG=$BERT_BASE_DIR/bert_config.json

@@ -457,7 +457,7 @@ def _truncate_seq_pair(tokens_a, tokens_b, max_length):
 def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
                  labels, use_one_hot_embeddings):
     """Creates a classification model."""
-    # TODO:
+    #
     if FLAGS.original_model:
         # with tf.variable_scope("shared", reuse=tf.AUTO_REUSE):
         model = modeling.BertModel(

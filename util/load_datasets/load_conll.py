@@ -7,6 +7,7 @@ import codecs
 import numpy as np
 import platform
 
+
 def parse_conll_file(file, multiple=False):
     tokens = []
     sentences = []
@@ -26,34 +27,27 @@ def parse_conll_file(file, multiple=False):
             else:
                 token = [parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]]
             tokens.append(token)
-        if len(tokens) > 170:
-            print(len(tokens))
-            print(file.stream.name)
-            #print(tokens)
+
     return sentences
 
 
 def load_ACI_Lauscher(caseID=4):
     if os.name == "nt":
-        train_path = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Component_Identification_Lauscher" \
-                     "/annotations_conll_all_splitted/train_dev"
-        test_path = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Component_Identification_Lauscher" \
-                    "/annotations_conll_all_splitted/test"
+        path = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Component_Identification_Lauscher" \
+               "/annotations_conll_all_splitted"
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        train_path = "/content/drive/My Drive/Masterthesis/data/Argument_Component_Identification_Lauscher" \
-                     "/annotations_conll_all_splitted/train_dev"
-        test_path = "/content/drive/My Drive/Masterthesis/data/Argument_Component_Identification_Lauscher" \
-                    "/annotations_conll_all_splitted/test"
+        path = "/content/drive/My Drive/Masterthesis/data/Argument_Component_Identification_Lauscher" \
+               "/annotations_conll_all_splitted"
     else:
-        train_path = "/work/nseemann/data/Argument_Component_Identification_Lauscher/annotations_conll_all_splitted" \
-                     "/train_dev"
-        test_path = "/work/nseemann/data/Argument_Component_Identification_Lauscher/annotations_conll_all_splitted/test"
+        path = "/work/nseemann/data/Argument_Component_Identification_Lauscher/annotations_conll_all_splitted"
 
     if caseID == 1:
-        return parse_conll_files(train_path)
+        return parse_conll_files(path + "/train")
+    if caseID == 2:
+        return parse_conll_files(path + "/dev")
     if caseID == 3:
-        return parse_conll_files(test_path)
+        return parse_conll_files(path + "/test")
     else:
         return None
 
@@ -134,8 +128,15 @@ def load_data_multiple(path=""):
 
 def main():
     print("Process started")
+
+    loaded = load_ACI_Lauscher(caseID=1)
+    loaded = load_ACI_Lauscher(caseID=2)
+    loaded = load_ACI_Lauscher(caseID=3)
+
+
+
     sentences = parse_conll_files(
-      r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted")
+        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\test")
     # test data
     sentences = load_ACI_Lauscher(1)
     flat_sentences = [item for sublist in sentences for item in sublist]
