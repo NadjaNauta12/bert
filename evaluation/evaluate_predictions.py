@@ -8,9 +8,9 @@ import codecs
 
 def write_eva_results(path, accuracy, f1_score, recall, precision, task, config):
     # path ist ueberdir where models are located
-    contailer_file = "Evaluation_across_" + task + ".tsv"
+    container_file = "Evaluation_across_" + task + ".tsv"
 
-    with open(path + "/" + contailer_file, "a") as myfile:
+    with open(path + "/" + container_file, "a") as myfile:
         myfile.write("\n")
         myfile.write("Setting: \t Size: %s \t Learningrate: %s \t Epochs: %s \n" % config)
         myfile.write('Accuracy:\t %s \n' % accuracy)

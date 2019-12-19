@@ -129,9 +129,9 @@ def _load_data_and_create_pickle(split_idx, case_ID=4):
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/" + container_file
     elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
-        container_file = "/content/bert/util/pkl/" + contailer_file
+        container_file = "/content/bert/util/pkl/" + container_file
     else:
-        container_file = "/work/nseemann/util/pkl/" + contailer_file
+        container_file = "/work/nseemann/util/pkl/" + container_file
 
     # pickle
     fileObject = open(container_file, 'wb')

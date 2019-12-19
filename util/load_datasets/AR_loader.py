@@ -20,7 +20,7 @@ def get_ArgRecognition_UGIP_dataset(case_ID=4):
 
     if os.name == "nt":
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/" + container_file
-    elif oplatform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         container_file = "/content/bert/util/pkl/" + container_file
     else:
@@ -37,6 +37,7 @@ def get_ArgRecognition_UGIP_dataset(case_ID=4):
         dev = pickle.load(file)
         test = pickle.load(file)
     else:
+        print("Load Dataset for UGIP from scratch and pickle")
         UGIP_complete = _load_ArgRecognition_XML(load_GM=False)
         np.random.seed(4)
         train, dev, test = np.split(UGIP_complete.sample(frac=1),
@@ -63,7 +64,7 @@ def get_ArgRecognition_GM_dataset(case_ID=4):
     pickled = True
     if os.name == "nt":
         container_file = "C:/Users/Wifo/PycharmProjects/Masterthesis/util/pkl/" + container_file
-    elif oplatform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
         print("AQ_Google Colab")
         container_file = "/content/bert/util/pkl/" + container_file
     else:
@@ -80,7 +81,7 @@ def get_ArgRecognition_GM_dataset(case_ID=4):
         dev = pickle.load(file)
         test = pickle.load(file)
     else:
-        print("Load Dataset from scratch and pickle")
+        print("Load Dataset for GM from scratch and pickle")
         GM_complete = _load_ArgRecognition_XML(load_GM=True)
         np.random.seed(4)
         train, dev, test = np.split(GM_complete.sample(frac=1),
