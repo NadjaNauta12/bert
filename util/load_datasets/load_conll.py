@@ -130,20 +130,26 @@ def main():
     print("Process started")
 
     loaded = load_ACI_Lauscher(caseID=1)
+    print(len(loaded))
+    flat_sentences = [item for sublist in loaded for item in sublist]
+    print(len(flat_sentences))
     loaded = load_ACI_Lauscher(caseID=2)
+    print(len(loaded))
+    flat_sentences = [item for sublist in loaded for item in sublist]
+    print(len(flat_sentences))
     loaded = load_ACI_Lauscher(caseID=3)
-
-
-
-    sentences = parse_conll_files(
-        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\test")
-    # test data
-    sentences = load_ACI_Lauscher(1)
-    flat_sentences = [item for sublist in sentences for item in sublist]
-    x, y_arg, y_rhet = transform_to_model_input(flat_sentences)
-    print("x", x)
-    print("Y", y_arg)
-    print("Process ended")
+    print(len(loaded))
+    flat_sentences = [item for sublist in loaded for item in sublist]
+    print(len(flat_sentences))
+    # sentences = parse_conll_files(
+    #     r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\test")
+    # # test data
+    # sentences = load_ACI_Lauscher(1)
+    # flat_sentences = [item for sublist in sentences for item in sublist]
+    # x, y_arg, y_rhet = transform_to_model_input(flat_sentences)
+    # print("x", x)
+    # print("Y", y_arg)
+    # print("Process ended")
 
 
 if __name__ == "__main__":

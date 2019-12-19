@@ -600,15 +600,13 @@ class ACI_Habernal_Processor(DataProcessor):
 
     def _get_examples(self, data_dir, descr):
         if descr == "Train":
-            path = data_dir + '/train'
-            c = load_comp.parse_comp_files(path=path)
+            c = load_comp.load_ACI_Habernal(caseID=1)
         elif descr == "Dev":
-            path = data_dir + '/dev'
-            c = load_comp.parse_comp_files(path= path)
+            c = load_comp.load_ACI_Habernal(caseID=2)
+        elif descr == "Test":
+            c = load_comp.load_ACI_Habernal(caseID=3)
         else:
-            path = data_dir + '/test'
-            c = load_comp.parse_comp_files(path= path) #ACI_loader_Habernal.parse_annotations_Habernal(path=path)
-
+            return None
         flat_sentences = [item for sublist in c for item in sublist]
         # flat_sentences = [subitem for sublist in annotations_Lauscher for item in sublist for subitem in item]
         # df = pd.DataFrame(flat_sentences, columns=['token', 'Token_Label', 'DRI_Label'])
@@ -1426,6 +1424,10 @@ def write_original_labels(examples, config, task, path):
             f_out.write(str(i) + "\t" + str(ele.label) + "\n")
         f_out.close()
 
+def set_experimental_setting_ARTask():
+    setting = "GM"  # "UGIP" #"GM" # "UGIP", "GM_UGIP", "UGIP_GM"
+    ArgRecognitionProcessor.set_experimental_setting(setting=setting)
+    tf.logging.info("AR Running with setting %s", setting)
 
 def main(_):
     """ Invokes the run_classifier once for all possible combinations of the given paramters
@@ -1440,9 +1442,7 @@ def main(_):
     configs = list(itertools.product(train_batch_sizes_list, learning_rate_list, train_epochs_list))
 
     if FLAGS.task_name == "ArgRecognition":
-        setting = "GM" #"UGIP" #"GM" # "UGIP", "GM_UGIP", "UGIP_GM"
-        ArgRecognitionProcessor.set_experimental_setting(setting=setting)
-        tf.logging.info("AR Running with setting %s", setting)
+        set_experimental_setting_ARTask()
 
 
     for (train_batch_size, learning_rate, train_epochs) in configs:

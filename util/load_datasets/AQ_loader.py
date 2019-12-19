@@ -116,3 +116,7 @@ def load_ArgQuality_datset(case_ID=4):
 if __name__ == "__main__":
     loaded_train = load_ArgQuality_datset(case_ID=1)
     print(loaded_train.head())
+    loaded_train = load_ArgQuality_datset(case_ID=2)
+    print(loaded_train.head())
+    loaded_train = load_ArgQuality_datset(case_ID=3)
+    print(loaded_train.head())

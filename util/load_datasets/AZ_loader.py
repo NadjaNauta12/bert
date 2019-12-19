@@ -41,7 +41,7 @@ def get_ArgZoning_dataset(case=4):
                 tree = et.parse(os.path.join(subdir, file))
                 for elem in tree.iter():
                     if elem.tag in ['S'] and elem.get("AZ") is not None:
-                        elem_string = et.tostring(elem, encoding="unicode") # TODO Problems with Server
+                        elem_string = et.tostring(elem)#, encoding="unicode") # TODO MARKER -  Problems with Server
                         clean_string = re.sub(r'<\/?S[^>]*>', '', elem_string)
                         clean_string = re.sub(r'<\/?REFAUTHOR[^>]*>', '', clean_string)
                         clean_string = re.sub(r'<\/?REF[^>]*>', '', clean_string)

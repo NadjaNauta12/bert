@@ -6,10 +6,11 @@ import os
 import codecs
 
 
-def write_eva_results(path, accuracy, f1_score, recall, precision, task, config):
+def _write_eva_results(path, accuracy, f1_score, recall, precision, task, config, setting_AR):
     # path ist ueberdir where models are located
     container_file = "Evaluation_across_" + task + ".tsv"
-
+    if task == "ArgRecognition":
+        container_file = "Evaluation_across_" + task + "_" + setting_AR + ".tsv"
     with open(path + "/" + container_file, "a") as myfile:
         myfile.write("\n")
         myfile.write("Setting: \t Size: %s \t Learningrate: %s \t Epochs: %s \n" % config)
@@ -22,8 +23,6 @@ def write_eva_results(path, accuracy, f1_score, recall, precision, task, config)
 
 
 def run_evaluation(path):
-    pass
-
     # walk trough all dirs
     # remeber label and prediction
     goldlabel = []
@@ -47,8 +46,11 @@ def run_evaluation(path):
                                 prediction.append(ln.split("\t")[1].rstrip('\n'))
                 # files should be ready
                 if len(prediction) > 0 and len(prediction) == len(goldlabel):
-                    task, batch, eta, epochs = dir.split("_")
-
+                    if "ArgRecognition" in dir:
+                        task, batch, eta, epochs, setting_AR = dir.split("_")
+                    else:
+                        task, batch, eta, epochs = dir.split("_")
+                        setting_AR = ""
                     # make eva
                     # from sklearn.metrics import precision_recall_fscore_support as score
                     # precision, recall, fscore, support = score(goldlabel, prediction, pos_label='micro')
@@ -83,7 +85,8 @@ def run_evaluation(path):
                     from nltk import ConfusionMatrix
                     print(ConfusionMatrix(list(goldlabel), list(prediction)))
                     # write into one file -> with config string and task
-                    write_eva_results(subdir, accuracy, f1, recall, precision, task, config=(batch, eta, epochs))
+                    _write_eva_results(subdir, accuracy, f1, recall, precision, task, config=(batch, eta, epochs),
+                                       setting_AR=setting_AR)
 
                 goldlabel = []
                 prediction = []

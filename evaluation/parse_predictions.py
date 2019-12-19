@@ -1,17 +1,16 @@
 import sys
 
 sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis")
-#sys.path.append("C:/Users/Wifo/PycharmProjects/Masterthesis/BERT") # TODO check this for server
-
 sys.path.append("/work/nseemann")
 sys.path.append("/content/bert")
-#print(sys.path)
+# print(sys.path)
 import codecs
 import itertools
 import numpy as np
 import os
 import argparse
-from run_classifier_multipleParameter import ArgRecognitionProcessor
+from run_classifier_multipleParameter import ArgRecognitionProcessor, set_experimental_setting_ARTask
+
 
 def parse_predictions(input_path, output_path, task):
     """
@@ -25,20 +24,19 @@ def parse_predictions(input_path, output_path, task):
 
     predicted_labels = []
     if task == "ArgQuality":
-        labels =  ["a1", "a2"]
+        labels = ["a1", "a2"]
         # run_classifier_multipleParameter.ArgQualityProcessor().get_labels()
     elif task == "ArgRecognition":
-        labels = [1,2,3,4,5]
+        labels = [1, 2, 3, 4, 5]
         # run_classifier_multipleParameter.ArgRecognitionProcessor().get_labels()
     elif task == "ArgZoningI":
-        labels =  ['BKG', 'OTH', 'CTR', 'AIM', 'BAS', 'OWN', 'TXT']
+        labels = ['BKG', 'OTH', 'CTR', 'AIM', 'BAS', 'OWN', 'TXT']
         #  run_classifier_multipleParameter.ArgZoningIProcessor().get_labels()
     elif task == "InsufficientArgSupport":
         labels = ["sufficient", "insufficient"]
         #  run_classifier_multipleParameter.InsufficientSupportProcessor().get_labels()
     else:
         return
-
 
     with codecs.open(input_path, "r", "utf8") as f_in:
         for line in f_in.readlines():
@@ -62,22 +60,22 @@ def parse_predictions(input_path, output_path, task):
 def main():
     parser = argparse.ArgumentParser(description="Running prediction parser")
     parser.add_argument("--task", type=str, default=None,
-                        help="Input path in case train and dev are in a single file", required=False)
+                        help="Task for which files should be parsed", required=False)
     parser.add_argument("--input_path", type=str,
                         default="/work/nseemann/models_onSTILTs/models",
-                        help="Input path in case train and dev are in a single file", required=False)
+                        help="Input path of model folder", required=False)
     # parser.add_argument("--output_path_root", type=str,
     #                     default="/work/nseemann/models_onSTILTs",
     #                     help="Input path in case train and dev are in a single file", required=False)
     parser.add_argument("--train_batch_size", type=str,
                         default="[32]",
-                        help="Input path in case train and dev are in a single file", required=False)
+                        help="Config - Batch", required=False)
     parser.add_argument("--learning_rate", type=str,
                         default="[5e-5, 3e-5, 2e-5]",
-                        help="Input path in case train and dev are in a single file", required=False)
+                        help="Config - eta", required=False)
     parser.add_argument("--num_train_epochs", type=str,
                         default="[3, 4]",
-                        help="Input path in case train and dev are in a single file", required=False)
+                        help="Config- Epochs", required=False)
 
     args = parser.parse_args()
     learning_rate_list = eval(args.learning_rate)
@@ -95,20 +93,19 @@ def main():
         task = "ArgRecognition"
         print(args.input_path)
         if task == "ArgRecognition":
-            setting_AR = "Not done yet" # ArgRecognitionProcessor.get_experimental_setting() #"_" + ArgRecognitionProcessor.get_experimental_setting()
-            input_path = args.input_path + "_" + config_str + setting_AR +  "/test_results.tsv"
-            output_path = args.input_path + "_" + config_str + "/" + str(task) + "-parsed_test_results.tsv"
+            set_experimental_setting_ARTask()
+            setting_AR = "_" + ArgRecognitionProcessor.get_experimental_setting()
+            input_path = args.input_path + "_" + config_str + setting_AR + "/test_results.tsv"
+            output_path = args.input_path + "_" + config_str + setting_AR + "/" + str(task) + "-parsed_test_results.tsv"
         else:
             input_path = args.input_path + "_" + config_str + "/test_results.tsv"
             output_path = args.input_path + "_" + config_str + "/" + str(task) + "-parsed_test_results.tsv"
 
-
-
-        #a = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
-        #input_path = a + "/" + str(task) + "_" + config_str + "/test_results.tsv"
-        #output_path = a + "/" + str(task) + "_" + config_str + "/" + str(task) + "-parsed_test_results.tsv"
-        #print(input_path)
-        #print(output_path)
+        a = "C:/Users/Wifo/PycharmProjects/Masterthesis/models_onSTILTs/models"
+        input_path = a + "/" + str(task) + "_" + config_str + setting_AR+ "/test_results.tsv"
+        output_path = a + "/" + str(task) + "_" + config_str + setting_AR+ "/" + str(task) + "-parsed_test_results.tsv"
+        # print(input_path)
+        # print(output_path)
         parse_predictions(input_path, output_path, task=task)
 
 

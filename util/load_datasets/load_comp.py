@@ -104,15 +104,48 @@ def load_data_multiple(path=""):
     return x, y_arg, y_rhet, y_aspect, y_summary, y_citation
 
 
+def load_ACI_Habernal(caseID=4):
+    if os.name == "nt":
+        path = "C:/Users/Wifo/PycharmProjects/Masterthesis/data/Argument_Component_Identification_Habernal"
+    elif platform.release() != "4.9.0-11-amd64":  # GOOGLE COLAB
+        print("AQ_Google Colab")
+        path = "/content/drive/My Drive/Masterthesis/data/Argument_Component_Identification_Habernal"
+    else:
+        path = "/work/nseemann/data/Argument_Component_Identification_Habernal"
+
+    if caseID == 1:
+        return parse_comp_files(path + "/train")
+    if caseID == 2:
+        return parse_comp_files(path + "/dev")
+    if caseID == 3:
+        return parse_comp_files(path + "/test")
+    else:
+        return None
+
+
 def main():
     print("Process started")
-    sentences = parse_comp_files(
-        r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\test")
-    flat_sentences = [item for sublist in sentences for item in sublist]
-    #x, y_arg, y_rhet = transform_to_model_input(flat_sentences)
-    x, y_arg = transform_to_model_input(flat_sentences)
-    print("x", x)
-    print("Y", y_arg)
+    # sentences = parse_comp_files(
+    #     r"C:\Users\Wifo\PycharmProjects\Masterthesis\data\Argument_Component_Identification_Habernal\train")
+    # print(len(sentences))
+    # flat_sentences = [item for sublist in sentences for item in sublist]
+    # print(len(flat_sentences))
+    # #x, y_arg, y_rhet = transform_to_model_input(flat_sentences)
+    # x, y_arg = transform_to_model_input(flat_sentences)
+    # #print("x", x)
+    # #print("Y", y_arg)
+    loaded = load_ACI_Habernal(caseID=1)
+    print(len(loaded))
+    flat_sentences = [item for sublist in loaded for item in sublist]
+    print(len(flat_sentences))
+    loaded = load_ACI_Habernal(caseID=2)
+    print(len(loaded))
+    flat_sentences = [item for sublist in loaded for item in sublist]
+    print(len(flat_sentences))
+    loaded = load_ACI_Habernal(caseID=3)
+    print(len(loaded))
+    flat_sentences = [item for sublist in loaded for item in sublist]
+    print(len(flat_sentences))
     print("Process ended")
 
 
