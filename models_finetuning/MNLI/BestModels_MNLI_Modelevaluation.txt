@@ -1,0 +1,79 @@
+#####Task Combination	MNLI/ArgRecognition_GM
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 16 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.3593861021823718 
+Precision:	 0.438002544529262 
+F1 score:	 0.3014770228726632 
+Accuracy:	 0.7020725388601037 
+
+#############################################################################################
+#####Task Combination	MNLI/ACI_Habernal
+
+Target model :	ACI_Habernal
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.639815274135592 
+Precision:	 0.6514094845257677 
+F1 score:	 0.6450793153110483 
+Accuracy:	 0.7454800712231201 
+
+#############################################################################################
+#####Task Combination	MNLI/ArgZoningI
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.4600835321829044 
+Precision:	 0.5039263424634763 
+F1 score:	 0.47520441523960993 
+Accuracy:	 0.6819436775262286 
+
+#############################################################################################
+#####Task Combination	MNLI/ArgQuality
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9023896261346616 
+Precision:	 0.9026855134996583 
+F1 score:	 0.9024497190635282 
+Accuracy:	 0.9024835646457268 
+
+
+#############################################################################################
+#####Task Combination	MNLI/InsufficientArgSupport
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8811974789915966 
+Precision:	 0.8896703532696231 
+F1 score:	 0.8851758460517585 
+Accuracy:	 0.8980582524271845 
+
+
+#############################################################################################
+#####Task Combination	MNLI/ArgRecognition_GM_UGIP
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 16 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.29711900256039186 
+Precision:	 0.2207069771272106 
+F1 score:	 0.2484755950563315 
+Accuracy:	 0.6683119447186574 
+
+#############################################################################################
+#####Task Combination	MNLI/ACI_Lauscher
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6229983208019475 
+Precision:	 0.6124770445849187 
+F1 score:	 0.6150216036486159 
+Accuracy:	 0.6859569587065764 
+
+#############################################################################################
