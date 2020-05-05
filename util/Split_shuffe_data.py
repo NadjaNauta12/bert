@@ -1,0 +1,186 @@
+import os
+from random import shuffle, Random
+from math import floor
+import os.path
+import shutil
+
+
+def _get_file_list_from_dir(datadir, data_type):
+    all_files = os.listdir(os.path.abspath(datadir))
+    # data_files = list(filter(lambda file: file.endswith('.data'), all_files))
+    data_files = list(filter(lambda file: file.endswith(data_type), all_files))
+    return data_files
+
+
+def randomize_files(file_list):
+    Random(4).shuffle(file_list)
+
+
+def get_training_and_testing_sets(file_list, split_train=0.49, split_test=0.7):
+    split_index1 = floor(len(file_list) * split_train)
+    split_index2 = floor(len(file_list) * split_test)
+    training = file_list[:split_index1]
+    dev = file_list[split_index1:split_index2]
+    testing = file_list[split_index2:]
+    return training, dev, testing
+
+
+def get_two_sets(file_list, split_train=0.7):
+    split_index = floor(len(file_list) * split_train)
+    uno = file_list[:split_index]
+    dos = file_list[split_index:]
+    return uno, dos
+
+
+def split_ACI_Stab():
+    path = ""  # TODO path  \data\Argument_Component_Identification_Stab"
+    train = []
+    test = []
+    with open(path + "\\train-test-split.csv", 'r') as f:
+        for line in f:
+            id, set = line.split(";")
+            id = id.replace("\"", "")
+            set = set.replace("\"", "").replace("\n", "")
+            if set == "TRAIN" and set != "SET":
+                train.append(id)
+            elif set != "SET":
+                test.append(id)
+    print("#Test files", len(train))
+    print("# Train files", len(test))
+
+    for f in train:
+        path = ""  # TODO path  \data\Argument_Component_Identification_Stab\compiled_corpus"
+        shutil.move(
+            path + "\\" + f + ".comp"
+            , "")  # TODO path  \data\Argument_Component_Identification_Stab\train_dev")
+    for f in test:
+        path = ""  # TODO path  \data\Argument_Component_Identification_Stab\compiled_corpus"
+        shutil.move(
+            path + "\\" + f + ".comp"
+            , "")  # TODO path  \data\Argument_Component_Identification_Stab\test")
+
+
+#
+# def split_ACI_Stab_wrong():
+#     list_files = _get_file_list_from_dir(
+#          "" # TODO path  \data\Argument_Component_Identification_Stab\brat-project-final",
+#         '.txt')
+#     randomize_files(list_files)
+#     train, test = get_two_sets(list_files)
+#     print("Train")
+#     print(train)
+#     print("Test")
+#     print(test)
+#
+#     eva_file = open(
+#          "" # TODO path  \data\Argument_Component_Identification_Stab\ACI_Habelernal_Split.txt",
+#         "w")
+#     eva_file.write(" >>  ACI Stab Split")
+#     eva_file.write("\n")
+#     eva_file.write("Train & Dev")
+#     eva_file.write("\n")
+#
+#     eva_file.write(''.join(e + "\n" for e in train))
+#     eva_file.write("\n")
+#     eva_file.write("\n")
+#     eva_file.write("\n")
+#     eva_file.write("Test")
+#     eva_file.write("\n")
+#     eva_file.write(''.join(e + "\n" for e in test))
+#     eva_file.close()
+#
+#     '*** move files'
+#
+#     for f in train:
+#         path =  "" # TODO path  \data\Argument_Component_Identification_Stab\brat-project-final"
+#         shutil.move(
+#             path + "\\" + f
+#             ,  "" # TODO path  \data\Argument_Component_Identification_Stab\train_dev")
+#         '**annotationf file too'
+#         annfile = f[:len(f) - 4] + ".ann"
+#         shutil.move(
+#             path + "\\" + annfile
+#             ,  "" # TODO path  \data\Argument_Component_Identification_Stab\train_dev")
+
+def split_ACI_Habeneral_Train_Dev():
+    list_files = _get_file_list_from_dir(
+        ""  # TODO path  \data\Argument_Component_Identification_Stab\train_dev",
+        '.comp')
+    randomize_files(list_files)
+    train, dev = get_two_sets(list_files)
+    assert len(train) == 225
+    assert len(dev) == 97
+    print("#Test files", len(train))
+    print("# Train files", len(dev))
+
+    for f in train:
+        path = ""  # TODO path  \data\Argument_Component_Identification_Stab\train_dev"
+        shutil.move(path + "\\" + f,
+                    "")  # TODO path  \data\Argument_Component_Identification_Stab\train")
+    for f in dev:
+        path = ""  # TODO path  \data\Argument_Component_Identification_Stab\train_dev"
+        shutil.move(path + "\\" + f,
+                    "")  # TODO path  \data\Argument_Component_Identification_Stab\dev")
+
+
+def split_AZI():
+    file_list = _get_file_list_from_dir("", "az-scixml")  # TODO path  \data\Argument_Zoning"
+    randomize_files(file_list)
+    train, dev, test = get_training_and_testing_sets(file_list, split_train=0.49, split_test=0.7)
+    print("Train")
+    # print(train)
+    print(len(train))
+    print("Test")
+    # print(test)
+    print(len(test))
+    print("Dev")
+    # print(dev)
+    print(len(dev))
+    '*** move files'
+
+    for f in train:
+        path = ""  # TODO path  \data\Argument_Zoning"
+        shutil.move(
+            path + "\\" + f
+            , "")  # TODO path  \data\Argument_Zoning\train")
+
+    for f in test:
+        path = ""  # TODO path  \data\Argument_Zoning"
+        shutil.move(
+            path + "\\" + f
+            , "")  # TODO path  \data\Argument_Zoning\test")
+
+    for f in dev:
+        path = ""  # TODO path  \data\Argument_Zoning"
+        shutil.move(
+            path + "\\" + f
+            , "")  # TODO path  \data\Argument_Zoning\dev")
+
+
+def split_ACI_Stab_Train_Dev():
+    list_files = _get_file_list_from_dir(
+        ""  # TODO path  \data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\train_dev",
+        '.txt')
+    randomize_files(list_files)
+    train, dev = get_two_sets(list_files)
+    assert len(train) == 19
+    assert len(dev) == 9
+    print("#Test files", len(train))
+    print("# Train files", len(dev))
+
+    for f in train:
+        path = ""  # todo path  \data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\train_dev"
+        shutil.move(path + "\\" + f, "")  # todo path
+        # \data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\train")
+    for f in dev:
+        path = ""  # todo path  \data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\train_dev"
+        shutil.move(path + "\\" + f, "")  # todo path
+        # "data\Argument_Component_Identification_Lauscher\annotations_conll_all_splitted\dev")
+
+
+if __name__ == "__main__":
+    pass
+    # split_ACI_Stab()
+    # split_ACI_Habeneral_Train_Dev()
+    # split_AZI()
+    # split_ACI_Stab_Train_Dev()
