@@ -1,0 +1,2004 @@
+#####Task Combination	ArgRecognition_GM/ACI_Stab
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6543864572159813 
+Precision:	 0.6610006838570907 
+F1 score:	 0.6572226408378948 
+Accuracy:	 0.7576016983974798 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6626853221322959 
+Precision:	 0.658818962646822 
+F1 score:	 0.6602014536185303 
+Accuracy:	 0.7485275989590467 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.65209741274289 
+Precision:	 0.6536123004912587 
+F1 score:	 0.6519283720140958 
+Accuracy:	 0.75318449527462 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6709362457532443 
+Precision:	 0.6507377267145141 
+F1 score:	 0.6599221923873074 
+Accuracy:	 0.7565744418572798 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6166118530558552 
+Precision:	 0.6406301509415286 
+F1 score:	 0.6226572857723419 
+Accuracy:	 0.7465758115326667 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6533841832743589 
+Precision:	 0.6369462487067706 
+F1 score:	 0.6443985829980103 
+Accuracy:	 0.7408231749075469 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM/ArgZoningI
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.14285714285714285 
+Precision:	 0.09339749152007573 
+F1 score:	 0.11295015502027188 
+Accuracy:	 0.6537824406405301 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.14285714285714285 
+Precision:	 0.09339749152007573 
+F1 score:	 0.11295015502027188 
+Accuracy:	 0.6537824406405301 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.4601130362448937 
+Precision:	 0.5201337273802119 
+F1 score:	 0.47955090963713526 
+Accuracy:	 0.6847045831032579 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.47051768327413096 
+Precision:	 0.5218556625778595 
+F1 score:	 0.4885950703821624 
+Accuracy:	 0.676697956929873 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.4401054182194896 
+Precision:	 0.5239483464863579 
+F1 score:	 0.4600989279147117 
+Accuracy:	 0.6946438431805633 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.46064594113075363 
+Precision:	 0.4989308454900095 
+F1 score:	 0.46989147454668295 
+Accuracy:	 0.6896742131419106 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM/ArgQuality
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9015566561029063 
+Precision:	 0.9026087142612567 
+F1 score:	 0.9016627379667292 
+Accuracy:	 0.9017531044558071 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9017039333154395 
+Precision:	 0.9018070642891303 
+F1 score:	 0.9017351598173515 
+Accuracy:	 0.9017531044558071 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9038954822715055 
+Precision:	 0.9039991758898682 
+F1 score:	 0.9039269406392694 
+Accuracy:	 0.9039444850255661 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8995636112159069 
+Precision:	 0.8995501792879707 
+F1 score:	 0.8995558151240035 
+Accuracy:	 0.8995617238860482 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9054141451224829 
+Precision:	 0.9053935944063108 
+F1 score:	 0.9054008499945906 
+Accuracy:	 0.9054054054054054 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9090411132876597 
+Precision:	 0.90905879389691 
+F1 score:	 0.909048861946807 
+Accuracy:	 0.9090577063550036 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM/InsufficientArgSupport
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8385504201680671 
+Precision:	 0.8754659832246039 
+F1 score:	 0.852662852112676 
+Accuracy:	 0.8737864077669902 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8513655462184874 
+Precision:	 0.8303703703703704 
+F1 score:	 0.8379640201974068 
+Accuracy:	 0.8495145631067961 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8299369747899159 
+Precision:	 0.8146033653846154 
+F1 score:	 0.8207411957411958 
+Accuracy:	 0.8349514563106796 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8519957983193277 
+Precision:	 0.8473258706467661 
+F1 score:	 0.8495565988523734 
+Accuracy:	 0.8640776699029126 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8487394957983193 
+Precision:	 0.8564909266616558 
+F1 score:	 0.8523689449236894 
+Accuracy:	 0.8689320388349514 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8703781512605042 
+Precision:	 0.8786105444003007 
+F1 score:	 0.8742402123424022 
+Accuracy:	 0.8883495145631068 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM/ArgRecognition_GM_UGIP
+#############################################################################################
+#####Task Combination	ArgRecognition_GM/ACI_Lauscher
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.623274794890657 
+Precision:	 0.6235837591261552 
+F1 score:	 0.6211486294903048 
+Accuracy:	 0.6943958925060083 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.624630979693327 
+Precision:	 0.6165377285777677 
+F1 score:	 0.6177053219398497 
+Accuracy:	 0.6918423639938824 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6223692805140263 
+Precision:	 0.6270790814719324 
+F1 score:	 0.6215527582939472 
+Accuracy:	 0.6913371203845313 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6227442830520525 
+Precision:	 0.6237478579075042 
+F1 score:	 0.6199890562062824 
+Accuracy:	 0.6891249726895347 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6039898145179844 
+Precision:	 0.628158524731422 
+F1 score:	 0.6123779057141261 
+Accuracy:	 0.6938223727332313 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6238387991091067 
+Precision:	 0.620840578583073 
+F1 score:	 0.6195398938014585 
+Accuracy:	 0.6916648459689753 
+
+#############################################################################################
+#####Task Combination	ACI_Stab/ArgRecognition_GM
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2479614278463881 
+Precision:	 0.19634091923248548 
+F1 score:	 0.219062818336163 
+Accuracy:	 0.6709844559585493 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.25166638470647945 
+Precision:	 0.1933563832115191 
+F1 score:	 0.2179920389208315 
+Accuracy:	 0.6476683937823834 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.244848587379462 
+Precision:	 0.19208002902607163 
+F1 score:	 0.21527723418134373 
+Accuracy:	 0.6606217616580311 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2479614278463881 
+Precision:	 0.19634091923248548 
+F1 score:	 0.219062818336163 
+Accuracy:	 0.6709844559585493 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.13316062176165805 
+F1 score:	 0.1598755832037325 
+Accuracy:	 0.6658031088082902 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2547792251734055 
+Precision:	 0.1967443581206067 
+F1 score:	 0.22170556826849733 
+Accuracy:	 0.6580310880829016 
+
+#############################################################################################
+#####Task Combination	ACI_Stab/ArgZoningI
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.14285714285714285 
+Precision:	 0.09339749152007573 
+F1 score:	 0.11295015502027188 
+Accuracy:	 0.6537824406405301 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.14285714285714285 
+Precision:	 0.09339749152007573 
+F1 score:	 0.11295015502027188 
+Accuracy:	 0.6537824406405301 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.3967424477636027 
+Precision:	 0.4359870233147277 
+F1 score:	 0.409392968525608 
+Accuracy:	 0.6913307564881281 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.16639342450411151 
+Precision:	 0.14894060166362205 
+F1 score:	 0.15286846527191825 
+Accuracy:	 0.6604086140254003 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.27411074553242043 
+Precision:	 0.30103461759291567 
+F1 score:	 0.24533556055181904 
+Accuracy:	 0.6863611264494754 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.43523728331966455 
+Precision:	 0.4867965320889792 
+F1 score:	 0.4520211123409836 
+Accuracy:	 0.6800110436223081 
+
+#############################################################################################
+#####Task Combination	ACI_Stab/ArgQuality
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9091371636436596 
+Precision:	 0.9091548484046414 
+F1 score:	 0.909057597175266 
+Accuracy:	 0.9090577063550036 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9037994319155056 
+Precision:	 0.9044211644690712 
+F1 score:	 0.9038869323979549 
+Accuracy:	 0.9039444850255661 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9076120974356157 
+Precision:	 0.9075862157282075 
+F1 score:	 0.9075932236400224 
+Accuracy:	 0.9075967859751644 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9068623710457269 
+Precision:	 0.9068573776440204 
+F1 score:	 0.9068597533522365 
+Accuracy:	 0.9068663257852447 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9018512105279728 
+Precision:	 0.9019149072433448 
+F1 score:	 0.9017520429028609 
+Accuracy:	 0.9017531044558071 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9065899615638492 
+Precision:	 0.9066290184258289 
+F1 score:	 0.9065006466924774 
+Accuracy:	 0.9065010956902849 
+
+#############################################################################################
+#####Task Combination	ACI_Stab/InsufficientArgSupport
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5 
+Precision:	 0.3300970873786408 
+F1 score:	 0.39766081871345027 
+Accuracy:	 0.6601941747572816 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.5 
+Precision:	 0.3300970873786408 
+F1 score:	 0.39766081871345027 
+Accuracy:	 0.6601941747572816 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8415966386554622 
+Precision:	 0.851948051948052 
+F1 score:	 0.8463341858482524 
+Accuracy:	 0.8640776699029126 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8597689075630253 
+Precision:	 0.8768705985915493 
+F1 score:	 0.8672822935681306 
+Accuracy:	 0.883495145631068 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8703781512605042 
+Precision:	 0.8786105444003007 
+F1 score:	 0.8742402123424022 
+Accuracy:	 0.8883495145631068 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.85609243697479 
+Precision:	 0.8698854337152209 
+F1 score:	 0.8622810536167937 
+Accuracy:	 0.8786407766990292 
+
+#############################################################################################
+#####Task Combination	ACI_Stab/ArgRecognition_GM_UGIP
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2835756428809974 
+Precision:	 0.20877161055505006 
+F1 score:	 0.2236186578534783 
+Accuracy:	 0.5923000987166831 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.273761549593677 
+Precision:	 0.2046006066734075 
+F1 score:	 0.1782716500654909 
+Accuracy:	 0.42250740375123397 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.25073360792608257 
+Precision:	 0.19185721940958644 
+F1 score:	 0.19843167719345653 
+Accuracy:	 0.527147087857848 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2182633863965268 
+Precision:	 0.25142731664470797 
+F1 score:	 0.1969851434525823 
+Accuracy:	 0.6890424481737414 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.25379939886452185 
+Precision:	 0.21263715474839198 
+F1 score:	 0.23078880407124683 
+Accuracy:	 0.6781836130306022 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+#############################################################################################
+#####Task Combination	ACI_Stab/ACI_Lauscher
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6222013915196456 
+Precision:	 0.6213705399820295 
+F1 score:	 0.6201136575944786 
+Accuracy:	 0.690476840725366 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.5460034346018221 
+Precision:	 0.5339328841697526 
+F1 score:	 0.5377517451143333 
+Accuracy:	 0.6828845313524142 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5502117047648079 
+Precision:	 0.5441032319962587 
+F1 score:	 0.545166349497159 
+Accuracy:	 0.6934809919161022 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6292262052149604 
+Precision:	 0.6170003949383361 
+F1 score:	 0.6205647231416851 
+Accuracy:	 0.6876092418614813 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6192414050521579 
+Precision:	 0.621998958263933 
+F1 score:	 0.6184336672072567 
+Accuracy:	 0.6915965698055495 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6256977769753794 
+Precision:	 0.6215768781657607 
+F1 score:	 0.6211804712800764 
+Accuracy:	 0.6933990605199912 
+
+#############################################################################################
+#####Task Combination	ArgZoningI/ArgRecognition_GM
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2479614278463881 
+Precision:	 0.19634091923248548 
+F1 score:	 0.219062818336163 
+Accuracy:	 0.6709844559585493 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2501099644730164 
+Precision:	 0.1917202538561762 
+F1 score:	 0.21599011749834812 
+Accuracy:	 0.6424870466321243 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.29015395026222296 
+Precision:	 0.20983009306792963 
+F1 score:	 0.2359695541862994 
+Accuracy:	 0.6450777202072538 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2633638555236001 
+Precision:	 0.24236597783767597 
+F1 score:	 0.23717858105412953 
+Accuracy:	 0.6683937823834197 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.25912705126036206 
+Precision:	 0.19838799571275456 
+F1 score:	 0.2238039809102549 
+Accuracy:	 0.6606217616580311 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.3263576383014718 
+Precision:	 0.2304614181438999 
+F1 score:	 0.2605687859066962 
+Accuracy:	 0.694300518134715 
+
+#############################################################################################
+#####Task Combination	ArgZoningI/ACI_Stab
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5625862430981299 
+Precision:	 0.5591439940440743 
+F1 score:	 0.5608155224177747 
+Accuracy:	 0.7481166963429667 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6545506846292761 
+Precision:	 0.6546915057197406 
+F1 score:	 0.6540332471096272 
+Accuracy:	 0.7449322010683468 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6596655916697215 
+Precision:	 0.6504642685013169 
+F1 score:	 0.6544419073721665 
+Accuracy:	 0.7557868785097932 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6652566002248267 
+Precision:	 0.6595774877080782 
+F1 score:	 0.6619143000537984 
+Accuracy:	 0.7550677989316532 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6337136979201697 
+Precision:	 0.66256566869079 
+F1 score:	 0.6427204493521715 
+Accuracy:	 0.7521914806190932 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6462535758412765 
+Precision:	 0.6453627902351083 
+F1 score:	 0.6452196051919632 
+Accuracy:	 0.75041090261608 
+
+#############################################################################################
+#####Task Combination	ArgZoningI/ArgQuality
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9025497100613281 
+Precision:	 0.9025447695886961 
+F1 score:	 0.902483551637713 
+Accuracy:	 0.9024835646457268 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9023191892069282 
+Precision:	 0.903088578088578 
+F1 score:	 0.9024141956385495 
+Accuracy:	 0.9024835646457268 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9142123577320803 
+Precision:	 0.9141825209481409 
+F1 score:	 0.9141700003054734 
+Accuracy:	 0.9141709276844412 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8970164091360964 
+Precision:	 0.8969935303141466 
+F1 score:	 0.8970006616579869 
+Accuracy:	 0.8970051132213295 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9090987435012596 
+Precision:	 0.9090692750641356 
+F1 score:	 0.909056723727927 
+Accuracy:	 0.9090577063550036 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8995315944305735 
+Precision:	 0.8995778631657594 
+F1 score:	 0.8995488469829901 
+Accuracy:	 0.8995617238860482 
+
+#############################################################################################
+#####Task Combination	ArgZoningI/InsufficientArgSupport
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5 
+Precision:	 0.3300970873786408 
+F1 score:	 0.39766081871345027 
+Accuracy:	 0.6601941747572816 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8487394957983193 
+Precision:	 0.8564909266616558 
+F1 score:	 0.8523689449236894 
+Accuracy:	 0.8689320388349514 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8881302521008403 
+Precision:	 0.8854981742305685 
+F1 score:	 0.8867865274397425 
+Accuracy:	 0.8980582524271845 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8528361344537815 
+Precision:	 0.8834474885844749 
+F1 score:	 0.865139116202946 
+Accuracy:	 0.883495145631068 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8454831932773109 
+Precision:	 0.8683915770609318 
+F1 score:	 0.8550865800865801 
+Accuracy:	 0.8737864077669902 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8591386554621849 
+Precision:	 0.8521474920177154 
+F1 score:	 0.8554085319884577 
+Accuracy:	 0.8689320388349514 
+
+#############################################################################################
+#####Task Combination	ArgZoningI/ArgRecognition_GM_UGIP
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.292245352332183 
+Precision:	 0.2251483439421728 
+F1 score:	 0.25299501079309955 
+Accuracy:	 0.6900296150049359 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2632661694311477 
+Precision:	 0.2059202900445351 
+F1 score:	 0.17138354404525807 
+Accuracy:	 0.403751233958539 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.20254258042970053 
+Precision:	 0.1661103163249086 
+F1 score:	 0.17949558041541464 
+Accuracy:	 0.6396841066140178 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.23838138706445505 
+Precision:	 0.18260586622042488 
+F1 score:	 0.2001137425758243 
+Accuracy:	 0.5616979269496545 
+
+#############################################################################################
+#####Task Combination	ArgZoningI/ACI_Lauscher
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6185408797757102 
+Precision:	 0.6198812595453062 
+F1 score:	 0.6163171896150399 
+Accuracy:	 0.6894390430412934 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6194657537617427 
+Precision:	 0.6139322033919835 
+F1 score:	 0.614734213511633 
+Accuracy:	 0.6906953244483286 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6097494360564113 
+Precision:	 0.6228218216844524 
+F1 score:	 0.6135750941868044 
+Accuracy:	 0.6859433034738912 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.543532634055159 
+Precision:	 0.5455805315272433 
+F1 score:	 0.5420782957475232 
+Accuracy:	 0.6875409656980555 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5946998556385166 
+Precision:	 0.6234920831194228 
+F1 score:	 0.6050872455483303 
+Accuracy:	 0.6887562814070352 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.5963855826660331 
+Precision:	 0.6206144831484065 
+F1 score:	 0.6057492252060922 
+Accuracy:	 0.6904904959580511 
+
+#############################################################################################
+#####Task Combination	ArgQuality/ArgRecognition_GM
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.24919641346641855 
+Precision:	 0.19454400637196337 
+F1 score:	 0.21846114617198956 
+Accuracy:	 0.6632124352331606 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.253544239553375 
+Precision:	 0.19776981282357625 
+F1 score:	 0.22216484987569327 
+Accuracy:	 0.6658031088082902 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.29015395026222296 
+Precision:	 0.20983009306792963 
+F1 score:	 0.2359695541862994 
+Accuracy:	 0.6450777202072538 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.293266790729149 
+Precision:	 0.2122826639552618 
+F1 score:	 0.23955291858489866 
+Accuracy:	 0.655440414507772 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2928100152258501 
+Precision:	 0.2134778911564626 
+F1 score:	 0.241763506625892 
+Accuracy:	 0.6658031088082902 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2821011673151751 
+Precision:	 0.20939530234882558 
+F1 score:	 0.2375182560718343 
+Accuracy:	 0.6658031088082902 
+
+#############################################################################################
+#####Task Combination	ArgQuality/ACI_Stab
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.627028151413554 
+Precision:	 0.6417471154205602 
+F1 score:	 0.6335374791845417 
+Accuracy:	 0.7433913162580469 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.5655468717432058 
+Precision:	 0.5533345154502691 
+F1 score:	 0.5589809834114323 
+Accuracy:	 0.7465073277633201 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6567706929978208 
+Precision:	 0.6407889615058597 
+F1 score:	 0.6477298689406286 
+Accuracy:	 0.7522599643884399 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6592046077272325 
+Precision:	 0.6335736439008376 
+F1 score:	 0.6449033589065383 
+Accuracy:	 0.7457882481851801 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.596457648289174 
+Precision:	 0.6314654717664815 
+F1 score:	 0.6039636923004231 
+Accuracy:	 0.7464388439939734 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.563582337351936 
+Precision:	 0.5688673334877835 
+F1 score:	 0.5654652969148557 
+Accuracy:	 0.7540405423914532 
+
+#############################################################################################
+#####Task Combination	ArgQuality/ArgZoningI
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.14285714285714285 
+Precision:	 0.09339749152007573 
+F1 score:	 0.11295015502027188 
+Accuracy:	 0.6537824406405301 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.17665345279849096 
+Precision:	 0.15568679710145564 
+F1 score:	 0.16351559844146335 
+Accuracy:	 0.6662065157371618 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.250451790903337 
+Precision:	 0.22409699592171445 
+F1 score:	 0.2327121626535949 
+Accuracy:	 0.6747653230259525 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.43607614179056575 
+Precision:	 0.5109810419322233 
+F1 score:	 0.4541137554613143 
+Accuracy:	 0.6813914964108228 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2583215752387465 
+Precision:	 0.4466599894580075 
+F1 score:	 0.24208370905515034 
+Accuracy:	 0.6789066813914965 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.4371203910133773 
+Precision:	 0.46867172780533234 
+F1 score:	 0.4400710335014587 
+Accuracy:	 0.6667586968525676 
+
+#############################################################################################
+#####Task Combination	ArgQuality/InsufficientArgSupport
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8509453781512605 
+Precision:	 0.8227083937023085 
+F1 score:	 0.8301985762457849 
+Accuracy:	 0.8398058252427184 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.5 
+Precision:	 0.3300970873786408 
+F1 score:	 0.39766081871345027 
+Accuracy:	 0.6601941747572816 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8372899159663866 
+Precision:	 0.825 
+F1 score:	 0.83026058296426 
+Accuracy:	 0.8446601941747572 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8420168067226891 
+Precision:	 0.871689497716895 
+F1 score:	 0.8539007092198582 
+Accuracy:	 0.8737864077669902 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8232142857142857 
+Precision:	 0.8210224308815859 
+F1 score:	 0.8220931145481668 
+Accuracy:	 0.8398058252427184 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8526260504201681 
+Precision:	 0.8726273726273726 
+F1 score:	 0.8612121702104725 
+Accuracy:	 0.8786407766990292 
+
+#############################################################################################
+#####Task Combination	ArgQuality/ArgRecognition_GM_UGIP
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.19942112879884227 
+Precision:	 0.13643564356435645 
+F1 score:	 0.16202233980011757 
+Accuracy:	 0.6801579466929911 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.15758877880440833 
+Precision:	 0.13926232436294356 
+F1 score:	 0.14669946357597488 
+Accuracy:	 0.4906219151036525 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.23727262607146832 
+Precision:	 0.20962800358778266 
+F1 score:	 0.21838687322558287 
+Accuracy:	 0.6771964461994077 
+
+#############################################################################################
+#####Task Combination	ArgQuality/ACI_Lauscher
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5520576618750216 
+Precision:	 0.5370623088515383 
+F1 score:	 0.5426405264495022 
+Accuracy:	 0.6891795936202753 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6241174953148637 
+Precision:	 0.6121503535552969 
+F1 score:	 0.615666561687939 
+Accuracy:	 0.681041074939917 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5380497336019872 
+Precision:	 0.5410187684562997 
+F1 score:	 0.5359928932820226 
+Accuracy:	 0.6859706139392615 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.5506421156700358 
+Precision:	 0.5373674624363595 
+F1 score:	 0.5410836666532481 
+Accuracy:	 0.6854244046318549 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5203842418669904 
+Precision:	 0.5464194824815691 
+F1 score:	 0.528744692077391 
+Accuracy:	 0.6857384749836137 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6149138625937388 
+Precision:	 0.6183191279990785 
+F1 score:	 0.6125751979263233 
+Accuracy:	 0.6894526982739786 
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport/ArgRecognition_GM
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.13316062176165805 
+F1 score:	 0.1598755832037325 
+Accuracy:	 0.6658031088082902 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2 
+Precision:	 0.13316062176165805 
+F1 score:	 0.1598755832037325 
+Accuracy:	 0.6658031088082902 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.13316062176165805 
+F1 score:	 0.1598755832037325 
+Accuracy:	 0.6658031088082902 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.22933513787853155 
+Precision:	 0.18910427807486632 
+F1 score:	 0.20420361247947455 
+Accuracy:	 0.6683937823834197 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.13316062176165805 
+F1 score:	 0.1598755832037325 
+Accuracy:	 0.6658031088082902 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2547792251734055 
+Precision:	 0.19591229375465008 
+F1 score:	 0.2207990564646911 
+Accuracy:	 0.6580310880829016 
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport/ACI_Stab
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.646078730216505 
+Precision:	 0.6239606103693937 
+F1 score:	 0.6333161645415536 
+Accuracy:	 0.7370565675934804 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6417107930991862 
+Precision:	 0.6298354079305529 
+F1 score:	 0.6347067851649405 
+Accuracy:	 0.7404465141761403 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5281108388547462 
+Precision:	 0.5413387334582513 
+F1 score:	 0.5318460412282195 
+Accuracy:	 0.7249349404191207 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6590200120955735 
+Precision:	 0.6466662219053714 
+F1 score:	 0.6519955798964407 
+Accuracy:	 0.7403780304067936 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.613683609628213 
+Precision:	 0.6016081932959988 
+F1 score:	 0.6063117952920393 
+Accuracy:	 0.7303109163128338 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6162973052978377 
+Precision:	 0.6293170375328616 
+F1 score:	 0.6222232190470426 
+Accuracy:	 0.725893713189974 
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport/ArgZoningI
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.17180886925638836 
+Precision:	 0.15821085787715375 
+F1 score:	 0.15960713938905954 
+Accuracy:	 0.6678630590833794 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.17260704338471514 
+Precision:	 0.16190281830321965 
+F1 score:	 0.16095251927969753 
+Accuracy:	 0.6700717835450027 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.31025033273902736 
+Precision:	 0.3287078214773599 
+F1 score:	 0.30908241266313485 
+Accuracy:	 0.6794588625069022 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.3999041619003871 
+Precision:	 0.4438308992565771 
+F1 score:	 0.4019458533012607 
+Accuracy:	 0.6675869685256764 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.3557419448308717 
+Precision:	 0.413502110096213 
+F1 score:	 0.35355070956359885 
+Accuracy:	 0.6877415792379901 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.41385779041536275 
+Precision:	 0.45531502745996877 
+F1 score:	 0.4252131118031393 
+Accuracy:	 0.6736609607951408 
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport/ArgQuality
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8825056016034005 
+Precision:	 0.884099579903978 
+F1 score:	 0.8826013902730575 
+Accuracy:	 0.8827611395178963 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8951869166608414 
+Precision:	 0.8951668843697709 
+F1 score:	 0.8951739148588709 
+Accuracy:	 0.8951789627465303 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8963179096027412 
+Precision:	 0.8962908419572658 
+F1 score:	 0.8962737675046488 
+Accuracy:	 0.8962746530314097 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.896699176154752 
+Precision:	 0.8966858405190814 
+F1 score:	 0.8966397590385553 
+Accuracy:	 0.8966398831263697 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8867251471037882 
+Precision:	 0.8868349626498211 
+F1 score:	 0.8867568577222756 
+Accuracy:	 0.8867786705624543 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8896920358780096 
+Precision:	 0.8896920358780096 
+F1 score:	 0.8896920358780096 
+Accuracy:	 0.8897005113221329 
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport/ArgRecognition_GM_UGIP
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.20094400534342646 
+Precision:	 0.16437482478273058 
+F1 score:	 0.17077931099220875 
+Accuracy:	 0.6683119447186574 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.20229989981075364 
+Precision:	 0.18646353646353647 
+F1 score:	 0.16991642526554124 
+Accuracy:	 0.6771964461994077 
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport/ACI_Lauscher
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6079534865537697 
+Precision:	 0.6132163441250648 
+F1 score:	 0.6085451679149024 
+Accuracy:	 0.6868035831330566 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6056162460085466 
+Precision:	 0.6110710403516542 
+F1 score:	 0.6048186314729326 
+Accuracy:	 0.6782144417740879 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6154530472004666 
+Precision:	 0.6252352087879142 
+F1 score:	 0.617688293563862 
+Accuracy:	 0.6910230500327725 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6199829192458921 
+Precision:	 0.6153001068618745 
+F1 score:	 0.614283575400969 
+Accuracy:	 0.6848372296263928 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6005421190319999 
+Precision:	 0.6184984519105167 
+F1 score:	 0.6052237506652943 
+Accuracy:	 0.6789108586410313 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.61376827776855 
+Precision:	 0.6151218000672686 
+F1 score:	 0.6112921417843414 
+Accuracy:	 0.6833897749617653 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP/ArgRecognition_GM
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP/ACI_Stab
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6560716751745661 
+Precision:	 0.6383548652987846 
+F1 score:	 0.6462911636447035 
+Accuracy:	 0.7427407204492535 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6408882611425025 
+Precision:	 0.6442700440258655 
+F1 score:	 0.6415796134442395 
+Accuracy:	 0.739179564443227 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6497366933499925 
+Precision:	 0.6466992743356992 
+F1 score:	 0.6480636244459435 
+Accuracy:	 0.7469867141487467 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6533935879165174 
+Precision:	 0.6516251541200814 
+F1 score:	 0.6520755059519618 
+Accuracy:	 0.7532187371592932 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6416868771223633 
+Precision:	 0.6395801935523548 
+F1 score:	 0.6398565867884062 
+Accuracy:	 0.7438707026434735 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6518877409364194 
+Precision:	 0.6504651012877835 
+F1 score:	 0.6506969924086136 
+Accuracy:	 0.75010272565402 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP/ArgZoningI
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.14285714285714285 
+Precision:	 0.09339749152007573 
+F1 score:	 0.11295015502027188 
+Accuracy:	 0.6537824406405301 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2698154930085807 
+Precision:	 0.2043683655066493 
+F1 score:	 0.22263121378080095 
+Accuracy:	 0.6639977912755384 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.42207555524186563 
+Precision:	 0.5171239157926839 
+F1 score:	 0.45399147480583363 
+Accuracy:	 0.6929872998343457 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.4364770961220454 
+Precision:	 0.47366928048785323 
+F1 score:	 0.4452093498703049 
+Accuracy:	 0.6808393152954169 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.4031760594098229 
+Precision:	 0.505389978522833 
+F1 score:	 0.41378117975476486 
+Accuracy:	 0.6996134732192159 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.46033105390805124 
+Precision:	 0.5278544832415545 
+F1 score:	 0.48479246333991954 
+Accuracy:	 0.6816675869685257 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP/ArgQuality
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8999704911961844 
+Precision:	 0.8999431740873838 
+F1 score:	 0.8999260996347668 
+Accuracy:	 0.8999269539810081 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8966543526552855 
+Precision:	 0.8966291667200246 
+F1 score:	 0.8966358983799461 
+Accuracy:	 0.8966398831263697 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9101080726588926 
+Precision:	 0.9102026329203106 
+F1 score:	 0.9101378615108998 
+Accuracy:	 0.9101533966398831 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9043151689659166 
+Precision:	 0.904297909873395 
+F1 score:	 0.9043046090815614 
+Accuracy:	 0.9043097151205259 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9098164531058149 
+Precision:	 0.9097851837623255 
+F1 score:	 0.9097861328157567 
+Accuracy:	 0.9097881665449233 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9094287831967373 
+Precision:	 0.9094113058182154 
+F1 score:	 0.9094181032527757 
+Accuracy:	 0.9094229364499635 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP/InsufficientArgSupport
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8415966386554622 
+Precision:	 0.851948051948052 
+F1 score:	 0.8463341858482524 
+Accuracy:	 0.8640776699029126 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.5 
+Precision:	 0.3300970873786408 
+F1 score:	 0.39766081871345027 
+Accuracy:	 0.6601941747572816 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5 
+Precision:	 0.3300970873786408 
+F1 score:	 0.39766081871345027 
+Accuracy:	 0.6601941747572816 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8456932773109244 
+Precision:	 0.8794534763057765 
+F1 score:	 0.8589311638863779 
+Accuracy:	 0.8786407766990292 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8597689075630253 
+Precision:	 0.8768705985915493 
+F1 score:	 0.8672822935681306 
+Accuracy:	 0.883495145631068 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8634453781512605 
+Precision:	 0.884060384060384 
+F1 score:	 0.8723151965936347 
+Accuracy:	 0.8883495145631068 
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP/ACI_Lauscher
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6222201223115146 
+Precision:	 0.6227127467829352 
+F1 score:	 0.6203402111897448 
+Accuracy:	 0.6911732575923094 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6242715843739459 
+Precision:	 0.6142182011927247 
+F1 score:	 0.6171166069845181 
+Accuracy:	 0.6928665064452698 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6173446258996671 
+Precision:	 0.62771660154926 
+F1 score:	 0.6201429095788825 
+Accuracy:	 0.6923749180686039 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6297487208081106 
+Precision:	 0.6239240743677861 
+F1 score:	 0.6240514247452331 
+Accuracy:	 0.6930303692374918 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5332177083150333 
+Precision:	 0.5399975215045743 
+F1 score:	 0.5338601240493746 
+Accuracy:	 0.6876911732575923 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6229682747725006 
+Precision:	 0.6172696090550082 
+F1 score:	 0.6172707467254842 
+Accuracy:	 0.6916785012016605 
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher/ArgRecognition_GM
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2479614278463881 
+Precision:	 0.19634091923248548 
+F1 score:	 0.219062818336163 
+Accuracy:	 0.6709844559585493 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.25834884114363055 
+Precision:	 0.19836351441985245 
+F1 score:	 0.22385392385392383 
+Accuracy:	 0.6580310880829016 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.25912705126036206 
+Precision:	 0.19920433996383363 
+F1 score:	 0.224763796112415 
+Accuracy:	 0.6606217616580311 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.29884960243613606 
+Precision:	 0.2142724209850794 
+F1 score:	 0.24023150762281195 
+Accuracy:	 0.6502590673575129 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2479614278463881 
+Precision:	 0.19634091923248548 
+F1 score:	 0.219062818336163 
+Accuracy:	 0.6709844559585493 
+
+Target model :	ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2884621891388936 
+Precision:	 0.21139446554530655 
+F1 score:	 0.23953512450173423 
+Accuracy:	 0.6632124352331606 
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher/ACI_Stab
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6803653754400234 
+Precision:	 0.6559278957512368 
+F1 score:	 0.6671894325230784 
+Accuracy:	 0.7620189015203397 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6717573783467702 
+Precision:	 0.6516631173991223 
+F1 score:	 0.6600775071668196 
+Accuracy:	 0.7505478701547733 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6776503149242 
+Precision:	 0.6551281693018971 
+F1 score:	 0.6653568260633044 
+Accuracy:	 0.7548965895082865 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6745945665458517 
+Precision:	 0.6600251696718437 
+F1 score:	 0.6668235180437218 
+Accuracy:	 0.7600328722092864 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.6538467893099444 
+Precision:	 0.6643275296815357 
+F1 score:	 0.6586325294628222 
+Accuracy:	 0.7600328722092864 
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.6681296093348862 
+Precision:	 0.6535276998847586 
+F1 score:	 0.6599915648581999 
+Accuracy:	 0.74958909738392 
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher/ArgZoningI
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.4073562354488777 
+Precision:	 0.5015503713599082 
+F1 score:	 0.439626004287447 
+Accuracy:	 0.6836002208724462 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.4327394258059986 
+Precision:	 0.47172836897660153 
+F1 score:	 0.4449721394491118 
+Accuracy:	 0.6626173384870238 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.41097066703113316 
+Precision:	 0.5073887998328487 
+F1 score:	 0.4397276547869052 
+Accuracy:	 0.6913307564881281 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.29970440150027056 
+Precision:	 0.3584704788932328 
+F1 score:	 0.27993968878209713 
+Accuracy:	 0.6656543346217559 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.3921776742379971 
+Precision:	 0.5004639496695817 
+F1 score:	 0.41023073256230624 
+Accuracy:	 0.6750414135836554 
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.4674332460038365 
+Precision:	 0.4884072679836632 
+F1 score:	 0.4709638324553769 
+Accuracy:	 0.6731087796797349 
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher/ArgQuality
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9006369739442065 
+Precision:	 0.9006609193102105 
+F1 score:	 0.9006470238238176 
+Accuracy:	 0.9006574141709277 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9065131212790491 
+Precision:	 0.9064896951910892 
+F1 score:	 0.9064970545547681 
+Accuracy:	 0.9065010956902849 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.9006625873724732 
+Precision:	 0.9006454841985234 
+F1 score:	 0.9006521132449798 
+Accuracy:	 0.9006574141709277 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9020723931533172 
+Precision:	 0.9021651005959164 
+F1 score:	 0.9021014101013055 
+Accuracy:	 0.902118334550767 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8966735627264855 
+Precision:	 0.8966432961966961 
+F1 score:	 0.8966382148097192 
+Accuracy:	 0.8966398831263697 
+
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.9104765324967703 
+Precision:	 0.9105608785503236 
+F1 score:	 0.9105040025114006 
+Accuracy:	 0.910518626734843 
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher/InsufficientArgSupport
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.5 
+Precision:	 0.3300970873786408 
+F1 score:	 0.39766081871345027 
+Accuracy:	 0.6601941747572816 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.5 
+Precision:	 0.3300970873786408 
+F1 score:	 0.39766081871345027 
+Accuracy:	 0.6601941747572816 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8336134453781512 
+Precision:	 0.8197422732306454 
+F1 score:	 0.82549095109742 
+Accuracy:	 0.8398058252427184 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8736344537815126 
+Precision:	 0.8686774461028193 
+F1 score:	 0.8710485133020345 
+Accuracy:	 0.883495145631068 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.8563025210084034 
+Precision:	 0.8799283154121864 
+F1 score:	 0.8662337662337662 
+Accuracy:	 0.883495145631068 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.8595588235294118 
+Precision:	 0.8675507355309782 
+F1 score:	 0.8633045786330458 
+Accuracy:	 0.8786407766990292 
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher/ArgRecognition_GM_UGIP
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.1971056439942113 
+Precision:	 0.13592814371257483 
+F1 score:	 0.16089781453041938 
+Accuracy:	 0.6722606120434353 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0.2455126349771791 
+Precision:	 0.2010517648521004 
+F1 score:	 0.2209867579435052 
+Accuracy:	 0.6584402764067128 
+
+Target model :	ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0.2 
+Precision:	 0.136426456071076 
+F1 score:	 0.16220657276995307 
+Accuracy:	 0.6821322803553801 
+
+#############################################################################################

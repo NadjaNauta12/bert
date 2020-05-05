@@ -1,0 +1,1520 @@
+#####Task Combination	ACI_Stab>>InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.85542166
+eval_loss = 0.32152548
+global_step = 69
+loss = 0.304898
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.8072289
+eval_loss = 0.3359284
+global_step = 92
+loss = 0.33562684
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.8433735
+eval_loss = 0.40470338
+global_step = 69
+loss = 0.38533118
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.8433735
+eval_loss = 0.5709555
+global_step = 92
+loss = 0.5441025
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.8313253
+eval_loss = 0.32222897
+global_step = 69
+loss = 0.31411922
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.8433735
+eval_loss = 0.39767066
+global_step = 92
+loss = 0.38185224
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport>>ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.4874739
+eval_loss = 0.7320129
+global_step = 0
+loss = 0.73150027
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.8763048
+eval_loss = 0.42915356
+global_step = 558
+loss = 0.4283064
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.8961378
+eval_loss = 0.4292543
+global_step = 419
+loss = 0.42836675
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.89665973
+eval_loss = 0.41944495
+global_step = 558
+loss = 0.41857493
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.861691
+eval_loss = 0.3432006
+global_step = 419
+loss = 0.3441711
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.8836117
+eval_loss = 0.4099513
+global_step = 558
+loss = 0.41018727
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport>>ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.6476684
+eval_loss = 1.1041753
+global_step = 84
+loss = 1.1113985
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.61398965
+eval_loss = 1.1914928
+global_step = 112
+loss = 1.1991286
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.61139894
+eval_loss = 1.1864198
+global_step = 84
+loss = 1.1942503
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.6787565
+eval_loss = 0.9095502
+global_step = 112
+loss = 0.91838986
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.6683938
+eval_loss = 1.0602136
+global_step = 84
+loss = 1.0497352
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.68911916
+eval_loss = 0.89507115
+global_step = 112
+loss = 0.8909551
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM>>ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.144536
+eval_loss = 0.14135166
+global_step = 356
+loss = 0.7652996
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.13831827
+eval_loss = 0.16936415
+global_step = 475
+loss = 0.91538143
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.14143188
+eval_loss = 0.13053259
+global_step = 356
+loss = 0.7086179
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.14168344
+eval_loss = 0.15914565
+global_step = 475
+loss = 0.8615447
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.13977066
+eval_loss = 0.12710044
+global_step = 356
+loss = 0.68889165
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.13909192
+eval_loss = 0.14532924
+global_step = 475
+loss = 0.78799105
+
+#############################################################################################
+#####Task Combination	ArgZoningI>>InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.8674699
+eval_loss = 0.26371324
+global_step = 69
+loss = 0.25883412
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.92771083
+eval_loss = 0.21580204
+global_step = 92
+loss = 0.2055603
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.91566265
+eval_loss = 0.20192638
+global_step = 69
+loss = 0.20200954
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.90361446
+eval_loss = 0.31931758
+global_step = 92
+loss = 0.30334726
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.85542166
+eval_loss = 0.4466282
+global_step = 69
+loss = 0.42802307
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.85542166
+eval_loss = 0.3215105
+global_step = 92
+loss = 0.31473473
+
+#############################################################################################
+#####Task Combination	ACI_Stab>>ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.69596446
+eval_loss = 1.0291557
+global_step = 554
+loss = 1.0282322
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.69596446
+eval_loss = 1.030836
+global_step = 739
+loss = 1.029891
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.7137483
+eval_loss = 0.8766096
+global_step = 554
+loss = 0.8763287
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.68091655
+eval_loss = 0.9514308
+global_step = 739
+loss = 0.9517418
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.7144323
+eval_loss = 0.91825545
+global_step = 554
+loss = 0.9176151
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.7000684
+eval_loss = 0.9068355
+global_step = 739
+loss = 0.9062294
+
+#############################################################################################
+#####Task Combination	ArgQuality>>ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.6450777
+eval_loss = 0.9728056
+global_step = 84
+loss = 0.97711897
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.6476684
+eval_loss = 0.9435808
+global_step = 112
+loss = 0.9389468
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.66062176
+eval_loss = 0.91636
+global_step = 84
+loss = 0.9057037
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.7098446
+eval_loss = 0.794896
+global_step = 112
+loss = 0.81608856
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.68134713
+eval_loss = 0.84904987
+global_step = 84
+loss = 0.8383103
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.7331606
+eval_loss = 0.81345713
+global_step = 112
+loss = 0.8198566
+
+#############################################################################################
+#####Task Combination	ArgZoningI>>ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.5832285
+eval_loss = 0.17824219
+global_step = 422
+loss = 0.831351
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.59470063
+eval_loss = 0.19678351
+global_step = 563
+loss = 0.91943157
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.64042485
+eval_loss = 0.16724661
+global_step = 422
+loss = 0.7793572
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.58837134
+eval_loss = 0.18482116
+global_step = 563
+loss = 0.8660053
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.60140526
+eval_loss = 0.16609073
+global_step = 422
+loss = 0.7748465
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.6581727
+eval_loss = 0.17897832
+global_step = 563
+loss = 0.8369054
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM>>ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.69596446
+eval_loss = 1.0291164
+global_step = 554
+loss = 1.028195
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.69596446
+eval_loss = 1.0291992
+global_step = 739
+loss = 1.0282549
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.7062243
+eval_loss = 0.90793675
+global_step = 554
+loss = 0.90741223
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.6863885
+eval_loss = 0.9816986
+global_step = 739
+loss = 0.9808935
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.7140903
+eval_loss = 0.89210457
+global_step = 554
+loss = 0.8913189
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.6884405
+eval_loss = 0.94340754
+global_step = 739
+loss = 0.94273144
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport>>ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.13667603
+eval_loss = 0.15184523
+global_step = 356
+loss = 0.82149506
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.13699403
+eval_loss = 0.16764583
+global_step = 475
+loss = 0.9083809
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.13719338
+eval_loss = 0.13591667
+global_step = 356
+loss = 0.73721766
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.137051
+eval_loss = 0.15213299
+global_step = 475
+loss = 0.8244443
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.13983236
+eval_loss = 0.12615022
+global_step = 356
+loss = 0.6828858
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.13655737
+eval_loss = 0.14547472
+global_step = 475
+loss = 0.79038537
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher>>InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.8072289
+eval_loss = 0.4626786
+global_step = 69
+loss = 0.46533462
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.8674699
+eval_loss = 0.39044806
+global_step = 92
+loss = 0.37136805
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.8795181
+eval_loss = 0.259591
+global_step = 69
+loss = 0.24787249
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.85542166
+eval_loss = 0.34635228
+global_step = 92
+loss = 0.3357069
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.8915663
+eval_loss = 0.28835356
+global_step = 69
+loss = 0.2847369
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.8795181
+eval_loss = 0.2961563
+global_step = 92
+loss = 0.2897282
+
+#############################################################################################
+#####Task Combination	ArgZoningI>>ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.7046632
+eval_loss = 0.86829364
+global_step = 84
+loss = 0.8786186
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.70207256
+eval_loss = 0.83848476
+global_step = 112
+loss = 0.8430403
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.6580311
+eval_loss = 0.92368406
+global_step = 84
+loss = 0.91470927
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.71761656
+eval_loss = 0.73325044
+global_step = 112
+loss = 0.72242963
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.66580313
+eval_loss = 0.9372235
+global_step = 84
+loss = 0.92758685
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.71243525
+eval_loss = 0.77518386
+global_step = 112
+loss = 0.76402485
+
+#############################################################################################
+#####Task Combination	ArgZoningI>>ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.9112735
+eval_loss = 0.3300502
+global_step = 419
+loss = 0.3297039
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.9091858
+eval_loss = 0.37775475
+global_step = 558
+loss = 0.37712523
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.9070981
+eval_loss = 0.30188885
+global_step = 419
+loss = 0.30188698
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.9112735
+eval_loss = 0.3551501
+global_step = 558
+loss = 0.3544428
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.9112735
+eval_loss = 0.27588183
+global_step = 419
+loss = 0.27552718
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.91492695
+eval_loss = 0.33885312
+global_step = 558
+loss = 0.3382082
+
+#############################################################################################
+#####Task Combination	ArgZoningI>>ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.71481484
+eval_loss = 0.8203267
+global_step = 58
+loss = 0.8205028
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.7185185
+eval_loss = 0.82303476
+global_step = 78
+loss = 0.8235259
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.73703706
+eval_loss = 0.8153027
+global_step = 58
+loss = 0.8154434
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.7185185
+eval_loss = 0.8194246
+global_step = 78
+loss = 0.81968886
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.7222222
+eval_loss = 0.81220126
+global_step = 58
+loss = 0.81280655
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.7185185
+eval_loss = 0.82224077
+global_step = 78
+loss = 0.8226056
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM>>InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.8433735
+eval_loss = 0.31954736
+global_step = 69
+loss = 0.319474
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.6626506
+eval_loss = 0.6417386
+global_step = 92
+loss = 0.62591416
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.8433735
+eval_loss = 0.35379645
+global_step = 69
+loss = 0.33488214
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.85542166
+eval_loss = 0.3785674
+global_step = 92
+loss = 0.37202084
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.8313253
+eval_loss = 0.3379711
+global_step = 69
+loss = 0.3378594
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.85542166
+eval_loss = 0.3437888
+global_step = 92
+loss = 0.32560676
+
+#############################################################################################
+#####Task Combination	ArgQuality>>ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.5314251
+eval_loss = 0.17243616
+global_step = 422
+loss = 0.80338234
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.5941896
+eval_loss = 0.19672105
+global_step = 563
+loss = 0.9203836
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.5803265
+eval_loss = 0.16539629
+global_step = 422
+loss = 0.7732615
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.631651
+eval_loss = 0.18898198
+global_step = 563
+loss = 0.8807024
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.57736737
+eval_loss = 0.163833
+global_step = 422
+loss = 0.7646902
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.6645807
+eval_loss = 0.17030132
+global_step = 563
+loss = 0.79537016
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport>>ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.6684619
+eval_loss = 0.17285472
+global_step = 422
+loss = 0.80615
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.59361064
+eval_loss = 0.19487524
+global_step = 563
+loss = 0.90692234
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.75993896
+eval_loss = 0.15948546
+global_step = 422
+loss = 0.7430559
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.6835902
+eval_loss = 0.17867872
+global_step = 563
+loss = 0.83538014
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.84772414
+eval_loss = 0.16524199
+global_step = 422
+loss = 0.76591384
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.6800913
+eval_loss = 0.16510245
+global_step = 563
+loss = 0.7692741
+
+#############################################################################################
+#####Task Combination	ArgZoningI>>ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.14455023
+eval_loss = 0.13961655
+global_step = 356
+loss = 0.7571124
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.14300293
+eval_loss = 0.16467817
+global_step = 475
+loss = 0.8900551
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.14328296
+eval_loss = 0.1322024
+global_step = 356
+loss = 0.7164154
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.13917261
+eval_loss = 0.15181267
+global_step = 475
+loss = 0.82100314
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.13968523
+eval_loss = 0.12833881
+global_step = 356
+loss = 0.6964105
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.138024
+eval_loss = 0.14370824
+global_step = 475
+loss = 0.7790877
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM>>ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.8961378
+eval_loss = 0.34025073
+global_step = 419
+loss = 0.33958742
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.908142
+eval_loss = 0.38236707
+global_step = 558
+loss = 0.38157883
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.9102296
+eval_loss = 0.34945914
+global_step = 419
+loss = 0.34879333
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.9065762
+eval_loss = 0.38727275
+global_step = 558
+loss = 0.38921082
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.90344465
+eval_loss = 0.32192025
+global_step = 419
+loss = 0.32320425
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.9008351
+eval_loss = 0.38499516
+global_step = 558
+loss = 0.38426197
+
+#############################################################################################
+#####Task Combination	ArgQuality>>ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.7037037
+eval_loss = 0.85279685
+global_step = 58
+loss = 0.8533471
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.7185185
+eval_loss = 0.8274913
+global_step = 78
+loss = 0.8280871
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.7185185
+eval_loss = 0.8267578
+global_step = 58
+loss = 0.82702655
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.71481484
+eval_loss = 0.8489043
+global_step = 78
+loss = 0.8495376
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.72962964
+eval_loss = 0.82586914
+global_step = 58
+loss = 0.8261153
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.72962964
+eval_loss = 0.8098231
+global_step = 78
+loss = 0.8103638
+
+#############################################################################################
+#####Task Combination	ArgQuality>>InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.6626506
+eval_loss = 0.63786983
+global_step = 69
+loss = 0.6242045
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.79518074
+eval_loss = 0.40511608
+global_step = 92
+loss = 0.42049876
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.79518074
+eval_loss = 0.476166
+global_step = 69
+loss = 0.47993717
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.78313255
+eval_loss = 0.5253959
+global_step = 92
+loss = 0.50529766
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.8313253
+eval_loss = 0.3221023
+global_step = 69
+loss = 0.31903946
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.8674699
+eval_loss = 0.2972331
+global_step = 92
+loss = 0.30381653
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP>>ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.6980164
+eval_loss = 1.0105425
+global_step = 554
+loss = 1.0096179
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.69596446
+eval_loss = 1.0279312
+global_step = 739
+loss = 1.0270082
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.69596446
+eval_loss = 1.0303884
+global_step = 554
+loss = 1.0294591
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.69357044
+eval_loss = 0.9133819
+global_step = 739
+loss = 0.9130163
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.69254446
+eval_loss = 0.92334443
+global_step = 554
+loss = 0.92260206
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.7000684
+eval_loss = 0.89594793
+global_step = 739
+loss = 0.8952543
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP>>InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.8674699
+eval_loss = 0.29468414
+global_step = 69
+loss = 0.3047117
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.85542166
+eval_loss = 0.6937428
+global_step = 92
+loss = 0.66150403
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.8795181
+eval_loss = 0.28070617
+global_step = 69
+loss = 0.2672439
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.8313253
+eval_loss = 0.48045415
+global_step = 92
+loss = 0.48335525
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.85542166
+eval_loss = 0.36159575
+global_step = 69
+loss = 0.34237444
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.8674699
+eval_loss = 0.43676937
+global_step = 92
+loss = 0.41228816
+
+#############################################################################################
+#####Task Combination	ACI_Stab>>ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.6851852
+eval_loss = 0.8618668
+global_step = 58
+loss = 0.86202973
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.73333335
+eval_loss = 0.8296894
+global_step = 78
+loss = 0.8307195
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.7111111
+eval_loss = 0.82183814
+global_step = 58
+loss = 0.8220343
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.73703706
+eval_loss = 0.76530105
+global_step = 78
+loss = 0.7669387
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.7222222
+eval_loss = 0.8206302
+global_step = 58
+loss = 0.8211971
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.7222222
+eval_loss = 0.8168162
+global_step = 78
+loss = 0.8168389
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP>>ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.9107516
+eval_loss = 0.3224889
+global_step = 419
+loss = 0.32325745
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.9107516
+eval_loss = 0.38553748
+global_step = 558
+loss = 0.38474074
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.91544884
+eval_loss = 0.29422596
+global_step = 419
+loss = 0.2936393
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.90605426
+eval_loss = 0.35154432
+global_step = 558
+loss = 0.35082275
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.9117954
+eval_loss = 0.28933552
+global_step = 419
+loss = 0.29017293
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.91753656
+eval_loss = 0.32889602
+global_step = 558
+loss = 0.3282211
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher>>ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.8742171
+eval_loss = 0.33891013
+global_step = 419
+loss = 0.3391089
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.90762
+eval_loss = 0.37080294
+global_step = 558
+loss = 0.37235972
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.8950939
+eval_loss = 0.32754093
+global_step = 419
+loss = 0.32701635
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.90605426
+eval_loss = 0.37966466
+global_step = 558
+loss = 0.37899992
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.914405
+eval_loss = 0.29132614
+global_step = 419
+loss = 0.2919493
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.9097077
+eval_loss = 0.31881264
+global_step = 558
+loss = 0.31818727
+
+#############################################################################################
+#####Task Combination	ArgQuality>>ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.14137018
+eval_loss = 0.140937
+global_step = 356
+loss = 0.7649076
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.14102843
+eval_loss = 0.16705339
+global_step = 475
+loss = 0.9030914
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.13800502
+eval_loss = 0.13750432
+global_step = 356
+loss = 0.74592674
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.14399491
+eval_loss = 0.14652584
+global_step = 475
+loss = 0.79916745
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.1393245
+eval_loss = 0.12860002
+global_step = 356
+loss = 0.69867104
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.14053008
+eval_loss = 0.13808578
+global_step = 475
+loss = 0.75052404
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher>>ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.14098097
+eval_loss = 0.14352587
+global_step = 356
+loss = 0.7789621
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.14001273
+eval_loss = 0.1656625
+global_step = 475
+loss = 0.89950496
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.14078638
+eval_loss = 0.1381184
+global_step = 356
+loss = 0.74997956
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.13949062
+eval_loss = 0.15886892
+global_step = 475
+loss = 0.8619707
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.13957606
+eval_loss = 0.13255562
+global_step = 356
+loss = 0.71885914
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.13812841
+eval_loss = 0.14792675
+global_step = 475
+loss = 0.7986737
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP>>ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.57208157
+eval_loss = 0.17587195
+global_step = 422
+loss = 0.8211456
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.49578282
+eval_loss = 0.19944708
+global_step = 563
+loss = 0.9304809
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.5746476
+eval_loss = 0.16560756
+global_step = 422
+loss = 0.7732074
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.6388738
+eval_loss = 0.17946841
+global_step = 563
+loss = 0.83893657
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.712946
+eval_loss = 0.16425224
+global_step = 422
+loss = 0.7668987
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.65450954
+eval_loss = 0.17738274
+global_step = 563
+loss = 0.82946444
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher>>ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.7072539
+eval_loss = 0.87556607
+global_step = 84
+loss = 0.8640358
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.6787565
+eval_loss = 0.89045274
+global_step = 112
+loss = 0.87848413
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.68911916
+eval_loss = 0.87090695
+global_step = 84
+loss = 0.874131
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.71243525
+eval_loss = 0.8348406
+global_step = 112
+loss = 0.834476
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.6917098
+eval_loss = 0.90832573
+global_step = 84
+loss = 0.909592
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.7046632
+eval_loss = 0.8389595
+global_step = 112
+loss = 0.8418084
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher>>ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.7185185
+eval_loss = 0.8191409
+global_step = 58
+loss = 0.8196835
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.7185185
+eval_loss = 0.81740516
+global_step = 78
+loss = 0.81747687
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.7222222
+eval_loss = 0.8312231
+global_step = 58
+loss = 0.831856
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.7259259
+eval_loss = 0.8247333
+global_step = 78
+loss = 0.8250462
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.7185185
+eval_loss = 0.81672615
+global_step = 58
+loss = 0.81694734
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.7259259
+eval_loss = 0.8336374
+global_step = 78
+loss = 0.8347508
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM>>ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.6217871
+eval_loss = 0.17341498
+global_step = 422
+loss = 0.8063613
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.6244246
+eval_loss = 0.19479628
+global_step = 563
+loss = 0.91536075
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.6114907
+eval_loss = 0.16704531
+global_step = 422
+loss = 0.7815423
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.6112799
+eval_loss = 0.18970525
+global_step = 563
+loss = 0.888531
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.6612141
+eval_loss = 0.16197126
+global_step = 422
+loss = 0.7544532
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.61983216
+eval_loss = 0.17217748
+global_step = 563
+loss = 0.8049228
+
+#############################################################################################
+#####Task Combination	ArgQuality>>ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.7127223
+eval_loss = 0.9345378
+global_step = 554
+loss = 0.9343812
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.69596446
+eval_loss = 1.0317761
+global_step = 739
+loss = 1.0308491
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.70348835
+eval_loss = 0.905363
+global_step = 554
+loss = 0.905091
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.69596446
+eval_loss = 1.0320566
+global_step = 739
+loss = 1.0311245
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.71785223
+eval_loss = 0.9392338
+global_step = 554
+loss = 0.93919224
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.67305064
+eval_loss = 0.96169394
+global_step = 739
+loss = 0.9607701
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport>>ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.69596446
+eval_loss = 1.0281882
+global_step = 554
+loss = 1.027255
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.69596446
+eval_loss = 1.0306612
+global_step = 739
+loss = 1.0297332
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.7226402
+eval_loss = 0.8831646
+global_step = 554
+loss = 0.88286287
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.70348835
+eval_loss = 0.9148109
+global_step = 739
+loss = 0.91516817
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.6949384
+eval_loss = 0.90351224
+global_step = 554
+loss = 0.9034595
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.6867305
+eval_loss = 0.92157507
+global_step = 739
+loss = 0.92089427
+
+#############################################################################################
+#####Task Combination	ArgRecognition_GM_UGIP>>ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.14171192
+eval_loss = 0.14203362
+global_step = 356
+loss = 0.77063465
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.13823758
+eval_loss = 0.16623396
+global_step = 475
+loss = 0.90031886
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.14021681
+eval_loss = 0.13401139
+global_step = 356
+loss = 0.7252094
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.13934822
+eval_loss = 0.15515223
+global_step = 475
+loss = 0.8409286
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.13949537
+eval_loss = 0.12875906
+global_step = 356
+loss = 0.6984727
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.13927229
+eval_loss = 0.14217354
+global_step = 475
+loss = 0.77151316
+
+#############################################################################################
+#####Task Combination	InsufficientArgSupport>>ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.7185185
+eval_loss = 0.8230594
+global_step = 58
+loss = 0.8238115
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.7185185
+eval_loss = 0.8276811
+global_step = 78
+loss = 0.8283173
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.7185185
+eval_loss = 0.83466154
+global_step = 58
+loss = 0.83524036
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.7111111
+eval_loss = 0.9743326
+global_step = 78
+loss = 0.97513056
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.71481484
+eval_loss = 0.8247199
+global_step = 58
+loss = 0.8246689
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.71481484
+eval_loss = 0.9096277
+global_step = 78
+loss = 0.9090763
+
+#############################################################################################
+#####Task Combination	ACI_Lauscher>>ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.69596446
+eval_loss = 1.026166
+global_step = 554
+loss = 1.025254
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.69733244
+eval_loss = 0.98351616
+global_step = 739
+loss = 0.98259425
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.7144323
+eval_loss = 0.9070435
+global_step = 554
+loss = 0.9062309
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.69083446
+eval_loss = 0.972268
+global_step = 739
+loss = 0.9712842
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.7093023
+eval_loss = 0.90306956
+global_step = 554
+loss = 0.90224487
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.69220245
+eval_loss = 0.9687439
+global_step = 739
+loss = 0.96823686
+
+#############################################################################################
+#####Task Combination	ACI_Stab>>ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.58612335
+eval_loss = 0.1742286
+global_step = 422
+loss = 0.8149779
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.55590975
+eval_loss = 0.20237562
+global_step = 563
+loss = 0.9449806
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.5824601
+eval_loss = 0.17103706
+global_step = 422
+loss = 0.79909545
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.589951
+eval_loss = 0.19172478
+global_step = 563
+loss = 0.89642274
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.5736005
+eval_loss = 0.1650381
+global_step = 422
+loss = 0.7701945
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.55548805
+eval_loss = 0.18023022
+global_step = 563
+loss = 0.84308225
+
+#############################################################################################
+#####Task Combination	ACI_Stab>>ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.66580313
+eval_loss = 0.94741
+global_step = 84
+loss = 0.9398768
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.69948184
+eval_loss = 0.809152
+global_step = 112
+loss = 0.82175446
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.68911916
+eval_loss = 0.8995712
+global_step = 84
+loss = 0.8979625
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.71243525
+eval_loss = 0.86274785
+global_step = 112
+loss = 0.85426533
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.72279793
+eval_loss = 0.77297837
+global_step = 84
+loss = 0.76180595
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.6968912
+eval_loss = 0.8467729
+global_step = 112
+loss = 0.85503626
+
+#############################################################################################
+#####Task Combination	ACI_Stab>>ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.9070981
+eval_loss = 0.3542132
+global_step = 419
+loss = 0.35363033
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.9112735
+eval_loss = 0.3909788
+global_step = 558
+loss = 0.39228883
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.901357
+eval_loss = 0.35520703
+global_step = 419
+loss = 0.3544789
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.9164927
+eval_loss = 0.36182532
+global_step = 558
+loss = 0.36378658
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.9097077
+eval_loss = 0.304519
+global_step = 419
+loss = 0.3047453
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.91492695
+eval_loss = 0.3211967
+global_step = 558
+loss = 0.32257122
+
+#############################################################################################

@@ -1,0 +1,56 @@
+Target model:	ArgQuality
+Stilt:	ArgRecognition_GM_UGIP>>ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy:	0.91753656
+eval_loss:	0.32889602
+loss score:	0.3282211
+global_step:	558.0
+
+Target model:	ArgZoningI
+Stilt:	InsufficientArgSupport>>ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy:	0.7226402
+eval_loss:	0.8831646
+loss score:	0.88286287
+global_step:	554.0
+
+Target model:	InsufficientArgSupport
+Stilt:	ArgZoningI>>InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy:	0.92771083
+eval_loss:	0.21580204
+loss score:	0.2055603
+global_step:	92.0
+
+Target model:	ACI_Lauscher
+Stilt:	InsufficientArgSupport>>ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy:	0.84772414
+eval_loss:	0.16524199
+loss score:	0.76591384
+global_step:	422.0
+
+Target model:	ACI_Stab
+Stilt:	ArgZoningI>>ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy:	0.14455023
+eval_loss:	0.13961655
+loss score:	0.7571124
+global_step:	356.0
+
+Target model:	ArgRecognition_GM_UGIP
+Stilt:	ArgQuality>>ArgRecognition_GM_UGIP
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy:	0.7331606
+eval_loss:	0.81345713
+loss score:	0.8198566
+global_step:	112.0
+
+Target model:	ArgRecognition_GM
+Stilt:	ArgZoningI>>ArgRecognition_GM
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy:	0.73703706
+eval_loss:	0.8153027
+loss score:	0.8154434
+global_step:	58.0
+

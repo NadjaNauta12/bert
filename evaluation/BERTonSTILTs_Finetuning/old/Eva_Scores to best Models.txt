@@ -1,0 +1,42 @@
+Target model :	ArgQuality
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+Recall:	 0,9071796040270712 
+Precision:	 0,9072952278774583 
+F1 score:	 0,9072136834240581 
+Accuracy:	 0,9072315558802045 
+
+
+Target model :	ArgZoningI
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+Recall:	 0,3339227485258066 
+Precision:	 0,35168012404932397 
+F1 score:	 0,337291615964092 
+Accuracy:	 0,6863611264494754 
+
+Target model :	InsufficientArgSupport
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Performance:
+Recall:	 0,8552521008403362 
+Precision:	 0,8404812242021544 
+F1 score:	 0,8466435630856116 
+Accuracy:	 0,8592233009708737 
+
+Target model :	ACI_Lauscher
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+Recall:	 0,5859311241760583 
+Precision:	 0,6151514491123093 
+F1 score:	 0,5937971063404515 
+Accuracy:	 0,6717418614813196 
+
+
+
+Target model :	ACI_Stab
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+Recall:	 0,650324129967199 
+Precision:	 0,6416577210519074 
+F1 score:	 0,6457737211936966 
+Accuracy:	 0,7463703602246268 
