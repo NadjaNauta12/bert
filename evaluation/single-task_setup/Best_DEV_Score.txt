@@ -1,0 +1,56 @@
+Best model for	ACI_Stab
+Setting	Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+loss	0.6821679
+eval_accuracy	0.14449328
+eval_loss	0.125664
+global_step	356
+
+Best model for	ArgRecognition_GM_UGIP
+Setting	Setting: 	 Size: 8 	 Learningrate: 3e-05 	 Epochs: 4 
+Performance:
+loss	0.81347096
+eval_accuracy	0.738342
+eval_loss	0.8134432
+global_step	449
+
+Best model for	ArgZoningI
+Setting	Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+loss	0.86024624
+eval_accuracy	0.7062243
+eval_loss	0.8610204
+global_step	554
+
+Best model for	ArgQuality
+Setting	Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+loss	0.32003748
+eval_accuracy	0.9138831
+eval_loss	0.32068977
+global_step	419
+
+Best model for	ArgRecognition_GM
+Setting	Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+loss	0.7663846
+eval_accuracy	0.73703706
+eval_loss	0.7647124
+global_step	58
+
+Best model for	InsufficientArgSupport
+Setting	Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Performance:
+loss	0.30391884
+eval_accuracy	0.90361446
+eval_loss	0.30275154
+global_step	69
+
+Best model for	ACI_Lauscher
+Setting	Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+loss	0.8114977
+eval_accuracy	0.6980608
+eval_loss	0.173565
+global_step	563
+

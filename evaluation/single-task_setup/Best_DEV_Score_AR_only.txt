@@ -1,0 +1,16 @@
+Best model for	ArgRecognition_GM_UGIP
+Setting	Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Performance:
+loss	0.75513226
+eval_accuracy	0.7331606
+eval_loss	0.76438606
+global_step	112
+
+Best model for	ArgRecognition_GM
+Setting	Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Performance:
+loss	0.7663846
+eval_accuracy	0.73703706
+eval_loss	0.7647124
+global_step	58
+

@@ -1,0 +1,8 @@
+Best model for	MNLI
+Setting	Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Performance:
+loss	0.5218564
+eval_accuracy	0.844218
+eval_loss	0.52190673
+global_step	36815
+

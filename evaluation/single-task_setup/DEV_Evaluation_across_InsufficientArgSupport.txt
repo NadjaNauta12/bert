@@ -1,0 +1,36 @@
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+eval_accuracy = 0.8192771
+eval_loss = 0.37412396
+global_step = 69
+loss = 0.3744838
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+eval_accuracy = 0.85542166
+eval_loss = 0.49602583
+global_step = 92
+loss = 0.47021523
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+eval_accuracy = 0.8313253
+eval_loss = 0.34028178
+global_step = 69
+loss = 0.3238118
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+eval_accuracy = 0.8433735
+eval_loss = 0.4434789
+global_step = 92
+loss = 0.42730138
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+eval_accuracy = 0.90361446
+eval_loss = 0.30275154
+global_step = 69
+loss = 0.30391884
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+eval_accuracy = 0.8915663
+eval_loss = 0.26240432
+global_step = 92
+loss = 0.26217568
+
