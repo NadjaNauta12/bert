@@ -1,0 +1,12 @@
+Argument Recogniiton GM_UGIP Setting >> 15_12
+              precision    recall  f1-score   support
+
+           1      0.000     0.000     0.000        48
+           2      0.000     0.000     0.000        86
+           3      0.682     1.000     0.811       691
+           4      0.000     0.000     0.000        58
+           5      0.000     0.000     0.000       130
+
+   micro avg      0.682     0.682     0.682      1013
+   macro avg      0.136     0.200     0.162      1013
+weighted avg      0.465     0.682     0.553      1013
