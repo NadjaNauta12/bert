@@ -1,0 +1,42 @@
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 3 
+Accuracy:	 0.8737864077669902 
+F1 score:	 0.852662852112676 
+Recall:	 0.8385504201680671 
+Precision:	 0.8754659832246039 
+
+
+Setting: 	 Size: 32 	 Learningrate: 5e-05 	 Epochs: 4 
+Accuracy:	 0.8495145631067961 
+F1 score:	 0.8379640201974068 
+Recall:	 0.8513655462184874 
+Precision:	 0.8303703703703704 
+
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 3 
+Accuracy:	 0.8349514563106796 
+F1 score:	 0.8207411957411958 
+Recall:	 0.8299369747899159 
+Precision:	 0.8146033653846154 
+
+
+Setting: 	 Size: 32 	 Learningrate: 3e-05 	 Epochs: 4 
+Accuracy:	 0.8640776699029126 
+F1 score:	 0.8495565988523734 
+Recall:	 0.8519957983193277 
+Precision:	 0.8473258706467661 
+
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 3 
+Accuracy:	 0.8689320388349514 
+F1 score:	 0.8523689449236894 
+Recall:	 0.8487394957983193 
+Precision:	 0.8564909266616558 
+
+
+Setting: 	 Size: 32 	 Learningrate: 2e-05 	 Epochs: 4 
+Accuracy:	 0.8883495145631068 
+F1 score:	 0.8742402123424022 
+Recall:	 0.8703781512605042 
+Precision:	 0.8786105444003007 
+
