@@ -143,7 +143,7 @@ def Bootstrap_ACI(gold_file, STS_file, STILT_file, description, result_path, B=5
 
 def main():
     entry = "./evaluation/significanceTest/data_test"
-    results = "./evagit luation/significanceTest/results"
+    results = "./evaluation/significanceTest/results"
 
     descr = "Target Insufficient Arg Support - Best Model ACIL"
     print(descr)
