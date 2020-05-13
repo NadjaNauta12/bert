@@ -196,4 +196,4 @@ if __name__ == '__main__':
     # parse_ACI_results(directory=get_path_to_OS() + "/models_onSTILTs/models/ACI_Stab_32_5e-05_3",
     #                   task="ACI_Stab")
     parse_ACI_results(directory=get_path_to_OS() + "/models_onSTILTs/models/ACI_Lauscher_32_2e-05_3",
-                      task="ACI_Lauscher", truncate=False)
+                      task="ACI_Lauscher", truncate_evaluation=False)
